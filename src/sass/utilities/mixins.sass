@@ -1,0 +1,33 @@
+=placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    opacity: 1
+    @content
+  &:-ms-input-placeholder
+    @content
+
+=hover-letters
+  position: relative
+  &::before, &::after
+    width: 0%
+    position: absolute
+    transition: width 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+  &::before
+    content: attr(data-letters)
+    color: #636167
+    left: 0
+    overflow: hidden
+    white-space: nowrap
+  &::after
+    content: ''
+    display: block
+    left: 0
+    bottom: 0px
+    border-bottom: 1px solid #000
+  &:hover
+    &::before, &::after
+      width: 100%

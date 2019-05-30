@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlReplaceWebpackPlugin = require("html-replace-webpack-plugin");
+// const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 const isDevServer = process.argv[1].indexOf('webpack-dev-server') !== -1;
@@ -38,6 +39,41 @@ let config = {
   module: {
     rules: [
       {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+        include: path.resolve(__dirname, 'src/media/sprite-images'),
+        // options: {
+        //   esModule: false,
+        //   extract: false,
+        // }
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: [
+                    ["@babel/preset-env"]
+                ],
+            }
+        }
+      },
+      {
+        test: /\.svg(\?.*)?$/, // match img.svg and img.svg?param=value
+        exclude: path.resolve(__dirname, 'src/media/sprite-images'),
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 100,
+              name: "[hash].[ext]"
+            }
+          },
+          'svg-transform-loader'
+        ]
+      },
+      {
         test: /\.sass$/,
         use: [
           {
@@ -47,7 +83,9 @@ let config = {
               reloadAll: true,
             },
           },
-          "css-loader",
+          // "style-loader",
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          "postcss-loader", 
           {
             loader: "sass-loader",
             options: {
@@ -57,12 +95,23 @@ let config = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg|svg|woff|woff2|gif)$/,
-        loader: "file-loader",
-        options: {
-          context: "src",
-          name: "[path][name].[ext]"
-        }
+        test: /\.(png|jpg|jpeg|woff|woff2|gif|mp4)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+              context: "src",
+              name: "[path][name].[ext]"
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: NODE_ENV == 'development'
+            },
+          },
+        ]
       },
       {
         test: /\.html$/,
@@ -70,7 +119,8 @@ let config = {
           {
             loader: "html-loader",
             options: {
-              attrs: []
+              minimize: true,
+              attrs: ['img:src', ':data-src', 'source:src', 'video:src']
             }
           },
           {
@@ -85,6 +135,7 @@ let config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    // new SpriteLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),
