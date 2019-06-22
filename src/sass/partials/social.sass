@@ -1,0 +1,22 @@
+.social
+  display: flex
+  align-items: center
+  margin-bottom: 32px
+  text-align: center
+  &_default
+    margin-left: -16px
+  &_default a
+    margin-left: 16px
+    &:hover
+      opacity: 0.6
+  &_colored a
+    +button
+    +button-icon
+    border-color: #393a3e
+    .hover-wrapper svg
+      fill: #fff
+  +xs-block
+    &_default
+      margin-left: -19px
+      a
+        margin-left: 19px

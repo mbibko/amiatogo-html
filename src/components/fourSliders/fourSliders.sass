@@ -1,0 +1,234 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.fourSliders
+  overflow: hidden
+  margin: 0 calc(var(--fields) * -1)
+  margin-bottom: 348px
+  +xl-block
+    overflow: initial
+    margin-bottom: 160px
+    margin-left: 0
+  +xs-block
+    margin-bottom: 85px
+  img
+    display: block
+    width: 100%
+
+.sliders-wrapper
+  display: flex
+  min-width: 0
+  align-items: flex-start
+.sliders-wrapper1
+  height: 420px
+  +xl-block
+    display: block
+    height: auto
+.sliders-wrapper2
+  +md-block
+    flex-direction: column
+    .slider3
+      order: 2
+    .slider4
+      order: 1
+  
+.slider-group
+  .tns-slider
+    // transition-timing-function: cubic-bezier(0.51, 0, 0.5, 0.48)
+  
+.slider1
+  overflow: hidden
+  width: calc((100% - var(--fields) * 2) / var(--columns) * 2 + var(--fields))
+  flex: none
+  +xl-block
+    display: none
+  &__item
+    overflow: hidden
+    transform: translateX(100%)
+    .dir-prev &
+      transform: translateX(-100%)
+    img
+      width: 100%
+      transition: inherit
+      transform: translateX(-25%)
+      .dir-prev &
+        transform: translateX(25%)
+
+    &.tns-rollIn
+      z-index: 1
+      transform: translateX(0)
+      img
+        transform: translateX(0)
+    &.tns-rollOut
+      transform: translateX(-50%)
+      .dir-prev &
+        transform: translateX(50%)
+
+    &.tns-normal
+      opacity: 1
+.slider2
+  flex: 1
+  min-width: 0
+  height: 180px
+  margin-top: 228px
+  +xl-block
+    height: 98px
+    flex: none
+    margin-top: 120px
+  +xs-block
+    // margin-top: 50px
+    margin-top: 39px
+    height: 121px
+  &__item
+    width: calc(100vw / var(--columns) * 12)
+    padding-left: calc(100vw / var(--columns) * 1)
+    transition: opacity 1s
+    display: inline-flex !important
+    transition: inherit
+    transform: translateX(0)
+    // &:not(.tns-slide-active)
+    &.tns-slide-active+&.tns-slide-active
+      opacity: 0.2
+    +xl-block
+      width: calc(100vw / var(--columns) * 9)
+      padding-left: 0
+      padding-right: calc(100vw / var(--columns) * 1)
+      transform: translateX(0)
+    +xs-block
+      flex-wrap: wrap
+      width: calc(100vw / var(--columns) * 6)
+      padding-left: 0
+      padding-right: calc(100vw / var(--columns) * 1)
+      transform: translateX(0)
+  &__title
+    +h2
+    margin: 0
+    +xs-block
+      width: 100%
+  &__pagi
+    flex: none
+    margin-top: 12px
+    position: relative
+    width: calc(100vw / var(--columns) * 2)
+    color: #0c0d0f
+    font-family: $angelicia-text
+    font-size: 14px
+    font-weight: 400
+    margin-right: calc(100vw / var(--columns))
+    &::before
+      content: ''
+      display: block
+      width: 100%
+      height: var(--border-size-base)
+      background-color: #16181c
+      opacity: 0.15
+      margin-bottom: 27px
+      +xl-block
+        margin-bottom: 10px
+      +xs-block
+        height: 1px
+    +xl-block
+      width: calc(100vw / var(--columns))
+      font-size: 12px
+    +xs-block
+      margin: 0 0 20px
+      font-size: 11px
+      &::before
+        margin-bottom: 6px
+.slider3
+  flex: none
+  +size(9)
+  +size-xl(10)
+  +shift-left(3)
+  
+  color: #60656b
+  line-height: 24px
+  +xl-block
+    margin-left: calc(100vw / var(--columns) * 1)
+    width: calc(100vw / var(--columns) * 5)
+  +md-block
+  +sm-block
+    margin-left: calc(100vw / var(--columns) * 2)
+    width: calc(100vw / var(--columns) * 6)
+  +xs-block
+    padding-right: var(--fields)
+    margin-left: 0
+    width: 100%
+    line-height: 18px
+  &__item
+    padding-left: calc(100vw / var(--columns) * 4)
+    +xl-block
+      padding-left: 0
+    & > div
+    p
+      margin-bottom: 24px
+
+.slider4
+  +size(12)
+  +size-xl(11)
+  overflow: hidden
+  position: relative
+  flex: none
+  margin-left: auto
+  // margin-top: 7px
+  +xl-block
+    width: 100%
+    margin-left: 0
+    margin-right: 0
+    margin-bottom: 0
+    padding-left: calc(100vw / var(--columns) * 2)
+  // +sm-block
+  //   width: 100%
+  //   margin-bottom: 30px
+  +xs-block
+    padding-left: 0
+    margin-left: 0
+    margin-bottom: 35px
+  &__item
+    overflow: hidden
+    width: calc(var(--column) * 10)
+    img
+      transition: 1s ease
+    +xl-block
+      width: calc(var(--column) * 7)
+    +xs-block
+      width: calc(var(--column) * 6)
+      img
+        height: 170px
+        object-fit: cover
+    &.before-active img
+      transform: translateX(25%)
+    // .dir-prev &:nth-child(4) img
+    //   transform: translateX(0)
+    // .dir-next &:nth-child(2) img
+    //   transform: translateX(0)
+    // .dir-next &:nth-child(2) img
+    //   transform: translateX(0)
+    &.tns-slide-active
+      img
+        transform: translateX(0)
+      & + .tns-item img
+        transform: translateX(-25%)
+        +xl-block
+          transform: none
+  .tns-outer
+    display: flex
+    flex-direction: column
+  .tns-nav
+    align-self: flex-end
+    margin-right: var(--fields)
+    position: relative
+    margin-top: 30px
+    display: none
+    +sm-block
+      display: block
+    +xs-block
+      display: none
+  .tns-controls
+    position: absolute
+    left: 0
+    top: 0
+    z-index: 5
+    +xl-block
+      display: none

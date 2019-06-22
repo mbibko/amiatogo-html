@@ -1,0 +1,40 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.toggler
+  $_: &
+  &__content
+    transition: max-height 0.5s
+    +xs-block
+      overflow: hidden
+      max-height: 0
+    #{$_}.is-active &
+      max-height: var(--max-height)
+  &__link
+    display: none
+    margin-top: 20px
+    position: relative
+    +xs-block
+      display: block
+    &::before
+      content: 'Развернуть'
+      display: inline-block
+      vertical-align: middle
+      font-size: 12px
+      font-weight: 500
+      #{$_}.is-active &
+        content: 'Свернуть'
+    &::after
+      content: ''
+      position: relative
+      display: inline-block
+      vertical-align: middle
+      margin-left: 10px
+      border-style: solid
+      border-width: 4px 3px
+      top: 2px
+      border-color: #000 transparent transparent
+      #{$_}.is-active &
+        top: -1px
+        border-color: transparent transparent #000

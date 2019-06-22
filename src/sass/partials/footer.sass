@@ -1,0 +1,111 @@
+.footer-wrapper
+  position: relative
+  z-index: 1
+.footer
+  margin-top: calc(var(--button-default-height) * -1)
+  +shift-left(3)
+  +xl-block
+    margin-left: calc(var(--column) * 2)
+    margin-right: calc(var(--fields) * -1) 
+  +md-block
+  +xs-block
+    margin: 0 calc(var(--fields) * -1)
+  &__inner
+    background-color: #fff
+    padding: 87px 72px
+    color: #818285
+    font-size: 14px
+    +xl-block
+      padding: 65px var(--fields)
+      font-size: 1rem
+    +xs-block
+      padding-top: 55px
+  &__top
+    display: flex
+    justify-content: space-between
+    padding-bottom: 90px
+    margin-bottom: 60px
+    border-bottom: var(--border-size-base) solid #dcdcdd
+    +xl-block
+      flex-direction: column
+      padding-bottom: 70px
+      margin-bottom: 70px
+    +xs-block
+      margin-bottom: 40px
+      padding-bottom: 60px
+
+  &__bottom
+    display: flex
+    justify-content: space-between
+    align-items: flex-end
+    font-size: 12px
+    +xl-block
+      line-height: 18px
+      flex-wrap: wrap
+    +xs-block
+      line-height: normal
+      flex-direction: column
+      align-items: flex-start
+    a
+      color: #16181c
+  &__copy
+    +xl-block
+      order: 1
+    +xs-block
+      order: initial
+  &__question
+    +xs-block
+      margin-bottom: 56px
+  &__social
+    +xl-block
+      display: flex
+      width: 100%
+      & > div
+        flex: 1
+    +xs-block
+      width: auto
+      display: block
+      order: -1
+    .social
+      +xl-block
+        margin-bottom: 70px
+      +xs-block
+        margin-bottom: 24px
+  &__develop
+    display: flex
+    margin-left: -20px
+    div
+      margin-left: 20px
+    +xl-block
+      order: 2
+      display: block
+      text-align: right
+    +xs-block
+      text-align: left
+      margin: 20px 0 0
+      div
+        margin: 0 0 8px
+
+.footer-nav
+  margin-left: -25px
+  +xl-block
+    margin-bottom: 60px
+    margin-left: -16px
+  +xs-block
+    margin-bottom: 40px
+    margin-left: 0
+  a
+    display: inline-block
+    margin-left: 25px
+    color: #16181c
+    text-decoration: none
+    +xl-block
+      margin-left: 16px
+      font-size: 13px
+      font-weight: 500
+    +xs-block
+      margin-left: 0
+      display: block
+      margin-bottom: 15px
+    &:hover
+      text-decoration: underline

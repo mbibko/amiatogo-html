@@ -1,0 +1,55 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.button-animate
+  $_: &
+  position: relative
+  svg
+    flex: none
+  &__inner
+    display: flex
+    align-items: center
+    justify-content: center
+    flex: none
+  & > &__inner
+    flex: 1
+  &.active::after
+    display: none
+  &.active .hover-wrapper
+    display: none
+    +xs-block
+      display: none
+  &_inverted_bg .hover-wrapper
+    background-color: var(--background-color)
+  &.link-all .hover-wrapper &__inner
+    position: relative
+    left: var(--link-all-fields)
+    +xs-block
+      left: 0
+
+  .hover-wrapper
+    display: flex
+    align-items: center
+    width: 0
+    position: absolute
+    left: -1px
+    top: -1px
+    bottom: -1px
+    z-index: 1
+    overflow: hidden
+    white-space: nowrap
+    transition: $transition-elems
+    will-change: width
+  &.link-all .hover-wrapper
+    left: calc(var(--link-all-fields) * -1)
+    +xs-block
+      left: 0
+    svg
+      flex: none
+  &:hover .hover-wrapper
+    width: var(--width)
+  &.link-all:hover .hover-wrapper
+    width: calc(var(--width) + var(--link-all-fields) * 2)
+    +xs-block
+      width: var(--width)

@@ -1,0 +1,51 @@
+.text-letter
+  +letter
+
+.b-text
+  color: #60656b
+  line-height: 24px
+  +xl-block
+    line-height: 18px
+
+.subtext
+  margin-top: -20px
+  font-size: 17px
+  @extend .m-b-5
+  @extend .m-b-xl-4
+  @extend .m-b-xs-3
+  .muted
+    color: $gray-color
+  b
+  +xl-block
+    font-size: 12px
+    line-height: 18px
+    b
+      font-size: 14px
+    p
+      margin-bottom: 10px
+
+.one-img
+  object-fit: cover
+  +lg-block
+    min-height: 300px
+
+.img-full
+  width: 100%
+
+.hr
+  border-top: var(--border-size-base) solid #d8d9da
+
+.title
+  +h2
+  margin-bottom: 0
+  max-width: 560px
+  flex: none
+  +xl-block
+    max-width: 400px
+  &+.link-all
+    margin-left: calc(var(--column) * 14)
+    margin-top: -50px
+    +xl-block
+      margin-left: calc(var(--column) * 9)
+    +xs-block
+      margin: 0

@@ -1,0 +1,162 @@
+.form
+  &__top
+    margin-bottom: 38px
+    +xs-block
+      margin-bottom: 20px
+  &__title
+    font-size: 17px
+    font-weight: 500
+    +xl-block
+      font-size: 14px
+      line-height: 18px
+      margin-bottom: 10px
+    +xs-block
+      font-size: 13px
+      line-height: 17px
+     
+  .button-submit
+    margin-top: 90px
+    +xl-block
+      margin-top: 40px
+
+
+.control-label
+  height: 30px
+  margin-bottom: calc(var(--control-height) * -1)
+  transition: .5s
+  display: block
+  +xs-block
+    font-size: 14px
+  .is-focused &
+    transform: translateY(-24px)
+    font-size: 12px
+    +xs-block
+      font-size: 10px
+
+  
+.help-text
+  font-size: 13px
+  color: $gray-color
+  &.error-message
+    margin-top: -1px
+    border-top: 1px solid $red-color
+    color: $red-color
+  .has-error &
+    color: $red-color
+  +xs-block
+    font-size: 12px
+
+.form-control
+  display: block
+  width: 100%
+  height: var(--control-height)
+  padding: 0
+  font-size: 17px
+  border: 0
+  border-radius: 0
+  border-bottom: 1px solid #505255
+  box-shadow: none
+  background: none
+  +placeholder
+    color: #818285
+  &:focus
+    outline: 0
+  +xs-block
+    font-size: 14px
+    font-weight: 300
+    height: 30px
+  .is-focused &
+    border-bottom-color: $base-color
+  .has-error &
+    border-bottom-color: $red-color 
+    color: $red-color
+
+.form-group
+  margin-bottom: 49px
+  +xl-block
+    margin-bottom: 32px
+  +xs-block
+    margin-bottom: 26px
+
+.subscribe-us
+  max-width: 426px
+  +xl-block
+    max-width: none
+    order: 2
+  &__text
+    min-width: 360px
+    margin-bottom: 45px
+    +xl-block
+      margin-bottom: 27px
+    +xs-block
+      min-width: 0
+      margin-bottom: 20px
+  &__form
+    position: relative
+    .form-control
+      font-size: 22px
+      color: #505255
+      +xs-block
+        font-size: 18px
+    .button
+      position: absolute
+      top: 0
+      right: 0
+      width: 20px
+      height: 100%
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+      background: url("../media/arr.svg?fill=%2316181c") right center no-repeat
+      background-size: 10px
+
+.form-message
+  $_: &
+  display: flex
+  flex-direction: column
+  background-color: #fff
+  padding-left: var(--fields)
+  padding-right: var(--fields)
+  text-align: center
+  font-size: 17px
+  +xl-block
+    font-size: 14px
+  +xs-block
+    font-size: 12px
+  &__icon
+    width: var(--button-default-height)
+    height: var(--button-default-height)
+    margin-left: auto 
+    margin-right: auto
+    @extend .m-b-4
+    @extend .m-b-xl-3
+    @extend .m-b-xs-2
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    border: 2px solid
+    font-family: $angelicia-display
+    font-size: 30px
+    svg
+      width: 22px
+      height: 16px
+    +xl-block
+      font-size: 28px
+      svg
+        width: 16px
+        height: 12px
+    #{$_}_success &
+      color: #30ac63
+      border-color: #30ac63
+    #{$_}_error &
+      color: #e00b24
+      border-color: #e00b24
+  &__title
+    font-family: $angelicia-display
+    font-size: 24px
+    margin-bottom: 40px
+    +xl-block
+      font-size: 18px
+    +xs-block
+      font-size: 16px
+  &__button
+    margin-top: auto

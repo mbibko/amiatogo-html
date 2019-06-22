@@ -18,6 +18,9 @@ let config = {
     filename: "main.js",
     // publicPath: "/"
   },
+  // externals: {
+  //   tns: 'tns'
+  // },
   mode: NODE_ENV,
   devtool: NODE_ENV == "development" ? "source-map" : "source-map",
   devServer: {
@@ -34,6 +37,11 @@ let config = {
       warnings: true,
       moduleTrace: true,
       errorDetails: true
+    }
+  },
+  resolve: {
+    alias: {
+      'images' : path.resolve(__dirname, 'src/media')
     }
   },
   module: {
@@ -66,11 +74,24 @@ let config = {
           {
             loader: 'url-loader',
             options: {
-              limit: 100,
-              name: "[hash].[ext]"
+              limit: 8192,
+              name: "[path][name].[ext]"
             }
           },
           'svg-transform-loader'
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: NODE_ENV == 'development',
+              reloadAll: true,
+            },
+          },
+          { loader: 'css-loader', options: { importLoaders: 1 } },
         ]
       },
       {
@@ -100,8 +121,15 @@ let config = {
           {
             loader: "url-loader",
             options: {
+              fallback: 'file-loader',
               limit: 8192,
               context: "src",
+              outputPath: (url) => {
+                if (/components/.test(url)) {
+                  return `media/${url}`;
+                }
+                return url;
+              },
               name: "[path][name].[ext]"
             }
           },
@@ -136,6 +164,13 @@ let config = {
   plugins: [
     new CleanWebpackPlugin(),
     // new SpriteLoaderPlugin(),
+    // new webpack.ProvidePlugin({
+    //   tns: 'tiny-slider/src/tiny-slider'
+    // }),
+    new CopyWebpackPlugin([
+        // { from: './app/dinamic-links.js', to: '.' },
+        { from: './src/ajax.pages_list.php', to: '.' },
+    ]),
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),

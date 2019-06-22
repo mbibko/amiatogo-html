@@ -1,0 +1,77 @@
+.list-steps
+  counter-reset: steps
+  list-style: none
+  li
+    position: relative
+    display: inline
+    font-size: 28px
+    +xl-block
+      line-height: 26px
+      font-size: 14px
+    +xs-block
+      display: block
+      line-height: 19px
+      margin-bottom: 10px
+    &::before
+      display: inline-block
+      margin-right: 5px
+      counter-increment: steps
+      content: counter(steps)"."
+    +xs-block
+      padding-left: 40px
+      &::before
+        position: absolute
+        left: 0
+    &::after
+      width: 14px
+      height: 14px
+      margin: 0 20px
+      content: ''
+      display: inline-block
+      background-image: url("../media/arr.svg?fill=%23b2b3b8")
+      background-repeat: no-repeat
+      background-size: 14px 14px
+      vertical-align: middle
+      +xl-block
+        margin: 0 12px
+        background-size: 10px 10px
+      +xs-block
+        display: none
+    &:last-child::after
+      display: none
+
+.list-styled
+  margin: 0
+  padding: 0
+  column-count: 2
+  column-gap: calc(var(--column) * 2)
+  font-size: 17px
+  font-weight: 500
+  list-style: none
+  counter-reset: list
+  +xl-block
+    font-size: 15px
+    column-count: auto
+    column-gap: 0
+  +xs-block
+    font-size: 14px
+  li
+    display: flex
+    min-height: 160px
+    padding-top: 23px
+    padding-bottom: 23px
+    padding-right: 20px
+    border-top: var(--border-size-base) solid rgba($base-color, 0.15)
+    &::before
+      display: block
+      counter-increment: list
+      content: counter(list)"."
+      width: 50px
+      flex: none
+    +xl-block
+      padding-right: 0
+      padding-bottom: 32px
+      min-height: 0
+    +xs-block
+      padding-top: 16px
+      padding-bottom: 18px

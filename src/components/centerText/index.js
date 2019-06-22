@@ -1,0 +1,1 @@
+import './centerText.sass'

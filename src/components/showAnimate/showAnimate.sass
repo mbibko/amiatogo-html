@@ -1,0 +1,18 @@
+.aos-me-wrap
+  position: relative
+  z-index: 1
+  overflow: hidden
+  display: block
+  span
+    position: absolute
+    z-index: 2
+    left: 0
+    top: 100%
+    width: 100%
+    height: calc(100% + 1px)
+    background-color: #fafbfc
+.aos-init + .aos-me
+  transition: .5s
+  opacity: 0
+.aos-animate + .aos-me
+  opacity: 1

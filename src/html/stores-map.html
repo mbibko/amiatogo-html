@@ -1,0 +1,54 @@
+{% extends 'default.html' %}
+
+
+{% block content %}
+
+<div class="wrapper">
+  <div class="container">
+    
+    <h1 class="h1">Магазины AmaiaTogo</h1>
+    <div class="subtext">
+      <p><b>Приходите за покупками!</b> <br> <span class="muted">По вопросам работы сайта пишите нам на</span> <a href="mailto:info@amiatogo.info">info@amiatogo.info</a></p>
+    </div>
+
+
+    <div class="stores-top m-b-5 m-b-xl-4 m-b-xs-5">
+      <div class="stores-top__select">
+        <label for="">Выберите город:</label>
+        <select name="" id="" class="select js-map-city-filter">
+          <option value="Москва">Москва</option>
+          <option value="Санкт-Петербург">Санкт-Петербург</option>
+          <option value="Самара">Самара</option>
+          <option value="Ижевск">Ижевск</option>
+        </select>
+      </div>
+      <div class="stores-top__sett">
+        <div class="find-place button button-gray-border button-animate">
+          <svg width="12" height="12">
+            <use xlink:href="#icon-find"></use>
+          </svg>
+          Найти ближайший
+        </div>
+        <div class="switch-buttons">
+          <div class="switch-buttons__item button-animate">
+            <svg width="14" height="10">
+              <use xlink:href="#icon-list"></use>
+            </svg>
+          </div>
+          <div class="switch-buttons__item active button-animate">
+            <svg width="18" height="12">
+              <use xlink:href="#icon-map"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {% include 'storesMap/storesMap.html' %}
+    
+
+</div>
+
+{% endblock %}

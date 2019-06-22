@@ -1,0 +1,146 @@
+.coll-modal-wrapper
+  display: flex
+
+.coll-modal-side
+  flex: none
+  width: calc(var(--fields) * 2 + var(--column) * 5)
+  color: #fff
+  z-index: 1
+  // width: calc(var(--fields) * 2 + var(--column) * 3)
+  +xl-block
+    position: absolute
+    left: 0
+    top: 0
+  +xs-block
+    width: 100%
+  .is-side-active &
+    height: 100%
+    z-index: 99
+  &__link
+    width: 255px
+    position: absolute
+    top: 30px
+    left: var(--fields)
+    display: none
+    +xl-block
+      display: flex
+    +xs-block
+      left: 0
+      top: 0
+      width: var(--button-default-height)
+      height: var(--button-default-height)
+      padding: 0
+      align-items: center
+      justify-content: center
+    span
+      &::before
+        content: 'Информация о модели'
+        +xs-block
+          content: 'i'
+          font-size: 26px
+          font-family: $angelicia-display
+      &::after
+        content: ''
+        border-color: #fff transparent transparent
+        border-style: solid
+        border-width: 4px 3px
+        display: inline-block
+        vertical-align: middle
+        position: relative
+        top: 3px
+        margin-left: 10px
+        +xs-block
+          display: none
+    .is-side-active &
+      border-color: #393a3e
+      span
+        &::before
+          content: 'Скрыть'
+          +xs-block
+            display: none
+        &::after
+          top: -1px
+          border-color: transparent transparent #fff
+          +xs-block
+            top: -3px
+            display: block
+            border-width: 8px 6px
+            margin: 0
+  &__inner
+    background-color: $base-color
+    overflow: auto
+    height: 100%
+    display: flex
+    flex-direction: column
+    padding-bottom: 90px
+    padding-top: 84px
+    padding-left: var(--fields)
+    padding-right: var(--fields)
+    +xl-block
+      padding-top: 140px
+      display: none
+      .is-side-active &
+        display: flex
+    +xs-block
+      padding-top: 80px
+  &__top
+  &__item
+    margin-bottom: 40px
+  &__title
+    font-size: 14px
+    font-weight: 500
+    margin-bottom: 15px
+  &__subtitle
+    // font-size: 35px
+    // margin-top: -20px
+    font-size: 24px
+    font-family: $angelicia-display
+    &_underline
+      border-bottom: 1px solid rgba(#fff, 0.15)
+  &__text
+    color: #919599
+    font-size: 12px
+  &__footer
+    margin-top: auto
+    .social
+      margin-bottom: 0
+
+.coll-modal-slider
+  flex: 1
+  &__item
+    width: 40%
+    height: 100%
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+    +xl-block
+      width: 85%
+    +xs-block
+      width: 100%
+
+  .tns-controls
+    position: absolute
+    right: calc(var(--button-default-height) * 2 + var(--fields))
+    bottom: 90px
+    +xl-block
+      display: none
+  .tns-nav
+    display: none
+    +xl-block
+      +tns-nav-block
+      display: flex
+      position: absolute
+      bottom: 90px
+      right: calc(136px + var(--fields))
+    +xs-block
+      right: 0
+      bottom: 0
+  .slider-sett
+    width: 136px
+    z-index: 1
+    position: absolute
+    right: var(--fields)
+    bottom: 90px
+    +lg-block
+      display: none

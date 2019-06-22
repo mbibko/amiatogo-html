@@ -1,0 +1,59 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+
+// col-offset-left-5 col-offset-right-4 col-xl-offset-left-2 col-xl-offset-right-0
+.columnsText
+  +shift-left(5)
+  +shift-right(4)
+  margin-bottom: 278px
+  color: #60656b
+  font-weight: 400
+  // line-height: 29px
+  &_lg
+    font-size: 17px
+    line-height: 29px
+
+  +xl-block
+    margin: 0 0 68px
+    margin-left: calc(var(--column) * 2)
+    font-size: 1rem
+    line-height: 1.5em
+    &_lg
+      margin-bottom: 110px
+  +xs-block
+    margin-left: 0
+    margin-bottom: 100px
+  &__inner
+    column-count: 2
+    column-gap: calc(var(--column) * 2)
+    .hr + &
+      padding-top: 130px
+      +xl-block
+        padding-top: 60px
+      +xs-block
+        padding-top: 27px
+    +xl-block
+      column-gap: var(--column)
+    +xs-block
+      column-count: initial
+      column-gap: initial
+    & > p
+      +letter
+  &_lg &__inner & > p
+    +letter-lg
+  &__title
+    +h3
+    margin-bottom: 50px
+    color: $base-color
+    line-height: 1.33
+    +xl-block
+      font-size: 22px
+    +xs-block
+      font-size: 18px
+  p
+    margin-bottom: 30px
+    break-inside: avoid
+    +xs-block
+      margin-bottom: 18px

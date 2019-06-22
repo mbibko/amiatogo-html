@@ -1,0 +1,23 @@
+{% set bodyClass = 'page-404' %}
+
+{% extends 'default.html' %}
+
+{% block content %}
+
+<div class="wrapper">
+  <div class="container">
+    
+    <div class="subtext">
+      <br>
+      <p><b>Ошибка 404.</b> Страница не найдена.</p>
+      <p><span class="muted">Вы можете перейти на</span> <a class="tdn" href="#"><b>главную страницу</b></a> <br> <span class="muted">или посмотреть</span> <a class="tdn" href="#"><b>коллекции</b></a></p>
+    </div>
+
+    <div class="h2 m-b-6 m-b-xl-5 m-b-xs-4 m-t-xl-6 m-t-xs-6">Концептуальные <br> коллекции</div>
+    {% include 'sliderColl/sliderColl.html' %}
+  </div>
+    
+
+</div>
+
+{% endblock %}

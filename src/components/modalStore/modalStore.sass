@@ -1,0 +1,42 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.modalStore
+  &__item
+    width: 70%
+    height: 100%
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+    +xl-block
+      width: 85%
+    +xs-block
+      width: 100%
+
+  .tns-controls
+    position: absolute
+    right: calc(var(--button-default-height) * 2 + var(--fields))
+    bottom: 90px
+    +xl-block
+      display: none
+  .tns-nav
+    display: none
+    +xl-block
+      +tns-nav-block
+      display: flex
+      position: absolute
+      bottom: 90px
+      right: calc(136px + var(--fields))
+    +xs-block
+      right: 0
+      bottom: 0
+  .slider-sett
+    width: 136px
+    z-index: 1
+    position: absolute
+    right: var(--fields)
+    bottom: 90px
+    +lg-block
+      display: none

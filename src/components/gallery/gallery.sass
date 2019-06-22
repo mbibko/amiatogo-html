@@ -1,0 +1,198 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.gallery
+  position: relative
+  // margin-bottom: 338px
+  margin-bottom: 100px
+  // padding-top: 140px + 112px
+  padding-bottom: 150px
+  +xl-block
+    margin-bottom: 30px
+  +xs-block
+    margin-bottom: 100px
+    padding-bottom: 0
+  .title
+    +xl-block
+      margin: 0
+    +xs-block
+      margin-bottom: 55px
+  &__link-all
+    margin-left: calc(var(--column) * 15)
+    &_top
+      margin-bottom: 200px
+      +xl-block
+        margin-bottom: 100px
+        margin-left: calc(var(--column) * 9)
+      +xs-block
+        margin-bottom: 50px
+        order: 1
+    &_bottom
+      +xl-block
+        margin-left: calc(var(--column) * 5)
+    +xs-block
+      margin-left: 0
+  &__inner
+    margin-top: -50px
+    +xl-block
+      margin-top: -40px
+      margin-left: 0
+    +xs-block
+      display: flex
+      flex-direction: column
+      margin-top: 0
+      margin-left: 0
+  &-sticky
+    white-space: nowrap
+    margin-top: 197px - 150px
+    z-index: 1
+    position: sticky
+    top: 40px
+    width: calc(100% / 12 * 1)
+    +xs-block
+      position: static
+      width: 100%
+      margin: 0
+      white-space: normal
+  &__text
+    color: #60656b
+    font-size: 16px
+    font-weight: 400
+    line-height: 24px
+    margin-bottom: 47px
+    pointer-events: none
+    +xl-block
+      font-size: 1rem
+      margin-bottom: 11px
+      line-height: 18px
+  &__hashes
+    +xs-block
+      margin-bottom: 16px
+    a
+      color: #16181c
+      font-size: 17px
+      font-weight: 500
+      line-height: 29px
+      display: block
+      text-decoration: none
+      span
+        +hover-letters
+      +xl-block
+        line-height: 1.9
+        font-size: 1rem
+      +xs-block
+        display: inline-block
+        margin-right: 10px
+        font-size: 1.083rem
+        line-height: 1.5
+  &__items
+    // +shift-left(2)
+    margin-right: calc(var(--fields) * -1)
+    margin-left: calc(var(--column) * 2)
+    margin-top: -138px
+    margin-bottom: 150px
+    overflow: hidden
+    +xl-block
+      margin: 0 0 50px
+      margin-left: calc(var(--column) * 2)
+      margin-right: calc(var(--fields) * -1)
+    +xs-block
+      margin-bottom: 50px
+      margin-left: 0
+      order: 1
+      
+  &__items-inner
+    display: flex
+    flex-wrap: wrap
+  &__item
+    display: block
+    width: 25%
+    position: relative
+    z-index: 0
+    +xl-block
+      width: calc(100% / 3)
+    +xs-block
+      width: 50%
+    img
+      width: 100%
+      transition: $transition-imgs-zoom
+    .aos-me-wrap.aos-me-initialized
+      &::after
+        content: ''
+        position: absolute
+        z-index: 1
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        visibility: hidden
+        opacity: 0
+        background-color: rgba(0,0,0,0.6)
+        transition: $transition-imgs-zoom
+      &:hover::after
+        visibility: visible
+        opacity: 1
+    &:hover
+      img
+        transform: $zoom
+    img
+      display: block
+      object-fit: cover
+  &__item:hover &__info
+    visibility: visible
+    opacity: 1
+  &__info
+    display: flex
+    justify-content: center
+    visibility: hidden
+    opacity: 0
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    transition: 0.5s cubic-bezier(0.7,0,0.3,1)
+    color: #fff
+    z-index: 2
+  &__info-item
+    margin: 0 20px
+    padding-left: 25px
+    background-position: left center
+    background-repeat: no-repeat
+    &_favorite
+      background-size: 19px 17px
+      background-image: url("favorite.svg?fill=%23fff")
+    &_speech
+      background-size: 19px 18px
+      background-image: url("speech-bubble.svg?fill=%23fff")
+
+.hash-tag
+  +h1
+  display: flex
+  align-items: center
+  position: relative
+  z-index: 1
+  font-weight: 300
+  text-decoration: none
+  margin-bottom: 25px
+  +xl-block
+    margin-bottom: 18px
+  +xs-block
+    margin-bottom: 25px
+  span
+    +hover-letters
+    &::after
+      display: none
+  svg
+    flex: none
+    fill: #fff
+    background: #000
+    border-radius: 50%
+    padding: 2px
+    width: 60px
+    height: 60px
+    margin-right: 20px
+    +xl-block
+      margin-right: 10px
+      width: 40px
+      height: 40px

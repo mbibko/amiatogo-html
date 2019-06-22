@@ -1,0 +1,11 @@
+<div class="slider m-b-6 m-b-xl-6 m-b-xs-6">
+  <div class="slider__slidesWrapper" data-aos="fade-up" data-aos-offset="-300">
+    <div class="slider__slides">
+    {% for i in range(6) %}
+      <div class="slider__item">
+        {% block slider %} {% endblock %}
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>

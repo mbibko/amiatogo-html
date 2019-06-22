@@ -1,0 +1,39 @@
+{% macro storesItem(data) %}
+<div class="store-list__item" data-aos="fade-up" data-modal-imgs='{"urls" : ["../media/temp/store-slider/1.jpg", "../media/temp/store-slider/1.jpg", "../media/temp/store-slider/1.jpg"]}'>
+  <div class="store-content">
+    <div class="store-content__inner">
+      <h3 class="store-content__title">{{data.title | safe}}</h3>
+      <div class="store-content__item">
+        <span>Адрес:</span> {{data.address | safe}}
+      </div>
+      <div class="store-content__item">
+        <span>Тел.:</span> {{data.phone | safe}}
+      </div>
+      <div class="store-content__subtitle">Режим работы</div>
+      <div class="store-content__item store-content__item_workdays">
+        {{data.workdays | safe}}
+      </div>
+      <div class="store-content__link"></div>
+    </div>
+  </div>
+  <div class="store-slider">
+    <div class="store-slider-slides">
+      {% for i in range(3) %}
+      <div class="store-slider__item">
+        <img src="../media/temp/store-slider/1.jpg" alt="">
+      </div>
+      {% endfor %}
+    </div>
+    <div class="slider-sett">
+      <div class="slider-counter">
+        <div class="slider-counter__1">1</div>/
+        <div class="slider-counter__2">3</div>
+      </div>
+      <div class="linkfull"></div>
+    </div>
+  </div>
+  <div class="store-map">
+    <div class="store-map__inner" data-lat="{{data.map.lat | safe}}" data-lng="{{data.map.lng | safe}}"></div>
+  </div>
+</div>
+{% endmacro %}

@@ -1,0 +1,17 @@
+<div class="sliderCollection">
+  <div class="sliderCollection__slides">
+  {% set slidesCount = 4 %}
+  {% for i in range(slidesCount) %}
+  <div class="sliderCollection__item">
+    <img src="../media/temp/collections-slider/{{loop.index}}.jpg" alt="">
+  </div>
+  {% endfor %}
+  </div>
+  <div class="slider-sett">
+    <div class="slider-counter">
+      <div class="slider-counter__1">1</div>/
+      <div class="slider-counter__2">{{slidesCount}}</div>
+    </div>
+  </div>
+  <a href="#" class="button-animate hot-link button button-white"><div class="hot-link__inner">Хиты уходящего <br> сезона</div></a>
+</div>

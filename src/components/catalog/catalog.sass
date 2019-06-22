@@ -1,0 +1,274 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.catalog
+  $_: &
+  position: relative
+  margin-bottom: 360px
+  +xl-block
+    margin-bottom: 192px
+  +xs-block
+    display: flex
+    flex-direction: column
+    margin-bottom: 114px
+
+  .title
+    +xs-block
+      margin-bottom: 70px
+  .link-all
+    width: calc(var(--column) * 4)
+    +xs-block
+      width: calc(var(--column) * 5)
+  .link-all-sticky
+    +xs-block
+      width: 100%
+      order: 2
+    
+  &__inner
+    // height: calc(100% - 150px)
+
+  &__imgs
+    position: relative
+    z-index: 0
+    margin-top: -410px
+    #{$_}_collection &
+      margin-top: -100px
+    +shift-left(2)
+    margin-right: calc(var(--fields) * -1)
+    +xl-block
+      margin-top: 0
+      margin-left: calc(100% / 13 * 2)
+    +xs-block
+      margin: 0 0 10px
+    &-item
+      margin-bottom: 240px
+      +xl-block
+        margin-bottom: 119px
+      +xs-block
+        margin-bottom: 58px
+      &__title
+        display: none
+        +xl-block
+          display: block
+          position: relative
+          width: calc(var(--column) * 8)
+          margin-top: 40px
+          padding-left: calc(var(--column) * 2)
+          line-height: 18px
+          &::before
+            content: ''
+            display: block
+            width: var(--column)
+            height: 1px
+            position: absolute
+            left: 0
+            top: 6px
+            background-color: $base-color
+        +xs-block
+          width: calc(var(--column) * 6)
+          padding-left: 0
+          font-style: italic
+          color: #60656b
+          line-height: 16px
+          font-size: 11px
+          margin-top: 22px
+          margin-bottom: 14px
+          &::before
+            display: none
+
+    img
+      display: block
+    .link-all
+      display: none
+      +xs-block
+        display: flex
+
+.catalog-slider
+  +xs-block
+    // width: var(--column) * 12)
+    &_1, &_3
+      // margin-left: calc(var(--fields) * -1)
+      // width: calc(100vw - var(--fields))
+      margin-right: calc(var(--fields) * -1)
+    &_2
+      margin-left: calc(var(--fields) * -1)
+      // transform: translateX(calc(var(--column) * -3.2))
+    .tns-outer
+      display: flex
+      flex-direction: column
+      .tns-nav
+        align-self: flex-end
+        margin-right: var(--fields)
+        position: relative
+        top: 30px
+  &__title
+    display: none
+    justify-content: space-between
+    text-decoration: none
+    color: $base-color
+    margin-bottom: 20px
+    +xs-block
+      margin-bottom: 30px
+      display: flex
+    span
+      +h1
+      font-weight: 300
+      letter-spacing: -2.16px
+      margin-bottom: 0
+      +xs-block
+        letter-spacing: -1px
+    sup
+      margin-left: 20px
+      font-family: $angelicia-display
+      font-size: 14px
+      +xs-block
+        position: relative
+        top: 6px
+
+.catalog-menu
+  width: 0
+  position: sticky
+  z-index: 1
+  top: 100px
+  left: 0
+  margin-top: 194px
+  .catalog_collection &
+    margin-top: -200px
+    +xl-block
+      margin-top: -100px
+  .catalog_home &
+    +xl-block
+      margin-top: 100px
+  +xs-block
+    display: none
+  &__inner
+    display: inline-block
+  a
+    display: block
+    color: #16181c
+    text-decoration: none
+
+.catalog-menu-wrapper
+  overflow: hidden
+  .inner
+    overflow: hidden
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+.catalog-menu-top
+  .inner
+    transform: translateY(100%)
+.catalog-menu-bottom
+  .inner
+    transform: translateY(calc(-100%/3*1))
+.catalog-menu-top, .catalog-menu-bottom
+  width: 200px
+  a
+    font-size: 28px
+    font-weight: 400
+    margin-bottom: 10px
+    +xl-block
+      margin-bottom: 10px
+      font-size: 18px
+
+.catalog-menu-middle
+  display: block
+  transform: translateX(34px)
+  height: 120px
+  +xl-block
+    height: 60px
+  a
+    display: flex
+    align-items: flex-start
+    margin-bottom: 40px
+    white-space: nowrap
+    +xl-block
+      margin-bottom: 20px
+  [data-letters]
+    +h1
+    +hover-letters
+    line-height: 1
+    margin: 0
+    font-weight: 300
+    letter-spacing: -2.5px
+    color: inherit
+    +xl-block
+      letter-spacing: -1px
+
+    &::after
+      bottom: 14px
+  .supdate
+    position: relative
+    margin-left: 9px
+    font-family: $angelicia-display
+    font-size: 24px
+    line-height: normal
+    top: 8px
+    +xl-block
+      font-size: 16px
+      top: 0
+
+
+.imgs-grid
+  overflow: hidden
+  display: flex
+  +xs-block
+    height: 190px
+    &.tns-slider
+      overflow: initial
+  &__img
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: cover
+  &__item
+    display: flex !important
+    flex: none
+    text-decoration: none
+    .aos-me-wrap
+      flex: 1
+    &_sm
+      width: 16.666667%
+      .aos-me-wrap
+        height: 50%
+        +xs-block
+          height: auto
+      +xl-block
+      +xs-block
+        width: calc(var(--column) * 4)
+    &_md
+      width: 33.333333%
+      .aos-me-wrap
+        height: 50%
+        +xs-block
+          height: auto
+      +xl-block
+      +xs-block
+        width: calc(var(--column) * 5)
+    &_lg
+      width: 50%
+      +xs-block
+        width: calc(var(--column) * 6)
+    &_bottom
+      .aos-me-wrap
+        align-self: flex-end
+        +xs-block
+          align-self: initial
+    &_text
+      height: auto
+      display: flex
+      flex-direction: column
+  &__text
+    flex: none
+    height: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    line-height: 24px
+    font-style: italic
+    span
+      display: block
+      max-width: 355px
+    +xl-block
+      display: none
+

@@ -1,6 +1,6 @@
 import { sxsw } from './helpers'
 
-export default function () {
+const topVideoFunc = () => {
 
     const topVideo = document.querySelector('.top-video video');
     if(!topVideo) return;
@@ -33,3 +33,4 @@ export default function () {
     });
 
 }
+topVideoFunc()

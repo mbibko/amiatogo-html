@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500')
+@font-face
+  font-family: 'Anglecia Pro Display'
+  src: url('../fonts/AngleciaProDisplay.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+@font-face
+  font-family: 'Anglecia Pro Text'
+  src: url('../fonts/AngleciaProText.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+
++reset
+
+\:root
+  --columns: 25
+  --fields: 71px
+  --column: calc(100% / var(--columns))
+  --border-size-base: 3px
+  --button-default-height: 68px
+  --control-height: 36px
+  --link-all-fields: 30px
+  +xl-block
+    --columns: 13
+    --fields: 53px
+    --border-size-base: 2px
+    --button-default-height: 48px
+    --link-all-fields: 19px
+  +xs-block
+    --columns: 7
+    --fields: 27px
+
+*, *::before, *::after
+  box-sizing: border-box
+  
+html
+  position: relative
+  // overflow: auto
+  font-size: 14px
+  +xl-block
+    font-size: 12px
+  &.css-simple-grid::before
+    pointer-events: none
+    z-index: 1000
+    content: ''
+    position: absolute
+    left: var(--fields)
+    right: var(--fields)
+    top: 0
+    bottom: 0
+    background-size: calc(100% / var(--columns))
+    background-image: linear-gradient(to right, gray 0px, transparent 1px )
+
+body
+  font-size: 1rem
+  font-family: $base-font
+  background-color: #fafbfc
+  line-height: 1.714
+  &.page-404
+    &::before
+      content: ''
+      display: block
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      z-index: -1
+      position: absolute
+      background: #fafbfc url("../media/404-crop.jpg") center -157px no-repeat
+      pointer-events: none
+      +xl-block
+        height: 1013px
+        background-position: center top
+        background-size: contain
+      +xs-block
+        height: 570px
+        opacity: 0.7
+        background-size: cover
+a
+  color: $base-color
+  &.tdn
+    text-decoration: none
+
+p
+  margin-bottom: 25px
+
+label
+  color: #60656b
+
+ol
+  margin: 0
+  padding: 0
+
+b
+  font-weight: 500
+
+.muted
+  color: #60656b
+
+.wrapper
+  position: relative
+  z-index: 1
+
+.container
+  +wrapper
+
+.no-right-field
+  +from($break_xl + 1px)
+    padding-right: 0
+
+
+h1, .h1,
+  +h1
+h2, .h2
+  +h2
+h3, .h3
+  +h3
+
++make-offsets
+
++xs-block
+  .hidden-xs
+    display: none !important
+
+.row
+  display: flex
+  flex-wrap: wrap
+
++make-grid-columns
++xl-block
+  +make-grid-columns($columns: 13, $size: '-xl')
++xs-block
+  +make-grid-columns($columns: 7, $size: '-xs')
+
+.col-full
+  flex: 1
+  width: auto
+.col-full-none
+  flex: none
++xl-block
+  .col-xl-full
+    flex: 1
+    width: auto
+  .col-xl-full-none
+    flex: none
++xs-block
+  .col-xs-full
+    flex: 1
+    width: auto
+  .col-xs-full-none
+    flex: none
+
+.coll-negative-offset-left
+  margin-left: calc(var(--fields) * -1)
+.coll-negative-offset-right
+  margin-right: calc(var(--fields) * -1)
+.coll-negative-offset-right-no
+  margin-right: 0
++xl-block
+  .coll-negative-xl-offset-left
+    margin-left: calc(var(--fields) * -1)
+  .coll-negative-xl-offset-right
+    margin-right: calc(var(--fields) * -1)
+  .coll-negative-xl-offset-right-no
+    margin-right: 0
++xs-block
+  .coll-negative-xs-offset-left
+    margin-left: calc(var(--fields) * -1)
+  .coll-negative-xs-offset-right
+    margin-right: calc(var(--fields) * -1)
+  .coll-negative-xs-offset-right-no
+    margin-right: 0
+
+.upages
+  position: absolute
+  left: 0
+  top: 0
+  border: 1px solid #dbdbdb
+  z-index: 99
+  background: #fff
+  color: #000
+  div
+    text-align: right
+  a
+    display: block
+    color: #000
+    font-size: 14px
+    padding: 4px
+    &:nth-child(even)
+      background: #aaaaaa

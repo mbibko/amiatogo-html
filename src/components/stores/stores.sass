@@ -1,0 +1,278 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.stores-top
+  display: flex
+  align-items: center
+  +xs-block
+    display: block
+  &__select
+    flex: none
+    width: calc(100% / 25 * 11)
+    margin-right: calc(100% / 25 * 2)
+    +xl-block
+      width: calc(100% / var(--columns) * 5)
+      margin-right: calc(100% / var(--columns))
+    +xs-block
+      width: auto
+      margin-right: 0
+      margin-bottom: 40px
+  &__sett
+    display: flex
+    flex: 1
+    justify-content: space-between
+
+.store-list
+  margin-left: calc(var(--fields) * -1)
+  margin-right: calc(var(--fields) * -1)
+  &__item
+    display: flex
+    flex-wrap: wrap
+    +xs-block
+      flex-direction: column
+      margin-bottom: 80px
+    &:last-child .store-content::after
+      content: ''
+      display: block
+      position: absolute
+      left: var(--fields)
+      right: 0
+      bottom: 0
+      border-top: var(--border-size-base) solid rgba($base-color, 0.15)
+      +xs-block
+        display: none
+    &.is-active
+      background-color: #fff
+
+
+.find-place
+  font-size: 15px
+  width: 273px
+  justify-content: flex-start
+  svg
+    margin-right: 30px
+  +xl-block
+    font-size: 12px
+    width: auto
+    svg
+      margin-right: 10px
+  +xs-block
+    svg
+      margin-left: 5px
+
+.switch-buttons
+  display: flex
+  &__item
+    +button
+    +button-icon
+    +button-gray-border
+    &.active
+      +button-dark
+      cursor: default
+
+.store-content
+  position: relative
+  flex: none
+  width: calc(var(--fields) + (100% - var(--fields) * 2) / 25 * 11)
+  margin-right: calc((100% - var(--fields) * 2) / 25 * 2)
+  padding-left: var(--fields)
+  // padding-right: calc(100% / 13 * 2)
+  display: flex
+  align-items: center
+  font-size: 17px
+  line-height: 29px
+  +xl-block
+    width: calc(var(--fields) + (100% - var(--fields) * 2) / var(--columns) * 5)
+    padding-right: 0
+    font-size: 13px
+    line-height: 19px
+  +xs-block
+    width: auto
+    padding-top: 40px
+    padding-bottom: 40px
+    margin-right: 0
+    padding-right: var(--fields)
+    display: block
+    order: 1
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    left: var(--fields)
+    right: 0
+    top: 0
+    border-top: var(--border-size-base) solid rgba($base-color, 0.15)
+    +xs-block
+      top: auto
+      bottom: 0
+      right: var(--fields)
+  .is-active &
+    &::before, &::after
+      border-top: 0 !important
+  .is-active + .store-list__item &::before
+    border-top: 0
+  &__item
+    span
+      color: #60656b
+      +xl-block
+        display: block
+        font-size: 12px
+    &_workdays span
+      display: inline-block
+      margin-right: 6px
+      text-transform: uppercase
+      font-size: 13px
+      +xl-block
+        text-transform: none
+  &__title
+    margin-bottom: 45px
+    line-height: 1.333em
+    +xl-block
+      margin-bottom: 19px
+      font-size: 18px
+      line-height: 22px
+  &__subtitle
+    margin-top: 11px
+    margin-bottom: -4px
+    color: $gray-color
+    font-size: 13px
+    text-transform: uppercase
+    letter-spacing: 0.39px
+    +xl-block
+      font-size: 12px
+      text-transform: none
+      letter-spacing: 0
+      margin-top: 3px
+      margin-bottom: 0
+  &__link
+    display: inline-block
+    margin-top: 73px
+    text-transform: uppercase
+    letter-spacing: 0.3px
+    padding-left: 20px
+    background-position: left center
+    background-repeat: no-repeat
+    background-size: 10px 12px
+    background-image: url("~images/marker.svg")
+    position: relative
+    padding-right: 20px
+    font-size: 13px
+    color: $gray-color
+    cursor: pointer
+    +xl-block
+      margin-top: 40px
+      font-size: 10px
+    &::before
+      content: 'Как добраться'
+      display: inline-block
+      vertical-align: middle
+      .is-active &
+        color: $base-color
+        content: 'Скрыть карту'
+    &:after
+      border-color: $base-color transparent transparent transparent
+      border-style: solid
+      border-width: 4px 3px
+      content: ''
+      display: inline-block
+      vertical-align: middle
+      position: relative
+      top: 2px
+      margin-left: 10px
+      +xl-block
+        top: 2px
+    .is-active &::after
+      top: 0
+      border-color: transparent transparent $base-color
+
+.store-slider
+  position: relative
+  min-width: 0
+  flex: 1
+  height: 540px
+  overflow: hidden
+  +xl-block
+    height: 340px
+  +xs-block
+    width: calc(100vw - var(--fields))
+    margin-left: var(--fields)
+    height: 210px
+
+  .tns-slide-active + .tns-slide-active
+    &::before
+      opacity: 0.8
+  &__item
+    position: relative
+    width: calc(100% / 13 * 11)
+    height: 540px
+    +xl-block
+      width: 100%
+      height: 340px
+    +xs-block
+      width: calc(100vw - var(--fields))
+      height: 210px
+    &::before
+      content: ''
+      display: block
+      width: 100%
+      height: 100%
+      background-color: $base-color
+      position: absolute
+      transition: .7s
+      opacity: 0
+    img
+      height: 100%
+      width: 100%
+      object-fit: cover
+  .tns-nav
+    display: none
+    +xl-block
+      +tns-nav-block
+      display: flex
+      position: absolute
+      top: 0
+    +xs-block
+      bottom: 0
+      right: var(--button-default-height)
+      top: auto
+  .tns-controls
+    position: absolute
+    left: 0
+    top: 0
+    +xl-block
+      display: none
+  .slider-sett
+    position: absolute
+    left: 136px
+    top: 0
+    +xl-block
+      left: 94px
+    +xs-block
+      left: auto
+      right: 0
+      top: auto
+      bottom: 0
+  .slider-counter
+    +xl-block
+      display: none
+
+.store-map
+  width: 100%
+  height: 0
+  transition: 0.5s
+  overflow: hidden
+  +xs-block
+    order: 2
+  &__inner
+    height: 600px
+    +xl-block
+      height: 340px
+    +xs-block
+      height: 300px
+  .is-active &
+    height: 600px
+    +xl-block
+      height: 340px
+    +xs-block
+      height: 300px

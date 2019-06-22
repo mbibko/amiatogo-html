@@ -1,0 +1,80 @@
+.js-Dropdown
+  display: inline-block
+  position: relative
+  width: 300px
+  z-index: 999
+  font-size: 15px
+  +xl-block
+    font-size: 13px
+    width: 100%
+  label + &
+    margin-left: 16px
+    +xl-block
+      margin-left: 0
+      display: block
+      margin-top: 6px
+    +xs-block
+      margin-top: 1px
+
+.js-Dropdown-title
+  background: none
+  text-align: left
+  outline: none !important
+  border: 0
+  border-bottom: 1px solid $base-color
+  border-radius: 0
+  cursor: pointer
+  height: 28px
+  padding: 0
+  position: relative
+  z-index: 2
+  width: 100%
+  font-size: inherit
+
+  &:after
+    border-color: $base-color transparent transparent transparent
+    border-style: solid
+    border-width: 4px 3px
+    content: ''
+    display: block
+    height: 0
+    position: absolute
+    right: 0
+    top: 45%
+    width: 0
+  &:hover
+    color: $gray-color
+    border-bottom-color: $gray-color
+    &::after
+      border-top-color: $gray-color
+
+.js-Dropdown-list
+  overflow: hidden
+  max-height: 0
+  background: #ffffff
+  box-sizing: border-box
+  visibility: hidden
+  list-style: none
+  margin: 0
+  padding: 0
+  position: absolute
+  top: -14px
+  left: -20px
+  right: -20px
+  transition: 0.5s cubic-bezier(0.7,0,0.3,1)
+  z-index: 1
+  &::before
+    content: ''
+    display: block
+    height: 50px
+  &.is-open
+    max-height: var(--max-height)
+    visibility: visible
+  li
+    color: $gray-color
+    cursor: pointer
+    padding: .75em 20px
+    &:hover
+      color: $base-color
+    &.is-selected
+      color: $base-color

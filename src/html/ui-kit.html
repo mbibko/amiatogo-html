@@ -1,0 +1,217 @@
+{% extends 'clear.html' %}
+
+{% block content %}
+
+<style>
+    .cb {
+        border: 1px solid #dbdbdb;
+        margin-left: -10px;
+        margin-right: -10px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .components-grid {
+        margin-left: -20px;
+        margin-right: -20px;
+        display: flex;
+    }
+
+    .components-grid>.cb {
+        flex: 1;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+</style>
+
+    
+<div class="container">
+    <div class="cb">
+        
+        <div class="button">Button</div>
+        <a href="#" class="button">Link Button</a>
+        
+        <div class="button button-white">Button white</div>
+        <div class="button button-dark">Button dark</div>
+        <div class="button button-dark-border">Button border</div>
+        <div class="button button-gray-border">Button border</div>
+        <div class="button button-white button-dark-border">Button white border</div>
+        
+        <div class="button button-white button-dark-border button-with-icon"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg><span>Text with icon</span></div>
+        <div class="button button-white button-dark-border button-with-icon"><span>Text with icon</span><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <div class="button button-gray-border button-with-icon"><span>Text with icon</span><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        
+        <div class="button button-icon button-white"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <div class="button button-icon button-white button-dark-border"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <div class="button button-icon button-gray-border"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <div class="button button-icon button-dark"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        
+        <div>Slide hover button</div>
+        <div class="button button-icon button-white button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <div class="button button-icon button-white button-dark-border button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <div class="button button-icon button-gray-border button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <div class="button button-icon button-dark button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        <br>
+        <div class="button button-with-icon button-white button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg>Text with icon</div>
+        <div class="button button-with-icon button-white button-dark-border button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg>Text with icon</div>
+        <div class="button button-with-icon button-gray-border button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg>Text with icon</div>
+        <div class="button button-with-icon button-dark button-animate"><svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg>Text with icon</div>
+        <br>
+        <div class="link-all link-all_mobile_dark button-animate">Показать еще <svg width="12" height="12"> <use xlink:href="#icon-find"></use> </svg></div>
+        
+        <div class="social social_colored">
+          <a class="button-animate button-animate_inverted_bg social__link social__link_facebook" href="#"><svg fill="#39579f" width="9" height="16">
+              <use xlink:href="#icon-facebook"></use>
+            </svg></a>
+          <a class="button-animate button-animate_inverted_bg social__link social__link_twitter" href="#"><svg fill="#1da1f2" width="17" height="14">
+              <use xlink:href="#icon-twitter"></use>
+            </svg></a>
+          <a class="button-animate button-animate_inverted_bg social__link social__link_vkontakte" href="#"><svg fill="#5181b8" width="21" height="12">
+              <use xlink:href="#icon-vkontakte"></use>
+            </svg></a>
+          <a class="button-animate button-animate_inverted_bg social__link social__link_odnoklassniki" href="#"><svg fill="#ef7d01" width="16" height="16">
+              <use xlink:href="#icon-odnoklassniki"></use>
+            </svg></a>
+        </div>
+    
+    </div>
+    <div class="col-8 col-xl-6 col-xs-4">
+        <div class="form-message form-message_success">
+            <div class="form-message__icon"><svg width="12" height="12"> <use xlink:href="#icon-check"></use> </svg></div>
+            <div class="form-message__title">Ваша заявка успешно создана!</div>
+            <p>Благодарим Вас за проявленный интерес к франшизе «AmaiaTogo»! В течении одного рабочего дня Вам ответит наш специалист.</p>
+        </div>
+        <br>
+        <div class="form-message form-message_error">
+            <div class="form-message__icon">!</div>
+            <div class="form-message__title">Что-то пошло не так :(</div>
+            <p>Пожалуйста, попробуйте еще раз или повторите попытку позже.</p>
+            <div class="form-message__button button button-gray-border button-block">Отправить еще раз</div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    
+</script>
+<style>.cb {
+    border: 1px solid #dbdbdb;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.ui-kit-grid {
+    margin-left: -20px;
+    margin-right: -20px;
+    display: flex;
+}
+
+.ui-kit-grid>.cb {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    text-decoration: none;
+}
+
+.nav-link.disabled {
+    color: #6c757d;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.nav-tabs .nav-item {
+    background: none;
+    margin-bottom: -1px;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+    border-color: #e9ecef #e9ecef #dee2e6;
+}
+
+.nav-tabs .nav-link.disabled {
+    color: #6c757d;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.nav-tabs .dropdown-menu {
+    margin-top: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0.25rem;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.nav-fill .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.nav-justified .nav-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.tab-content {
+    padding-top: 20px;
+}
+
+.tab-content>.tab-pane {
+    height: 0;
+    overflow: hidden;
+}
+
+.tab-content>.active {
+    display: block;
+    height: auto;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.sliderCollection
+  position: relative
+  margin-left: calc(var(--column) * 2)
+  margin-bottom: 239px
+  margin-right: calc(var(--fields) * -1)
+  margin-top: -21px
+  +lg-block
+    margin-bottom: 120px
+  +xs-block
+    margin-left: 0
+    margin-bottom: 106px
+  &__item
+    height: 720px
+    +xl-block
+      height: 500px
+    +lg-block
+      height: 300px
+    img
+      display: block
+      height: 100%
+  .tns-controls
+    outline: none
+    position: absolute
+    right: $slider-sett-width + 30px
+    bottom: 57px
+    z-index: 5
+    +lg-block
+      display: none
+  .tns-nav
+    display: none
+    position: absolute
+    right: 20px
+    bottom: 32px
+    +lg-block
+      display: block
+      +tns-nav-block
+    +xs-block
+      right: 0
+      top: 300px
+      transform: translateY(-100%)
+  .slider-sett
+    position: absolute
+    right: 30px
+    bottom: 57px
+    +lg-block
+      display: none

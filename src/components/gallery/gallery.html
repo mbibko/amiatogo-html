@@ -1,0 +1,32 @@
+<div class="gallery">
+  <div class="title">Instagram</div>
+  <div class="gallery__inner">
+    <a href="#" class="button-animate link-all link-all-sticky gallery__link-all gallery__link-all_top">Подписаться <svg width="12" height="12"> <use xlink:href="#arr"></use> </svg></a>
+    <div class="gallery-sticky">
+      <a href="#" class="hash-tag">
+        <svg>
+          <use xlink:href="#logo"></use>
+        </svg>
+        <span data-letters="#amaia_tmn">#amaia_tmn</span>
+      </a>
+      <div class="gallery__text">Официальный instagram аккаунт AMiAtOGO. <br> Используете хештеги:</div>
+      <div class="gallery__hashes gallery__hashes-sticky">
+        <a href="#"><span data-letters="#amaia">#amaia</span></a>
+        <a href="#"><span data-letters="#concept">#concept</span></a>
+        <a href="#"><span data-letters="#classicstyle">#classicstyle</span></a>
+        <a href="#"><span data-letters="#officestyle">#officestyle</span></a>
+        <a href="#"><span data-letters="#streetstyle">#streetstyle</span></a>
+      </div>
+    </div>
+    <div class="gallery__items">
+      <div class="gallery__items-inner aos-me-container"> {% for i in range(8) %} <a href="#" class="gallery__item">
+          <div class="gallery__info">
+            <div class="gallery__info-item gallery__info-item_favorite">78</div>
+            <div class="gallery__info-item gallery__info-item_speech">2</div>
+          </div>
+          <img class="aos-me" src="../media/temp/gallery/{{loop.index}}.jpg" alt="">
+        </a> {% endfor %} </div>
+    </div>
+  </div>
+  <div class="button-animate link-all link-all_mobile_dark js-gallery-more gallery__link-all gallery__link-all_bottom">Показать еще<svg width="12" height="12"> <use xlink:href="#plus"></use> </svg></div>
+</div>

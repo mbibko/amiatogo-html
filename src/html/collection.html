@@ -1,0 +1,47 @@
+{% extends 'default.html' %}
+
+
+{% block content %}
+
+<div class="wrapper">
+  <div class="container">
+    <div class="js-data-div"></div>
+    
+  <div class="coll-title">
+    <div class="coll-title__label">Новинка</div>
+    <div class="coll-title__text">
+      <h1 class="coll-title__t">Spring Sportschic</h1>
+      <div class="coll-title__d">2019/20</div>
+    </div>
+  </div>
+  <div id="SP-342-75" class="item-plus item-plus_full col-offset-left-2 col-xs-offset-left-0 col-full coll-negative-offset-right m-b-6 m-b-xl-5 m-b-xs-5" data-modal='{"imgs" : ["media/temp/item-plus/1/1.jpg", "media/temp/item-plus/1/1.jpg", "media/temp/item-plus/1/1.jpg"], "art": "SP-342-75", "collection": "Хиты уходящего сезона", "includes": "Хлопок 72%, полиэстер 20%, эластан 8%", "about": "Эффектный спортивный костюм в стиле Sport Chic из трикотажного полотна. Отделочные полосы на переде джемпера выполнены в постельной цветовой гамме и соответствуют цвету лампас на брюках.", "sizes": "48, 50, 52, 54, 56, 58", "shares": {"facebook": "#", "twitter": "#", "vkontakte": "#", "odnoklassniki": "#"}}'>
+    <div class="item-plus__img js-cool-modal">
+      <img src="../media/temp/item-plus/1/1.jpg" alt="img">
+      <div class="item-plus__link"></div>
+    </div>
+    <div class="item-plus__title"><span>На фото</span> Арт. SP - 342-76</div>
+  </div>
+  <div class="row m-b-6 m-b-xl-5">
+    <h2 class="h2 col-14 col-xl-7 col-xs-7 m-b-xs-4">О коллекции</h2>
+    <div class="col-7 col-xl-6 col-xs-7 toggler b-text">
+      <p class="text-letter">Что, если делать дизайнерский бренд по ценам масс-маркета?
+      И коллекции будут обновляться каждые 20 дней. Получится одежда, которая вдохновляет, дарит счастье быть собой
+      в любое время и при любых возможностях!</p>
+      <div class="toggler__content">
+        <p>Чтобы такой бренд стал реальностью, была собрана команда талантливых российских и корейских дизайнеров. Микс азиатской скорости производства и нюха на тренды с понимаем того, что необходимо российскому покупателю. </p>
+        <p>На выходе мы получаем ультрамодную, но очень практичную одежду по доступным ценам. И мы рады поделиться ею с Вами в нашем каталоге.</p>
+      </div>
+      <div class="toggler__link"></div>
+    </div>
+  </div>
+    
+    {% include 'collectionItems/collectionItems.html' %}
+
+    <div class="h2 m-b-6 m-b-xl-5 m-b-xs-3">Другие коллекции <br> 2019/20</div>
+    {% include 'sliderColl/sliderColl.html' %}
+  </div>
+
+
+</div>
+
+{% endblock %}

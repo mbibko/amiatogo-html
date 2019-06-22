@@ -88,3 +88,25 @@ export function scrollToTop(scrollDuration) {
       else clearInterval(scrollInterval); 
   },15);
 }
+
+export function move(moreContainer, lessContainer, size) {
+  if(window.innerWidth < size) {
+    if (!moreContainer.children[0]) return;
+    lessContainer.appendChild(moreContainer.children[0])
+  } else {
+    if (!lessContainer.children[0]) return;
+    moreContainer.appendChild(lessContainer.children[0])
+  }
+  
+}
+
+export function invertColor(hexTripletColor) {
+  var color = hexTripletColor;
+  color = color.substring(1); // remove #
+  color = parseInt(color, 16); // convert to integer
+  color = 0xFFFFFF ^ color; // invert three bytes
+  color = color.toString(16); // convert to hex
+  color = ("000000" + color).slice(-6); // pad with leading zeros
+  color = "#" + color; // prepend #
+  return color;
+}

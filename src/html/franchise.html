@@ -1,0 +1,55 @@
+{% extends 'default.html' %}
+
+
+{% block content %}
+
+<div class="wrapper">
+  <div class="container">
+    
+    <h1 class="h1 m-b-5 m-b-xs-4">Франшиза</h1>
+
+    <div class="m-b-6 m-b-xl-4 col-offset-left-2 col-xs-offset-left-0 coll-negative-offset-right">
+      <img class="img-full one-img" src="../media/temp/franchise.jpg" alt="img">
+    </div>
+
+    {% include 'columnsText/columnsText2.html' %}
+
+    <h2 class="m-b-6 m-b-xl-5 m-b-xs-4">Магазины AmaiaTogo</h2>
+    {% include 'columnsText/columnsText3.html' %}
+    <h2 class="m-b-6 m-b-xl-5 m-b-xs-4">Преимущества работы <br> с AmaiaTogo</h2>
+    <div class="col-offset-left-5 col-xl-offset-left-2 col-xs-offset-left-0 col-offset-right-4 col-xl-offset-right-0 m-b-7 m-b-xl-6 m-b-xs-5">
+      <ol class="list-styled">
+        <li>Прибыльная бизнес модель, позволяющая зарабатывать от 200 000 до 1 000 000 рублей ежемесячно.</li>
+        <li>Инвестиции от 1 000 000 рублей (только в оборудование, ремонт и товарное наполнение магазина).</li>
+        <li>Срок окупаемости 4-8 месяцев.</li>
+        <li>Доступные условия входа – отсутствие роялти и паушальных взносов.</li>
+        <li>Полная поддержка и консультация по открытию магазина, и последующее сопровождение.</li>
+        <li>Автоматизация бизнес процессов.</li>
+        <li>Бесплатный дизайн-проект и готовый бизнес-план развития магазина.</li>
+        <li>Широкий ассортимент, 400 моделей - 200 000 изделий ежегодно.</li>
+        <li>Эффективная матрица товарного наполнения.</li>
+        <li>Еженедельное обновление ассортимента.</li>
+      </ol>
+    </div>
+
+    <h2 class="m-b-6 m-b-xl-5 m-b-xs-4">Дорожная карта</h2>
+    <ol class="list-steps col-offset-left-5 col-xl-offset-left-2 col-xs-offset-left-0 col-offset-right-5 col-xl-offset-right-0 m-b-7 m-b-xl-6 m-b-xs-5">
+      <li>Заявка на франчайзинг</li>
+      <li>Заполнение анкеты</li>
+      <li>Консультация или встреча с руководителем AmaiaTogo</li>
+      <li>Предоставление полных условий франчайзинга</li>
+      <li>Согласование условий сотрудничества</li>
+      <li>Запрос реквизитов, выставление счета</li>
+      <li>Получение оплаты</li>
+      <li>Работы по открытию магазина</li>
+      <li>Открытие магазина AmaiaTogo</li>
+    </ol>
+
+  </div>
+
+  {% include 'join/join.html' %}
+    
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+.topLine
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 0
+  z-index: 9
+  &.active &__inner
+    transform: translateY(0)
+  &__inner
+    background-color: #fff
+    transform: translateY(-100%)
+    transition: .8s cubic-bezier(0.7,0,0.3,1)
+  &__container
+    +wrapper
+    height: 60px
+    display: flex
+    align-items: center
+    justify-content: space-between

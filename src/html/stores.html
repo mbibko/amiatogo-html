@@ -1,0 +1,92 @@
+{% extends 'default.html' %}
+
+
+{% block content %}
+
+<div class="wrapper">
+  <div class="container">
+    
+    <h1 class="h1">Магазины AmaiaTogo</h1>
+    <div class="subtext">
+      <p><b>Приходите за покупками!</b> <br> <span class="muted">По вопросам работы сайта пишите нам на</span> <a href="mailto:info@amiatogo.info">info@amiatogo.info</a></p>
+    </div>
+
+
+    <div class="stores-top m-b-5 m-b-xl-4 m-b-xs-5">
+      <div class="stores-top__select">
+        <label for="">Выберите город:</label>
+        <select name="" id="" class="select">
+          <option value="">Петропавловск-Камчатский</option>
+          <option value="">Москва</option>
+          <option value="">Тюмень</option>
+          <option value="">Тула</option>
+        </select>
+      </div>
+      <div class="stores-top__sett">
+        <div class="find-place button button-gray-border button-animate">
+          <svg width="12" height="12">
+            <use xlink:href="#icon-find"></use>
+          </svg>
+          Найти ближайший
+        </div>
+        <div class="switch-buttons">
+          <div class="switch-buttons__item active button-animate">
+            <svg width="14" height="10">
+              <use xlink:href="#icon-list"></use>
+            </svg>
+          </div>
+          <div class="switch-buttons__item button-animate">
+            <svg width="18" height="12">
+              <use xlink:href="#icon-map"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stores-wrapper m-b-5">
+      <div class="store-list m-b-5 m-b-xl-4 m-b-xs-1">
+        {% from 'stores/storesItem.html' import storesItem  %}
+        {% set data = [
+          {
+            title: 'Торгово-развлекательный центр «Великий камень»',
+            address: 'г. Москва, ул. Набережная, 12',
+            phone: '+7 (945) 900-23-21, +7 (945) 900-23-11',
+            workdays: '<span>Пн-пт:</span> 10:00–22:00   <span>Сб:</span> 10:00–19:00   <span>Вс:</span> 10:00–15:00',
+            map: {
+              lat: '55.76',
+              lng: '37.64'
+            }
+          },
+          {
+            title: 'ТРЦ «Макси»',
+            address: 'г. Тула, ул. Пролетарская, 2, 1 этаж, напротив магазина «Л\'Этуаль».',
+            phone: '+7 (960) 594−66−23',
+            workdays: '<span>Пн-пт:</span> 10:00–22:00  <span>Сб-Вс:</span> 10:00–19:00',
+            map: {
+              lat: '55.76',
+              lng: '37.64'
+            }
+          },
+          {
+            title: 'ТРЦ «Тюмень Сити Молл»',
+            address: 'г. Тюмень, ул. Тимофея Чаркова, 60, 1 этаж.',
+            phone: '+7 (345) 260-80-08',
+            workdays: '<span>Пн-пт:</span> 10:00–22:00   <span>Сб:</span> 10:00–19:00   <span>Вс:</span> 10:00–15:00',
+            map: {
+              lat: '55.76',
+              lng: '37.64'
+            }
+          }
+          ] %}
+        {% for i in data %}
+          {{storesItem(i)}}
+        {% endfor %}
+      </div>
+      <div class="link-all link-all_mobile_dark js-store-items-more button-animate col-offset-left-11 col-xl-offset-left-5 col-xs-offset-left-0">Показать еще <svg width="12" height="12"> <use xlink:href="#plus"></use> </svg></div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

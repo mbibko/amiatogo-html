@@ -1,3 +1,52 @@
+=make-grid-columns($i: 0, $columns: 27, $size: '')
+  @for $i from 0 through $columns
+    .col#{$size}-#{$i}
+      width: calc(var(--column) * #{$i})
+      flex: none
+    .col#{$size}-offset-left-#{$i}
+      margin-left: calc(var(--column) * #{$i})
+    .col#{$size}-offset-right-#{$i}
+      margin-right: calc(var(--column) * #{$i})
+
+=make-offsets
+  $margins: (1: 30px, 2: 40px, 3: 60px, 4: 90px, 5: 150px, 6: 240px, 7: 360px)
+  $margins-xl: (1: 20px, 2: 30px, 3: 40px, 4: 70px, 5: 120px, 6: 200px, 7: 240px)
+  $margins-xs: (1: 20px, 2: 30px, 3: 40px, 4: 60px, 5: 80px, 6: 120px, 7: 200px)
+  @each $i, $size in $margins
+    .m-b-#{$i}
+      margin-bottom: $size
+    .m-t-#{$i}
+      margin-top: $size
+    .p-t-#{$i}
+      padding-top: $size
+    .p-b-#{$i}
+      padding-bottom: $size
+    
+  +xl-block
+    @each $i, $size in $margins-xl
+      .m-b-xl-#{$i}
+        margin-bottom: $size
+      .m-t-xl-#{$i}
+        margin-top: $size
+      .p-t-xl-#{$i}
+        padding-top: $size
+      .p-b-xl-#{$i}
+        padding-bottom: $size
+      
+
+  +xs-block
+    @each $i, $size in $margins-xs
+      .m-b-xs-#{$i}
+        margin-bottom: $size
+      .m-t-xs-#{$i}
+        margin-top: $size
+      .p-t-xs-#{$i}
+        padding-top: $size
+      .p-b-xs-#{$i}
+        padding-bottom: $size
+      
+
+
 =placeholder
   &::-webkit-input-placeholder
     @content
@@ -23,11 +72,239 @@
     overflow: hidden
     white-space: nowrap
   &::after
+    position: absolute
     content: ''
     display: block
+    height: 1px
     left: 0
-    bottom: 0px
-    border-bottom: 1px solid #000
+    top: 100%
+    background-color: #000
   &:hover
     &::before, &::after
       width: 100%
+
+=h1-h6
+  font-family: $angelicia-display
+  line-height: 1.1666666666666667em
+  margin-bottom: 30px
+  font-weight: 400
+  +xl-block
+    line-height: normal
+=h1
+  +h1-h6
+  font-family: $base-font
+  font-size: 100px
+  font-weight: 300
+  letter-spacing: -2.6px
+  +xl-block
+    letter-spacing: -1px
+    font-size: 42px
+  +xs-block
+    font-size: 31px
+=h2
+  +h1-h6
+  font-size: 48px
+  +xl-block
+    line-height: normal
+    font-size: 34px
+  +xl-block
+    font-size: 26px
+  +xs-block
+    font-size: 18px
+=h3
+  +h1-h6
+  font-size: 36px
+
+=letter-lg
+  &:first-child::first-letter
+    color: $base-color
+    font-size: 100px
+    font-family: $angelicia-display
+    margin: 0 0 -5px 0
+    padding: 0 .2em 0 0
+    height: .7em
+    line-height: .85em
+    float: left
+    +xl-block
+      line-height: 90px
+      margin-top: -14px
+      font-size: 63px
+      height: 80px   
+
+=letter
+  &:first-child::first-letter
+    color: $base-color
+    font-family: $angelicia-display
+    font-size: 81px
+    margin: 0 0 -5px 0
+    padding: 0 .2em 0 0
+    height: .7em
+    line-height: .85em
+    float: left
+    margin-right: 10px
+    margin-bottom: 10px
+    +xl-block
+      font-size: 63px
+      margin-right: 0
+    +xs-block
+      font-size: 63px
+      margin-right: 0
+
+=tns-nav-block
+  background-color: $base-color  
+  display: flex
+  align-items: center
+  justify-content: center
+  +xl-block
+    padding: 0 30px
+    height: 48px
+  button
+    background-color: #fff
+    margin-left: 8px
+    +xs-block
+      margin-left: 6px
+    &:first-child
+      margin-left: 0
+
+=tns-control-white
+  button
+    background: #fff
+    border: 1px solid #16181c
+    margin-right: -1px
+    background-image: url("~images/arr.svg?fill=%2316181c")
+    background-repeat: no-repeat
+    background-position: 28px center
+    &::after
+      background-color: #fff
+    &:first-child
+      background-image: url("~images/arr-left.svg?fill=%2316181c")
+
+=button-animate-bg($bg: inherit)
+  position: relative
+  &::after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 0
+    overflow: hidden
+    background-color: $bg
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    background-image: inherit
+    filter: invert(1)
+    background-repeat: no-repeat
+    background-position: inherit
+  &:hover::after
+    width: 100%
+
+=button
+  display: inline-block
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  color: $base-color
+  font-weight: 500
+  border-radius: 0
+  appearance: none
+  text-align: center
+  vertical-align: middle
+  // padding: 15px 25px
+  padding: 14px 34px
+  height: var(--button-default-height)
+  cursor: pointer
+  user-select: none
+  font-size: 1.25rem
+  line-height: 1.5
+  background: none
+  border: 1px solid transparent
+  outline: none !important
+  text-decoration: none !important
+  white-space: nowrap
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+  +xl-block
+    padding-left: 19px
+    padding-right: 19px
+    font-size: 1.167rem
+  +xs-block
+    padding-left: 10px
+    padding-right: 10px
+    font-size: 13px
+  // &>span
+  //   display: inline-block
+  //   vertical-align: middle
+  svg
+    flex: none
+  // &:hover
+    // color: rgba($base-color, 0.6)
+=button-icon
+  padding-left: 0
+  padding-right: 0
+  width: var(--button-default-height)
+=button-with-icon
+  svg
+    display: inline-block
+    vertical-align: middle
+    margin-left: 14px
+    &:first-child
+      margin-left: 0
+      margin-right: 14px
+=button-white
+  background-color: #fff
+  border-color: #fff
+  &:not(.button-animate):hover
+    background-color: $base-color
+    border-color: $base-color
+    color: #fff
+    svg
+      fill: #fff
+  &.button-animate
+    .hover-wrapper
+      background-color: $base-color
+      color: #fff
+      svg
+        fill: #fff
+=button-dark
+  background-color: $base-color
+  border-color: $base-color
+  color: #fff
+  svg
+    fill: #fff
+  &:not(.button-animate):hover
+    background-color: rgba($base-color, 0.8)
+    // background-color: #fff
+    // border-color: #fff
+    // color: $base-color
+    svg
+      fill: $base-color
+  &.button-animate
+    .hover-wrapper
+      background-color: #fff
+      color: $base-color
+      svg
+        fill: $base-color
+=button-gray-border
+  border-color: #d8d9db
+  &:hover
+    border-color: rgba(#d8d9db, 0.8)
+  &.button-animate
+    .hover-wrapper
+      background-color: $base-color
+      color: #fff
+      svg
+        fill: #fff
+=button-dark-border
+  border-color: $base-color
+  &:hover
+    border-color: rgba($base-color, 0.8)
+=button-link
+  &.button-animate
+    .hover-wrapper
+      background-color: $base-color
+      color: #fff
+      svg
+        fill: #fff
+=button-block
+  display: flex
+  width: 100%

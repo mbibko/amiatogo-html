@@ -1,0 +1,29 @@
+@import utilities/smart-grid
+@import utilities/mixins
+@import utilities/variables
+
+
+.sliderColl
+  $_: &
+  &__img
+    margin-bottom: 30px
+    display: block
+    overflow: hidden
+    +xl-block
+      margin-bottom: 20px
+    img
+      width: 100%
+      display: block
+      transition: $transition-imgs-zoom
+    #{$_}__item:hover & img
+      transform: $zoom
+  &__title
+    font-size: 28px
+    margin-bottom: 14px
+    #{$_}__item:hover &
+      transition: $transition
+      color: $gray-color
+    +xl-block
+      font-size: 23px
+  &__num
+    color: #60656b

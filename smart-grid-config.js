@@ -25,7 +25,8 @@ var settings = {
             fields: '15px' /* set fields only if you want to change container.fields */
         },
         xs: {
-            width: '560px'
+            width: '560px',
+            fields: '27px'
         }
         /* 
         We can create any quantity of break points.
@@ -39,4 +40,4 @@ var settings = {
     }
 };
  
-smartgrid('./src/sass', settings);
+smartgrid('./src/sass/utilities', settings);
