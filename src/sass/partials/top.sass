@@ -10,6 +10,10 @@
     +xs-block
       width: 54px
       height: 52px
+  body:not(.index) &
+    margin-bottom: 20px
+    +xs-block
+      margin-bottom: 18px
 
 .top
   overflow: hidden
@@ -124,14 +128,13 @@
   .page-ready &
     transform: translateY(0)
   body:not(.index) &
+    align-items: normal
     position: relative
     margin-bottom: 29px
-    padding-bottom: 40px
+    padding-top: 40px
+    transform: none
     +xl-block
-      padding-bottom: 26px
       margin-bottom: 17px
-    +xs-block
-      padding-bottom: 18px
     &::before
       content: ''
       display: block
@@ -150,9 +153,9 @@
   margin-bottom: 165px
   +xl-block
     display: block
-    margin-bottom: 200px
+    margin-bottom: 100px
   +xs-block
-    margin-bottom: 93px
+    margin-bottom: 63px
   .page-ready &
     transform: translateY(0)
   &__1
@@ -179,28 +182,18 @@
     letter-spacing: -2.4px
     overflow: hidden
     @at-root a#{&}
-      &::after
-        content: ''
-        display: block
-        position: relative
-        top: -20px
-        width: 100%
-        height: 1px
-        background-color: rgba(255,255,255,.6)
-        transform: translateX(-100%)
-        transition: .8s cubic-bezier(0.7,0,0.3,1)
-      &:hover::after
-        transform: translateX(0)
+      +link-hover-border
     +xl-block
       font-size: 60px
       letter-spacing: -1.97px
       margin-left: 0
     +xs-block
       font-size: 36px
+      line-height: 1.2
       font-weight: 300
       letter-spacing: -2.51px
       width: calc(100% - 75px)
-      margin: 0 
+      margin: 0
   .supdate
     margin-left: 24px
     position: relative

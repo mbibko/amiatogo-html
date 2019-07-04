@@ -3,11 +3,8 @@
   z-index: 1
 .footer
   margin-top: calc(var(--button-default-height) * -1)
-  +shift-left(3)
-  +xl-block
-    margin-left: calc(var(--column) * 2)
-    margin-right: calc(var(--fields) * -1) 
-  +md-block
+  margin-left: calc(var(--columnJs) * 2)
+  margin-right: calc(var(--fields) * -1) 
   +xs-block
     margin: 0 calc(var(--fields) * -1)
   &__inner
@@ -54,6 +51,8 @@
     +xs-block
       order: initial
   &__question
+    a
+      +link-hover-border
     +xs-block
       margin-bottom: 56px
   &__social
@@ -74,6 +73,8 @@
   &__develop
     display: flex
     margin-left: -20px
+    a
+      +link-hover-border
     div
       margin-left: 20px
     +xl-block
@@ -94,7 +95,12 @@
   +xs-block
     margin-bottom: 40px
     margin-left: 0
+  &__item
+    display: inline-block
+    +xs-block
+      display: block
   a
+    +link-hover-border
     display: inline-block
     margin-left: 25px
     color: #16181c
@@ -105,7 +111,4 @@
       font-weight: 500
     +xs-block
       margin-left: 0
-      display: block
       margin-bottom: 15px
-    &:hover
-      text-decoration: underline

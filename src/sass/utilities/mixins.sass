@@ -45,8 +45,6 @@
       .p-b-xs-#{$i}
         padding-bottom: $size
       
-
-
 =placeholder
   &::-webkit-input-placeholder
     @content
@@ -58,30 +56,51 @@
   &:-ms-input-placeholder
     @content
 
-=hover-letters
+=link-hover-bg
   position: relative
-  &::before, &::after
+  &::before
     width: 0%
     position: absolute
     transition: width 0.5s
     transition-timing-function: cubic-bezier(0.7,0,0.3,1)
-  &::before
     content: attr(data-letters)
     color: #636167
     left: 0
     overflow: hidden
     white-space: nowrap
+  &:hover
+    &::before
+      width: 100%
+
+=link-border
   &::after
+    width: 100%
     position: absolute
     content: ''
     display: block
-    height: 1px
     left: 0
-    top: 100%
-    background-color: #000
+    top: calc(0.5em + 50%)
+    border-bottom: 1px solid currentColor
+    opacity: 0.6
+
+=link-hover-border
+  text-decoration: none
+  position: relative
+  &::after
+    width: 0%
+    position: absolute
+    transition: width 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    content: ''
+    display: block
+    left: 0
+    top: calc(0.5em + 50%)
+    border-bottom: 1px solid currentColor
+    opacity: 0.6
   &:hover
-    &::before, &::after
+    &::after
       width: 100%
+
 
 =h1-h6
   font-family: $angelicia-display
@@ -155,9 +174,30 @@
   display: flex
   align-items: center
   justify-content: center
+  transition: $transition
   +xl-block
     padding: 0 30px
     height: 48px
+  &::before, &::after
+    z-index: 1
+    pointer-events: none
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 50%
+    background-image: linear-gradient(to right, $base-color 0%, $base-color 25%, rgba(22, 24, 28, 0) 100%)
+  &::after
+    left: auto
+    right: 0
+    background-image: linear-gradient(to right, rgba(22, 24, 28, 0) 0%, $base-color 75%, $base-color 100%)
+  & > div
+    position: relative
+    transition: $transition
+    transform: translateX(calc(50% - 3px))
+    // transform: translateX(calc(50%))
   button
     background-color: #fff
     margin-left: 8px
@@ -179,7 +219,7 @@
     &:first-child
       background-image: url("~images/arr-left.svg?fill=%2316181c")
 
-=button-animate-bg($bg: inherit)
+=block-animate-bg($bg: inherit)
   position: relative
   &::after
     content: ''
@@ -197,6 +237,53 @@
     background-repeat: no-repeat
     background-position: inherit
   &:hover::after
+    width: 100%
+
+=button-invert($bg: currentColor)
+  position: relative
+  &::after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 0
+    overflow: hidden
+    background-color: $bg
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    mix-blend-mode: exclusion
+  &:hover::after
+    width: 100%
+
+=button-invert-black-or-white($bg)
+  position: relative
+  & > *
+    position: relative
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 0
+    background-color: $bg
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+  &::after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 0
+    overflow: hidden
+    background-color: invert($bg)
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    mix-blend-mode: exclusion
+  &:hover::after, &:hover::before
     width: 100%
 
 =button
@@ -236,8 +323,10 @@
   //   vertical-align: middle
   svg
     flex: none
-  // &:hover
-    // color: rgba($base-color, 0.6)
+  &.block-animate .hover-wrapper
+    left: -1px
+    top: -1px
+    bottom: -1px
 =button-icon
   padding-left: 0
   padding-right: 0
@@ -253,13 +342,13 @@
 =button-white
   background-color: #fff
   border-color: #fff
-  &:not(.button-animate):hover
+  &:not(.block-animate):hover
     background-color: $base-color
     border-color: $base-color
     color: #fff
     svg
       fill: #fff
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: $base-color
       color: #fff
@@ -271,14 +360,14 @@
   color: #fff
   svg
     fill: #fff
-  &:not(.button-animate):hover
+  &:not(.block-animate):hover
     background-color: rgba($base-color, 0.8)
     // background-color: #fff
     // border-color: #fff
     // color: $base-color
     svg
       fill: $base-color
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: #fff
       color: $base-color
@@ -288,7 +377,7 @@
   border-color: #d8d9db
   &:hover
     border-color: rgba(#d8d9db, 0.8)
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: $base-color
       color: #fff
@@ -299,7 +388,7 @@
   &:hover
     border-color: rgba($base-color, 0.8)
 =button-link
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: $base-color
       color: #fff
@@ -308,3 +397,17 @@
 =button-block
   display: flex
   width: 100%
+
+=first-slide-visibility
+  &.is-active-slide
+    opacity: 0
+    // +xl-block
+      // opacity: 1
+    .is-slide-changed &
+      opacity: 1
+=zoom
+  overflow: hidden
+  img
+    transition: $transition-imgs-zoom
+  &:hover img
+    transform: $zoom

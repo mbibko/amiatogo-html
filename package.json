@@ -46,6 +46,7 @@
     "aos": "^3.0.0-beta.6",
     "formbouncerjs": "^1.4.5",
     "lax.js": "^1.2.3",
+    "smoothscroll-for-websites": "^1.4.9",
     "tingle.js": "^0.15.1",
     "tiny-slider": "^2.9.2",
     "vanilla-js-dropdown": "^2.2.0",

@@ -5,14 +5,14 @@
 .catalog
   $_: &
   position: relative
-  margin-bottom: 360px
+  margin-bottom: 100px
+  padding-bottom: 50px
   +xl-block
-    margin-bottom: 192px
+    margin-bottom: 40px
   +xs-block
     display: flex
     flex-direction: column
-    margin-bottom: 114px
-
+    margin-bottom: 40px
   .title
     +xs-block
       margin-bottom: 70px
@@ -31,13 +31,13 @@
   &__imgs
     position: relative
     z-index: 0
-    margin-top: -410px
+    margin-top: -100px
     #{$_}_collection &
       margin-top: -100px
     +shift-left(2)
     margin-right: calc(var(--fields) * -1)
     +xl-block
-      margin-top: 0
+      margin-top: -50px
       margin-left: calc(100% / 13 * 2)
     +xs-block
       margin: 0 0 10px
@@ -66,7 +66,7 @@
             top: 6px
             background-color: $base-color
         +xs-block
-          width: calc(var(--column) * 6)
+          width: calc(var(--column) * 5)
           padding-left: 0
           font-style: italic
           color: #60656b
@@ -86,14 +86,10 @@
 
 .catalog-slider
   +xs-block
-    // width: var(--column) * 12)
-    &_1, &_3
-      // margin-left: calc(var(--fields) * -1)
-      // width: calc(100vw - var(--fields))
-      margin-right: calc(var(--fields) * -1)
-    &_2
-      margin-left: calc(var(--fields) * -1)
-      // transform: translateX(calc(var(--column) * -3.2))
+    position: relative
+    padding-left: var(--fields)
+    margin-right: calc(var(--fields) * -1)
+    margin-left: calc(var(--fields) * -1)
     .tns-outer
       display: flex
       flex-direction: column
@@ -132,14 +128,15 @@
   z-index: 1
   top: 100px
   left: 0
-  margin-top: 194px
+  margin-top: 100px
+  margin-bottom: 50px
   .catalog_collection &
     margin-top: -200px
     +xl-block
       margin-top: -100px
   .catalog_home &
     +xl-block
-      margin-top: 100px
+      margin-top: 50px
   +xs-block
     display: none
   &__inner
@@ -152,6 +149,9 @@
 .catalog-menu-wrapper
   overflow: hidden
   .inner
+    display: flex
+    flex-direction: column
+    align-items: flex-start
     overflow: hidden
     transition: 0.5s
     transition-timing-function: cubic-bezier(0.7,0,0.3,1)
@@ -159,11 +159,11 @@
   .inner
     transform: translateY(100%)
 .catalog-menu-bottom
-  .inner
-    transform: translateY(calc(-100%/3*1))
 .catalog-menu-top, .catalog-menu-bottom
   width: 200px
   a
+    +link-hover-border
+    display: inline-block
     font-size: 28px
     font-weight: 400
     margin-bottom: 10px
@@ -186,17 +186,15 @@
       margin-bottom: 20px
   [data-letters]
     +h1
-    +hover-letters
-    line-height: 1
+    +link-border
+    +link-hover-bg
+    // line-height: 1
     margin: 0
     font-weight: 300
     letter-spacing: -2.5px
     color: inherit
     +xl-block
       letter-spacing: -1px
-
-    &::after
-      bottom: 14px
   .supdate
     position: relative
     margin-left: 9px
@@ -225,7 +223,10 @@
     display: flex !important
     flex: none
     text-decoration: none
+    cursor: default
     .aos-me-wrap
+      +zoom
+      cursor: pointer
       flex: 1
     &_sm
       width: 16.666667%

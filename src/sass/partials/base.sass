@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500')
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500&display=swap&subset=cyrillic')
 @font-face
   font-family: 'Anglecia Pro Display'
   src: url('../fonts/AngleciaProDisplay.woff') format('woff')
@@ -48,6 +48,7 @@ html
     right: var(--fields)
     top: 0
     bottom: 0
+    border-right: 1px solid rgba(gray, 0.1)
     background-size: calc(100% / var(--columns))
     background-image: linear-gradient(to right, gray 0px, transparent 1px )
 
@@ -56,6 +57,10 @@ body
   font-family: $base-font
   background-color: #fafbfc
   line-height: 1.714
+  &.index
+    overflow: hidden
+    &.page-ready
+      overflow: initial
   &.page-404
     &::before
       content: ''
@@ -66,14 +71,15 @@ body
       height: 100%
       z-index: -1
       position: absolute
-      background: #fafbfc url("../media/404-crop.jpg") center -157px no-repeat
+      background: url("../media/404-crop.jpg") center -157px no-repeat
       pointer-events: none
+      background-attachment: fixed
       +xl-block
-        height: 1013px
+        // height: 1013px
         background-position: center top
         background-size: contain
       +xs-block
-        height: 570px
+        // height: 570px
         opacity: 0.7
         background-size: cover
 a
@@ -103,11 +109,6 @@ b
 
 .container
   +wrapper
-
-.no-right-field
-  +from($break_xl + 1px)
-    padding-right: 0
-
 
 h1, .h1,
   +h1

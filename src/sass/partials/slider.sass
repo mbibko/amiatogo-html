@@ -8,7 +8,7 @@
   outline: none
   z-index: 5
   button
-    +button-animate-bg(#000)
+    +block-animate-bg(#000)
     position: relative
     width: var(--button-default-height)
     height: var(--button-default-height)
@@ -24,6 +24,10 @@
     background-image: url("../media/arr.svg?fill=%23fff")
     &:first-child
       background-image: url("../media/arr-left.svg?fill=%23fff")
+    &[disabled]
+      cursor: default
+    +xl-block
+      background-position: 17px center
 
 .tns-nav
   z-index: 1
@@ -53,16 +57,18 @@
   background-color: #fff
   +xl-block
     width: auto
+
 .slider-counter
   flex: 1
   display: flex
   justify-content: center
+  min-width: var(--button-default-height)
   color: $base-color
   font-size: 13px
   font-weight: 500
 
 .linkfull
-  +button-animate-bg(#fff)
+  +block-animate-bg(#fff)
   flex: none
   cursor: pointer
   width: var(--button-default-height)

@@ -36,6 +36,7 @@
     .tns-slider .tns-slide-active + .tns-slide-active + .tns-slide-active &__content
       opacity: 0.5
   &__title
+    +link-hover-bg
     display: block
     color: #16181c
     font-size: 17px
@@ -46,8 +47,10 @@
     margin-bottom: 7px
     text-decoration: none
     transition: $transition
-    #{$_}:hover &
-      color: $gray-color
+    .hover-wrapper
+      color: #636167
+    #{$_}:hover & .hover-wrapper
+      width: 100%
     +xs-block
       font-size: 14px
       line-height: normal
@@ -67,11 +70,10 @@
     &-t
       +xs-block
         float: left
+        height: 40px
     &-tel
-      text-decoration: none
+      +link-hover-border
       color: #16181c
-      &:hover
-        text-decoration: underline
       +xs-block
         display: block
 
@@ -90,6 +92,11 @@
     text-transform: uppercase
     margin-bottom: 13px
     margin-left: -6px
+    &Item
+      display: inline-block
+      white-space: nowrap
+      +xs-block
+        display: block
     +xs-block
       margin-bottom: 8px
     span
@@ -110,5 +117,5 @@
     background-repeat: no-repeat
     background-size: 10px 12px
     background-image: url("marker.svg")
-    &:hover
-      text-decoration: underline
+    span
+      +link-hover-border

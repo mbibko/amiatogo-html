@@ -18,14 +18,16 @@ const sectionSlidersFunc = () => {
     });
   }
 
+  const slider1SlidesContainer = document.querySelector('.slider1 > div')
+  const slider2SlidesContainer = document.querySelector('.slider2 > div')
+  const slider3SlidesContainer = document.querySelector('.slider3 > div')
+  const slider4SlidesContainer = document.querySelector('.slider4 > div')
+
   sliders.slider1 = tns({
-    container: document.querySelector('.slider1 > div'),
+    container: slider1SlidesContainer,
     mouseDrag: true,
     items: 1,
     speed: 1000,
-    mode: 'gallery',
-    animateIn: 'tns-rollIn',
-    animateOut: 'tns-rollOut',
     swipeAngle: 30,
     autoplay: false,
     autoplayButtonOutput: false,
@@ -33,11 +35,8 @@ const sectionSlidersFunc = () => {
     preventActionWhenRunning: true,
     controls: false
   });
-  // [].forEach.call(document.querySelectorAll('.slider2__item'), item => {
-  //   item.style.width = item.offsetWidth + 'px'
-  // })
   sliders.slider2 = tns({
-    container: document.querySelector('.slider2 > div'),
+    container: slider2SlidesContainer,
     mouseDrag: true,
     items: 2,
     speed: 1000,
@@ -47,12 +46,12 @@ const sectionSlidersFunc = () => {
     nav: false,
     preventActionWhenRunning: true,
     controls: false,
-    autoWidth: true,
+    fixedWidth: slider2SlidesContainer.children[0].offsetWidth,
     // onInit: info => setElActiveClass(info.slideItems)
   });
 
   sliders.slider3 = tns({
-    container: document.querySelector('.slider3 > div'),
+    container: slider3SlidesContainer,
     mouseDrag: true,
     items: 1,
     speed: 1000,
@@ -65,19 +64,16 @@ const sectionSlidersFunc = () => {
   });
 
   sliders.slider4 = tns({
-    container: document.querySelector('.slider4 > div'),
+    container: slider4SlidesContainer,
     mouseDrag: true,
     items: 1,
     speed: 1000,
-    // mode: 'gallery',
-    // animateIn: 'tns-rollIn',
-    // animateOut: 'tns-rollOut',
     swipeAngle: 30,
     autoplay: false,
     autoplayButtonOutput: false,
     nav: false,
     preventActionWhenRunning: true,
-    autoWidth: window.innerWidth <= 1100,
+    fixedWidth: slider4SlidesContainer.children[0].offsetWidth,
     nav: true,
     navPosition: 'bottom'
   });
@@ -114,4 +110,6 @@ const sectionSlidersFunc = () => {
     sliders['slider'+i].events.on('transitionStart', customizedFunction);
   }
 }
-sectionSlidersFunc()
+setTimeout(() => {
+  sectionSlidersFunc()
+}, 10)

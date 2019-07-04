@@ -4,13 +4,15 @@
 .coll-modal-side
   flex: none
   width: calc(var(--fields) * 2 + var(--column) * 5)
-  color: #fff
   z-index: 1
-  // width: calc(var(--fields) * 2 + var(--column) * 3)
+  a
+    color: inherit
+
   +xl-block
     position: absolute
     left: 0
     top: 0
+    bottom: 0
   +xs-block
     width: 100%
   .is-side-active &
@@ -19,6 +21,7 @@
   &__link
     width: 255px
     position: absolute
+    z-index: 1
     top: 30px
     left: var(--fields)
     display: none
@@ -67,25 +70,58 @@
             border-width: 8px 6px
             margin: 0
   &__inner
-    background-color: $base-color
-    overflow: auto
+    overflow: hidden
     height: 100%
     display: flex
     flex-direction: column
     padding-bottom: 90px
     padding-top: 84px
+    .theme_dark &
+      background-color: $base-color
+      color: #fff
+    .theme_white &
+      background-color: #fff
+      color: $base-color
+    +xl-block
+      padding-top: 140px
+      transform: translateY(-100%)
+      transition: $transition
+      .is-side-active &
+        transform: translateY(0)
+    +xs-block
+      padding-top: 80px
+      padding-bottom: 40px
+  &__inner-inner
+    overflow-y: auto
+    overflow-x: hidden
+    height: 100%
     padding-left: var(--fields)
     padding-right: var(--fields)
     +xl-block
-      padding-top: 140px
-      display: none
+      transform: translateY(150%)
+      transition: $transition
       .is-side-active &
-        display: flex
-    +xs-block
-      padding-top: 80px
+        transform: translateY(0)
   &__top
   &__item
     margin-bottom: 40px
+    display: block
+    text-decoration: none
+    &_full
+      +button-invert(#fff)
+      filter: none
+      margin-left: calc(var(--fields) * -1)
+      margin-right: calc(var(--fields) * -1)
+      margin-bottom: 20px
+      padding-bottom: 20px
+      margin-top: -20px
+      padding-top: 20px
+      padding-left: var(--fields)
+      padding-right: var(--fields)
+      transition: $transition
+      .theme_white &
+      .theme_dark &
+        +button-invert-black-or-white(black)
   &__title
     font-size: 14px
     font-weight: 500
@@ -93,12 +129,22 @@
   &__subtitle
     // font-size: 35px
     // margin-top: -20px
+    line-height: 1.2
     font-size: 24px
     font-family: $angelicia-display
     &_underline
-      border-bottom: 1px solid rgba(#fff, 0.15)
+      &::after
+        content: ''
+        display: block
+        margin-top: 6px
+        opacity: 0.3
+        border-bottom: 1px solid currentColor
   &__text
-    color: #919599
+    .theme_dark &
+      color: darken(#fff, 40%)
+    .theme_white &
+      color: lighten($base-color, 40%)
+    
     font-size: 12px
   &__footer
     margin-top: auto

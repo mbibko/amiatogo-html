@@ -5,9 +5,10 @@ import 'tingle.js/src/tingle.css'
 import "tiny-slider/dist/tiny-slider.css"
 import './sass/main.sass'
 
-// import helpers
+// import grid
 //=====================================
-import { scrollToTop, setContainerHeight, move } from './js/helpers'
+import './js/grid'
+
 
 // import components
 //=====================================

@@ -7,11 +7,11 @@
     margin-bottom: 20px
     display: none
   a
+    +link-hover-border
+    transition: $transition
     text-decoration: none
     display: inline-block
     color: #818285
     margin-right: 10px
     &:hover, &.active
       color: $base-color
-    &:hover
-      text-decoration: underline

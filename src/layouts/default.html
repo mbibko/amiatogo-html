@@ -55,7 +55,7 @@
       <a href="index.html" class="logo"><svg>
           <use xlink:href="#logo"></use>
         </svg></a>
-      <div class="main-nav main-nav_line main-nav_line_page">
+      <div class="main-nav main-nav_line_page">
         <li class="active"><a href="#">Коллекции</a></li>
         <li><a href="#">Франшиза</a></li>
         <li><a href="#">Где купить</a></li>
@@ -71,9 +71,9 @@
   {% include 'topLine/topLine.html' %}
   {% block content %} {% endblock %}
   <div class="to-top"></div>
-  <div class="container no-right-field footer-wrapper">
+  <div class="container footer-wrapper">
     <footer class="footer">
-      <div class="footer__inner" data-aos="fade-up">
+      <div class="footer__inner" data-aos="fade-in">
         <div class="footer__top">
           <div class="subscribe-us">
             <div class="subscribe-us__text">Получите эксклюзивную информацию о наших новых поступлениях и коллекциях:</div>
@@ -83,32 +83,32 @@
             </form>
           </div>
           <div class="footer-nav">
-            <a href="#">Коллекции</a>
-            <a href="#">Франшиза</a>
-            <a href="#">Где купить</a>
-            <a href="#">Политика конфиденциальности</a>
+            <div class="footer-nav__item"><a href="#">Коллекции</a></div>
+            <div class="footer-nav__item"><a href="#">Франшиза</a></div>
+            <div class="footer-nav__item"><a href="#">Где купить</a></div>
+            <div class="footer-nav__item"><a href="#">Политика конфиденциальности</a></div>
           </div>
         </div>
         <div class="footer__bottom">
           <div class="footer__copy"> © 2019 Amiatogo <br><br> ООО «Амиатого», ИНН 12313344, <br> 115114 г. Москва, пропект Мира, 12, офис 4, </div>
           <div class="footer__social">
             <div class="social social_default">
-              <a href="#"><svg width="9" height="16">
+              <a class="social__link" href="#"><svg width="9" height="16">
                   <use xlink:href="#icon-facebook"></use>
                 </svg></a>
-              <a href="#"><svg width="17" height="14">
+              <a class="social__link" href="#"><svg width="17" height="14">
                   <use xlink:href="#icon-twitter"></use>
                 </svg></a>
-              <a href="#"><svg width="18" height="18">
+              <a class="social__link" href="#"><svg width="18" height="18">
                   <use xlink:href="#icon-pinterest"></use>
                 </svg></a>
-              <a href="#"><svg width="21" height="12">
+              <a class="social__link" href="#"><svg width="21" height="12">
                   <use xlink:href="#icon-vkontakte"></use>
                 </svg></a>
-              <a href="#"><svg width="16" height="16">
+              <a class="social__link" href="#"><svg width="16" height="16">
                   <use xlink:href="#icon-pinterest"></use>
                 </svg></a>
-              <a href="#"><svg width="20" height="14">
+              <a class="social__link" href="#"><svg width="20" height="14">
                   <use xlink:href="#icon-email"></use>
                 </svg></a>
             </div>

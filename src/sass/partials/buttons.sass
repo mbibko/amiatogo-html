@@ -48,15 +48,18 @@
   +xl-block
     font-size: 14px
   +xs-block
-    width: 100%
+    width: calc(var(--columnJs) * 5)
     box-sizing: border-box
     font-size: 1rem
     height: 48px
     left: 0
+    padding-right: 0
   &_mobile_dark
     +xs-block
+      width: 100%
       color: #fff
       padding-left: 30px
+      padding-right: 30px
       background-color: $base-color
       svg
         fill: #fff
@@ -66,40 +69,42 @@
     +xs-block
       top: 0
       position: relative
-      width: 100%
 
 .hot-link
-  position: absolute !important
+  position: absolute
+  display: block
   left: 0
   bottom: 0
-  display: flex
-  align-items: center
-  width: 497px
-  height: 125px
-  background-color: #fff
-  font-size: 24px
-  line-height: 28px
-  padding: 0 var(--fields)
   text-decoration: none
   font-family: $angelicia-display
-  justify-content: flex-start
-  text-align: left
-  border-color: transparent
-  +lg-block
-    width: 255px
-    height: 80px
-    padding-left: 20px
-    padding-right: 20px
-    font-size: 18px
   +xs-block
-    position: relative !important
+    position: relative
     margin-top: 28px
-    width: auto
-    height: auto
-    background-color: transparent
-    padding-left: 0
-    br
-      display: none
+  .button
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    text-align: left
+    padding: 0 var(--fields)
+    background-color: #fff
+    width: 497px
+    height: 125px
+    font-size: 24px
+    line-height: 28px
+    border-color: transparent
+    +lg-block
+      width: 255px
+      height: 80px
+      padding-left: 20px
+      padding-right: 20px
+      font-size: 18px
+    +xs-block
+      width: auto
+      height: auto
+      background-color: transparent
+      padding-left: 0
+      br
+        display: none
   &__inner
     flex: 1
     position: relative

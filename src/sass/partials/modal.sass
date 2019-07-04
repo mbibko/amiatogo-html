@@ -14,15 +14,17 @@
       padding: 0
 .tingle-modal
   &.modal-full &__close
+    +block-animate-bg(#000)
+    background: $base-color url("~images/close.svg?fill=white") 28px center no-repeat
+    background-size: 12px 12px
+    position: fixed
     width: var(--button-default-height)
     height: var(--button-default-height)
     top: 90px
     left: auto
     right: var(--fields)
-    background-color: $base-color
-    svg
-      width: 12px
-      height: 12px
+    span
+      display: none
     +xl-block
       top: 30px
     +xs-block

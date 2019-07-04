@@ -9,9 +9,9 @@
   @extend .m-b-xl-6
   @extend .m-b-xs-5
   &__slidesWrapper
-    padding-left: calc(var(--fields) + var(--column) * 2)
     margin-right: calc(var(--fields) * -1)
     margin-left: calc(var(--fields) * -1)
+    padding-left: calc(var(--fields) + var(--columnJs) * 2)
     +xl-block
       margin-bottom: 17px
     +xs-block
@@ -28,10 +28,6 @@
       width: calc((100% - var(--fields) * 2) / var(--columns) * 8)
     +xs-block
       width: calc((100% - var(--fields) * 2) / var(--columns) * 6)
-    &.is-active-slide
-      opacity: 0
-      .is-slide-changed &
-        opacity: 1
   .tns-nav
     display: none
     +xl-block

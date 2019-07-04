@@ -77,7 +77,8 @@
       display: block
       text-decoration: none
       span
-        +hover-letters
+        +link-hover-border
+        +link-hover-bg
       +xl-block
         line-height: 1.9
         font-size: 1rem
@@ -180,9 +181,7 @@
   +xs-block
     margin-bottom: 25px
   span
-    +hover-letters
-    &::after
-      display: none
+    +link-hover-bg
   svg
     flex: none
     fill: #fff

@@ -1,3 +1,4 @@
+import { mobileDevice } from './helpers';
 import CustomSelect from 'vanilla-js-dropdown';
 const vanillaTextMask = require("vanilla-text-mask/dist/vanillaTextMask.js");
 import Bouncer from 'formbouncerjs'
@@ -19,25 +20,27 @@ import Bouncer from 'formbouncerjs'
   });
 }());
 
-;[].forEach.call(document.querySelectorAll('.select'), item => {
-  const select = new CustomSelect({
-    elem: item
+if(!mobileDevice()) {
+  ;[].forEach.call(document.querySelectorAll('.select'), item => {
+    const select = new CustomSelect({
+      elem: item
+    })
+    const selectEl = item.previousElementSibling
+    const content = selectEl.querySelector('.js-Dropdown-list');
+    content.style.setProperty('--max-height', content.scrollHeight + 'px')
   })
-  const selectEl = item.previousElementSibling
-  const content = selectEl.querySelector('.js-Dropdown-list');
-  content.style.setProperty('--max-height', content.scrollHeight + 'px')
-})
 
-;[].forEach.call(document.querySelectorAll('.form-group'), group => {
-  const input = group.querySelector('.form-control')
-  input.addEventListener('focus', () => {
-    group.classList.add('is-focused')
+  ;[].forEach.call(document.querySelectorAll('.form-group'), group => {
+    const input = group.querySelector('.form-control')
+    input.addEventListener('focus', () => {
+      group.classList.add('is-focused')
+    })
+    input.addEventListener('blur', () => {
+      if(input.value.length) return
+      group.classList.remove('is-focused')
+    })
   })
-  input.addEventListener('blur', () => {
-    if(input.value.length) return
-    group.classList.remove('is-focused')
-  })
-})
+}
 
 const validateConfig = {
   messages: {

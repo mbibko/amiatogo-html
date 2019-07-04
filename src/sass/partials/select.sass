@@ -55,10 +55,11 @@
   box-sizing: border-box
   visibility: hidden
   list-style: none
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07)
   margin: 0
   padding: 0
   position: absolute
-  top: -14px
+  top: -22px
   left: -20px
   right: -20px
   transition: 0.5s cubic-bezier(0.7,0,0.3,1)
@@ -66,14 +67,18 @@
   &::before
     content: ''
     display: block
-    height: 50px
+    height: 68px
+  &::after
+    content: ''
+    display: block
+    height: 38px
   &.is-open
     max-height: var(--max-height)
     visibility: visible
   li
     color: $gray-color
     cursor: pointer
-    padding: .75em 20px
+    padding: 3px 20px
     &:hover
       color: $base-color
     &.is-selected

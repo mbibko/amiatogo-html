@@ -4,10 +4,11 @@ let slidersImgs = [];
 let slidersInitiated = false;
 
 const initSliders = () => {
-  [].forEach.call(document.querySelectorAll('.catalog-slider > div'), container => {
-    const startIndex = container.getAttribute('data-start')
-    slidersImgs.push(tns({
-      container: container,
+  [].forEach.call(document.querySelectorAll('.catalog-slider > div'), sliderContainer => {
+    const offsetLeft = sliderContainer.offsetLeft
+    sliderContainer.parentNode.style.paddingLeft = 0
+    const slider = tns({
+      container: sliderContainer,
       // startIndex: 1,
       mouseDrag: true,
       items: 2,
@@ -18,13 +19,23 @@ const initSliders = () => {
       nav: false,
       preventActionWhenRunning: true,
       controls: false,
-      autoWidth: true,
+      edgePadding: offsetLeft,
+      fixedWidth: sliderContainer.children[0].offsetWidth,
       // center: true,
-      loop: true,
+      loop: false,
       nav: true,
-      navPosition: 'bottom'
-    })
-    )
+      navPosition: 'bottom',
+      onInit: info => {
+        sliderContainer.querySelector('.tns-slide-active').classList.add('is-active-slide')
+      }
+    });
+    slider.events.on('indexChanged', info => {
+      setTimeout(() => {
+        sliderContainer.classList.add('is-slide-changed')
+      }, 1000)
+    });
+
+    slidersImgs.push(slider)
   });
   slidersInitiated = true
 }

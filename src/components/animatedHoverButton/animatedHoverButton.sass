@@ -2,7 +2,7 @@
 @import utilities/mixins
 @import utilities/variables
 
-.button-animate
+.block-animate
   $_: &
   position: relative
   svg
@@ -21,24 +21,23 @@
     +xs-block
       display: none
   &_inverted_bg .hover-wrapper
-    background-color: var(--background-color)
+    background-color: currentColor
   &.link-all .hover-wrapper &__inner
     position: relative
     left: var(--link-all-fields)
     +xs-block
       left: 0
-
   .hover-wrapper
     display: flex
     align-items: center
     width: 0
     position: absolute
-    left: -1px
-    top: -1px
-    bottom: -1px
+    left: 0
+    top: 0
+    bottom: 0
     z-index: 1
     overflow: hidden
-    white-space: nowrap
+    // white-space: nowrap
     transition: $transition-elems
     will-change: width
   &.link-all .hover-wrapper

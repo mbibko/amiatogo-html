@@ -1,7 +1,8 @@
 import { tns } from "tiny-slider/src/tiny-slider"
 
 ;[].forEach.call(document.querySelectorAll('.slider__slides'), (sliderContainer, i) => {
-  const offsetLeft = sliderContainer.offsetLeft
+  const offsetLeft = parseInt(getComputedStyle(sliderContainer.parentNode).paddingLeft)
+  console.log(offsetLeft);
   sliderContainer.parentNode.style.paddingLeft = 0
   const itemsWidth = sliderContainer.children[0].offsetWidth
 
@@ -19,6 +20,7 @@ import { tns } from "tiny-slider/src/tiny-slider"
     // controls: false,
     edgePadding: offsetLeft,
     fixedWidth: itemsWidth,
+    loop: false,
     onInit: info => {
       sliderContainer.querySelector('.tns-slide-active').classList.add('is-active-slide')
       // let isClassSetted = false;
