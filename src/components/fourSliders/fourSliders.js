@@ -90,7 +90,6 @@ const sectionSlidersFunc = () => {
       el.classList.remove('before-active')
     });
     info.slideItems[info.displayIndex - 1].classList.add('before-active')
-    info.slideItems
     for(let i=1; i<=4; i++) {
       sliders['slider'+i].events.off('transitionStart', customizedFunction);
     }

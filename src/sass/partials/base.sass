@@ -20,7 +20,7 @@
   --button-default-height: 68px
   --control-height: 36px
   --link-all-fields: 30px
-  +xl-block
+  +lg-block
     --columns: 13
     --fields: 53px
     --border-size-base: 2px
@@ -37,7 +37,7 @@ html
   position: relative
   // overflow: auto
   font-size: 14px
-  +xl-block
+  +lg-block
     font-size: 12px
   &.css-simple-grid::before
     pointer-events: none
@@ -48,9 +48,9 @@ html
     right: var(--fields)
     top: 0
     bottom: 0
-    border-right: 1px solid rgba(gray, 0.1)
+    border-right: 1px solid rgba(orange, 0.3)
     background-size: calc(100% / var(--columns))
-    background-image: linear-gradient(to right, gray 0px, transparent 1px )
+    background-image: linear-gradient(to right, rgba(orange, 0.3) 0px, transparent 1px )
 
 body
   font-size: 1rem
@@ -74,7 +74,7 @@ body
       background: url("../media/404-crop.jpg") center -157px no-repeat
       pointer-events: none
       background-attachment: fixed
-      +xl-block
+      +lg-block
         // height: 1013px
         background-position: center top
         background-size: contain
@@ -129,7 +129,9 @@ h3, .h3
 
 +make-grid-columns
 +xl-block
-  +make-grid-columns($columns: 13, $size: '-xl')
+  +make-grid-columns($columns: 27, $size: '-xl')
++lg-block
+  +make-grid-columns($columns: 13, $size: '-lg')
 +xs-block
   +make-grid-columns($columns: 7, $size: '-xs')
 
@@ -138,7 +140,7 @@ h3, .h3
   width: auto
 .col-full-none
   flex: none
-+xl-block
++lg-block
   .col-xl-full
     flex: 1
     width: auto
@@ -157,7 +159,7 @@ h3, .h3
   margin-right: calc(var(--fields) * -1)
 .coll-negative-offset-right-no
   margin-right: 0
-+xl-block
++lg-block
   .coll-negative-xl-offset-left
     margin-left: calc(var(--fields) * -1)
   .coll-negative-xl-offset-right

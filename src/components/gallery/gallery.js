@@ -20,7 +20,7 @@ const loadMoreGalleryItems = () => {
     // .catch( alert );
   })
 
-  if(window.innerWidth <= 1440) {
+  if(window.innerWidth <= 1280) {
     [].forEach.call(document.querySelectorAll('.gallery__item:nth-child(n+7)'), item => {
       item.parentNode.removeChild(item)
     })

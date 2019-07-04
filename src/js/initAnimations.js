@@ -5,9 +5,8 @@ import './SmoothScroll.js'
 const initAnimationsFunc = () => {
   const initAnimations = () => {
 
-    // new SmoothScroll(document, 120, 12)
-
     AOS.init({
+      disable: window.pageYOffset > window.innerHeight ? true : false,
       duration: window.innerHeight > 500 ? 800 : 400,
       // offset: window.innerHeight > 500 ? 0 : 0,
       // delay: 50,

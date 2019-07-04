@@ -15,7 +15,7 @@
     font-size: 17px
     line-height: 29px
 
-  +xl-block
+  +lg-block
     margin: 0 0 68px
     margin-left: calc(var(--column) * 2)
     font-size: 1rem
@@ -30,11 +30,11 @@
     column-gap: calc(var(--column) * 2)
     .hr + &
       padding-top: 130px
-      +xl-block
+      +lg-block
         padding-top: 60px
       +xs-block
         padding-top: 27px
-    +xl-block
+    +lg-block
       column-gap: var(--column)
     +xs-block
       column-count: initial
@@ -48,12 +48,14 @@
     margin-bottom: 50px
     color: $base-color
     line-height: 1.33
-    +xl-block
+    +lg-block
       font-size: 22px
     +xs-block
       font-size: 18px
   p
     margin-bottom: 30px
     break-inside: avoid
+    +xl-block
+      break-inside: auto
     +xs-block
       margin-bottom: 18px

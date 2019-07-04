@@ -22,7 +22,7 @@
     .p-b-#{$i}
       padding-bottom: $size
     
-  +xl-block
+  +lg-block
     @each $i, $size in $margins-xl
       .m-b-xl-#{$i}
         margin-bottom: $size
@@ -107,7 +107,7 @@
   line-height: 1.1666666666666667em
   margin-bottom: 30px
   font-weight: 400
-  +xl-block
+  +lg-block
     line-height: normal
 =h1
   +h1-h6
@@ -117,6 +117,8 @@
   letter-spacing: -2.6px
   +xl-block
     letter-spacing: -1px
+    font-size: 60px
+  +lg-block
     font-size: 42px
   +xs-block
     font-size: 31px
@@ -126,7 +128,7 @@
   +xl-block
     line-height: normal
     font-size: 34px
-  +xl-block
+  +lg-block
     font-size: 26px
   +xs-block
     font-size: 18px
@@ -144,7 +146,7 @@
     height: .7em
     line-height: .85em
     float: left
-    +xl-block
+    +lg-block
       line-height: 90px
       margin-top: -14px
       font-size: 63px
@@ -162,7 +164,7 @@
     float: left
     margin-right: 10px
     margin-bottom: 10px
-    +xl-block
+    +lg-block
       font-size: 63px
       margin-right: 0
     +xs-block
@@ -175,7 +177,7 @@
   align-items: center
   justify-content: center
   transition: $transition
-  +xl-block
+  +lg-block
     padding: 0 30px
     height: 48px
   &::before, &::after
@@ -310,7 +312,7 @@
   text-decoration: none !important
   white-space: nowrap
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
-  +xl-block
+  +lg-block
     padding-left: 19px
     padding-right: 19px
     font-size: 1.167rem
@@ -401,7 +403,7 @@
 =first-slide-visibility
   &.is-active-slide
     opacity: 0
-    // +xl-block
+    // +lg-block
       // opacity: 1
     .is-slide-changed &
       opacity: 1

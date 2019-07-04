@@ -6,7 +6,7 @@
   overflow: hidden
   margin: 0 calc(var(--fields) * -1)
   margin-bottom: 348px
-  +xl-block
+  +lg-block
     overflow: initial
     margin-bottom: 160px
     margin-left: 0
@@ -24,10 +24,12 @@
 .sliders-wrapper1
   height: 420px
   +xl-block
+    height: 320px
+  +lg-block
     display: block
     height: auto
 .sliders-wrapper2
-  +xl-block
+  +lg-block
     flex-direction: column
     .slider3
       order: 2
@@ -41,7 +43,7 @@
 .slider1
   width: calc(var(--columnJs) * 2 + var(--fields))
   flex: none
-  +xl-block
+  +lg-block
     display: none
   .tns-inner
     margin-right: -1px !important
@@ -57,25 +59,26 @@
         transform: translateX(0)
       & + .tns-item img
         transform: translateX(-25%)
-        +xl-block
+        +lg-block
           transform: none
 .slider2
   flex: 1
   min-width: 0
   height: 180px
-  margin-left: calc((100% - var(--fields) * 2) / var(--columns) * 1)
+  margin-left: calc((100% - var(--fields) * 2) / var(--columns))
   margin-top: 228px
   +xl-block
+    margin-top: 120px
+  +lg-block
     margin-left: 0
     height: 98px
     flex: none
-    margin-top: 120px
   +xs-block
     // margin-top: 50px
     margin-top: 39px
     height: 121px
   &__item
-    width: calc((100% - var(--fields)) / 22 * 14)
+    width: calc(var(--columnJs) * 14)
     transition: opacity 1s
     display: inline-flex !important
     transition: inherit
@@ -83,7 +86,7 @@
     // &:not(.tns-slide-active)
     &.tns-slide-active+&.tns-slide-active
       opacity: 0.2
-    +xl-block
+    +lg-block
       width: calc((100% - var(--fields)) / 13 * 9)
       transform: translateX(0)
     +xs-block
@@ -95,7 +98,7 @@
     +h2
     margin: 0
     margin-right: calc(100% / 14 * 3)
-    +xl-block
+    +lg-block
       margin-right: calc(100% / 9 * 1)
     +xs-block
       width: 100%
@@ -117,11 +120,11 @@
       background-color: #16181c
       opacity: 0.15
       margin-bottom: 27px
-      +xl-block
+      +lg-block
         margin-bottom: 10px
       +xs-block
         height: 1px
-    +xl-block
+    +lg-block
       width: var(--columnJs)
       margin-right: var(--columnJs)
       font-size: 12px
@@ -132,11 +135,13 @@
         margin-bottom: 6px
 .slider3
   flex: none
-  width: calc((100% - var(--fields) * 2) / var(--columns) * 5)
-  margin-left: calc((100% - var(--fields) * 2) / var(--columns) * 7)
+  width: calc(var(--columnJs) * 5)
+  margin-left: calc(var(--fields) + var(--columnJs) * 6)
   color: #60656b
   line-height: 24px
   +xl-block
+    width: calc(var(--columnJs) * 7)
+  +lg-block
     width: calc(var(--columnJs) * 6)
     margin-left: calc(var(--columnJs) * 2)
   +xs-block
@@ -153,9 +158,9 @@
   overflow: hidden
   position: relative
   flex: 1
-  margin-left: calc((100% - var(--fields) * 2) / var(--columns) * 3)
-  +xl-block
-    margin-left: calc((100% - var(--fields)) / var(--columns) * 2)
+  margin-left: calc(var(--columnJs) * 3)
+  +lg-block
+    margin-left: calc(var(--columnJs) * 2)
   +xs-block
     padding-left: 0
     margin-left: 0
@@ -165,7 +170,7 @@
     width: 100%
     img
       transition: 1s ease
-    +xl-block
+    +lg-block
       width: calc(var(--columnJs) * 7)
     +xs-block
       width: calc(var(--columnJs) * 6)
@@ -179,7 +184,7 @@
         transform: translateX(0)
       & + .tns-item img
         transform: translateX(-25%)
-        +xl-block
+        +lg-block
           transform: none
   .tns-outer
     display: flex
@@ -190,7 +195,7 @@
     position: relative
     margin-top: 30px
     display: none
-    +xl-block
+    +lg-block
       display: block
     +xs-block
       display: none
@@ -199,5 +204,5 @@
     left: 0
     top: 0
     z-index: 5
-    +xl-block
+    +lg-block
       display: none
