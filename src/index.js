@@ -1,8 +1,9 @@
 // import styles
 //=====================================
-import 'aos/dist/aos.css'
+// import 'aos/dist/aos.css'
 import 'tingle.js/src/tingle.css'
 import "tiny-slider/dist/tiny-slider.css"
+import "swiper/dist/css/swiper.min.css"
 import './sass/main.sass'
 
 // import grid

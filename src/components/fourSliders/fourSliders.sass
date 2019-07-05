@@ -36,34 +36,18 @@
     .slider4
       order: 1
   
-.slider-group
-  .tns-slider
-    // transition-timing-function: cubic-bezier(0.51, 0, 0.5, 0.48)
-  
 .slider1
   width: calc(var(--columnJs) * 2 + var(--fields))
   flex: none
   +lg-block
     display: none
-  .tns-inner
-    margin-right: -1px !important
-  &__item
-    overflow: hidden
+  .swiper-slide
+    +slide-img-translate
     img
       width: 100%
-      transition: 1s ease
-    &.before-active img
-      transform: translateX(25%)
-    &.tns-slide-active
-      img
-        transform: translateX(0)
-      & + .tns-item img
-        transform: translateX(-25%)
-        +lg-block
-          transform: none
+
 .slider2
   flex: 1
-  min-width: 0
   height: 180px
   margin-left: calc((100% - var(--fields) * 2) / var(--columns))
   margin-top: 228px
@@ -74,34 +58,27 @@
     height: 98px
     flex: none
   +xs-block
-    // margin-top: 50px
     margin-top: 39px
     height: 121px
-  &__item
+  .swiper-slide
     width: calc(var(--columnJs) * 14)
     transition: opacity 1s
-    display: inline-flex !important
-    transition: inherit
-    transform: translateX(0)
-    // &:not(.tns-slide-active)
-    &.tns-slide-active+&.tns-slide-active
+    display: inline-flex
+    opacity: 1
+    &.swiper-slide-next
       opacity: 0.2
     +lg-block
       width: calc((100% - var(--fields)) / 13 * 9)
-      transform: translateX(0)
     +xs-block
-      flex-wrap: wrap
+      display: block
       width: calc(var(--columnJs) * 6)
       padding-left: 0
-      transform: translateX(0)
   &__title
     +h2
     margin: 0
     margin-right: calc(100% / 14 * 3)
     +lg-block
       margin-right: calc(100% / 9 * 1)
-    +xs-block
-      width: 100%
   &__pagi
     flex: none
     margin-top: 12px
@@ -149,60 +126,67 @@
     padding-right: var(--fields)
     margin-left: 0
     line-height: 18px
-  &__item
-    & > div
+  .swiper-slide
     p
       margin-bottom: 24px
 
 .slider4
-  overflow: hidden
   position: relative
   flex: 1
   margin-left: calc(var(--columnJs) * 3)
   +lg-block
+    flex: none
+    width: calc(100% - var(--columnJs) * 2)
     margin-left: calc(var(--columnJs) * 2)
   +xs-block
+    width: 100%
     padding-left: 0
     margin-left: 0
     margin-bottom: 35px
-  &__item
-    overflow: hidden
-    width: 100%
-    img
-      transition: 1s ease
+  .swiper-slide
+    +slide-img-translate
     +lg-block
+      img
+        transform: none !important
       width: calc(var(--columnJs) * 7)
     +xs-block
       width: calc(var(--columnJs) * 6)
       img
         height: 170px
         object-fit: cover
-    &.before-active img
-      transform: translateX(25%)
-    &.tns-slide-active
-      img
-        transform: translateX(0)
-      & + .tns-item img
-        transform: translateX(-25%)
-        +lg-block
-          transform: none
-  .tns-outer
-    display: flex
-    flex-direction: column
-  .tns-nav
-    align-self: flex-end
-    margin-right: var(--fields)
-    position: relative
-    margin-top: 30px
+  .swiper-pagination
     display: none
     +lg-block
-      display: block
+      display: flex
+      width: auto
+      position: static
+      justify-content: flex-end
+      margin-bottom: 10px
+      margin-top: 30px
+      margin-right: var(--fields)
     +xs-block
       display: none
-  .tns-controls
+  .slider-navigation
     position: absolute
     left: 0
     top: 0
-    z-index: 5
     +lg-block
       display: none
+
+  // .tns-nav
+  //   align-self: flex-end
+  //   margin-right: var(--fields)
+  //   position: relative
+  //   margin-top: 30px
+  //   display: none
+  //   +lg-block
+  //     display: block
+  //   +xs-block
+  //     display: none
+  // .tns-controls
+  //   position: absolute
+  //   left: 0
+  //   top: 0
+  //   z-index: 5
+  //   +lg-block
+  //     display: none

@@ -1,113 +1,81 @@
-import { tns } from "tiny-slider/src/tiny-slider"
+import { break_xl } from "../../js/constants";
+
+// Import Swiper and modules
+import { Swiper, Navigation, Pagination, Controller } from 'swiper/dist/js/swiper.esm.js';
+// import Swiper from './swiper.js';
+
+// Install modules
+Swiper.use([Navigation, Pagination, Controller]);
 
 const sectionSlidersFunc = () => {
 
   if(!document.querySelector('.fourSliders')) return
 
-  let sliders = []
+  let swipers = [] 
 
-  const setElActiveClass = slides => {
-    let isClassAdded = false;
-    [].forEach.call(slides, function (el, i) {
-      if (!isClassAdded && el.classList.contains('tns-slide-active')) {
-        el.classList.add('tns-slide-active-first')
-        isClassAdded = true
-      } else {
-        el.classList.remove('tns-slide-active-first')
+  swipers.push(new Swiper('.slider1', {
+    speed: 1000,
+    loop: true,
+    preventInteractionOnTransition: true,
+    slidesPerGroup: 1,
+  }));
+  swipers.push(new Swiper('.slider2', {
+    speed: 1000,
+    loop: true,
+    preventInteractionOnTransition: true,
+    slidesPerGroup: 1,
+    loopedSlides: 3,
+    slidesPerView: 'auto',
+  }));
+  swipers.push(new Swiper('.slider3', {
+    speed: 1000,
+    loop: true,
+    preventInteractionOnTransition: true,
+    slidesPerGroup: 1,
+  }));
+  swipers.push(new Swiper('.slider4', {
+    speed: 1000,
+    loop: true,
+    preventInteractionOnTransition: true,
+    slidesPerGroup: 1,
+
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.slider-button-next',
+      prevEl: '.slider-button-prev',
+    },
+    breakpoints: {
+      1024: {
+        loopedSlides: 3,
+        slidesPerView: 'auto',
       }
+    }
+  }));
+
+  let isSlidesChanging = false
+
+  const syncSwipers = ( currentSwiper, direction ) => {
+    swipers.forEach( swiper => {
+      if(swiper == currentSwiper) return;
+      swiper['slide'+direction]()
     });
+    isSlidesChanging = false
   }
 
-  const slider1SlidesContainer = document.querySelector('.slider1 > div')
-  const slider2SlidesContainer = document.querySelector('.slider2 > div')
-  const slider3SlidesContainer = document.querySelector('.slider3 > div')
-  const slider4SlidesContainer = document.querySelector('.slider4 > div')
-
-  sliders.slider1 = tns({
-    container: slider1SlidesContainer,
-    mouseDrag: true,
-    items: 1,
-    speed: 1000,
-    swipeAngle: 30,
-    autoplay: false,
-    autoplayButtonOutput: false,
-    nav: false,
-    preventActionWhenRunning: true,
-    controls: false
-  });
-  sliders.slider2 = tns({
-    container: slider2SlidesContainer,
-    mouseDrag: true,
-    items: 2,
-    speed: 1000,
-    swipeAngle: 30,
-    autoplay: false,
-    autoplayButtonOutput: false,
-    nav: false,
-    preventActionWhenRunning: true,
-    controls: false,
-    fixedWidth: slider2SlidesContainer.children[0].offsetWidth,
-    // onInit: info => setElActiveClass(info.slideItems)
-  });
-
-  sliders.slider3 = tns({
-    container: slider3SlidesContainer,
-    mouseDrag: true,
-    items: 1,
-    speed: 1000,
-    swipeAngle: 30,
-    autoplay: false,
-    autoplayButtonOutput: false,
-    nav: false,
-    preventActionWhenRunning: true,
-    controls: false
-  });
-
-  sliders.slider4 = tns({
-    container: slider4SlidesContainer,
-    mouseDrag: true,
-    items: 1,
-    speed: 1000,
-    swipeAngle: 30,
-    autoplay: false,
-    autoplayButtonOutput: false,
-    nav: false,
-    preventActionWhenRunning: true,
-    fixedWidth: slider4SlidesContainer.children[0].offsetWidth,
-    nav: true,
-    navPosition: 'bottom'
-  });
-
-  sliders.slider2.events.on('indexChanged', info => setElActiveClass(info.slideItems));
-  const getDirection = info => {
-    return (info.indexCached == info.slideCount && info.index == 1) || info.index == ++info.indexCached ? 'next' : 'prev';
-  }
-  const customizedFunction = (info, eventName) => {
-    const direction = getDirection(info);
-    // console.log(info.displayIndex)
-    // console.log(info.slideItems[info.displayIndex - 1]);
-    [].forEach.call(info.slideItems, el => {
-      el.classList.remove('before-active')
+  swipers.forEach((swiper) => {
+    swiper.on('slideNextTransitionStart', () => {
+      if (isSlidesChanging) return;
+      isSlidesChanging = true
+      syncSwipers(swiper, 'Next')
     });
-    info.slideItems[info.displayIndex - 1].classList.add('before-active')
-    for(let i=1; i<=4; i++) {
-      sliders['slider'+i].events.off('transitionStart', customizedFunction);
-    }
-    for(let i=1; i<=4; i++) {
-      sliders['slider'+i].getInfo().container.classList.remove('dir-prev', 'dir-next');
-      sliders['slider'+i].getInfo().container.classList.add('dir-'+direction);
-      if(sliders['slider'+i].getInfo().container == info.container) continue;
-      
-      sliders['slider'+i].goTo(direction)
-    }
-    for(let i=1; i<=4; i++) {
-      sliders['slider'+i].events.on('transitionStart', customizedFunction);
-    }
-  }
-  
-  for(let i=1; i<=4; i++) {
-    sliders['slider'+i].events.on('transitionStart', customizedFunction);
-  }
+    swiper.on('slidePrevTransitionStart', () => {
+      if (isSlidesChanging) return;
+      isSlidesChanging = true
+      syncSwipers(swiper, 'Prev')
+    });
+  });
 }
 setTimeout(() => {
   sectionSlidersFunc()
