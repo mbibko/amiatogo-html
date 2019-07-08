@@ -1,5 +1,7 @@
 .coll-modal-wrapper
   display: flex
+  +xs-block
+    display: block
 
 .coll-modal-side
   flex: none
@@ -14,6 +16,8 @@
     top: 0
     bottom: 0
   +xs-block
+    bottom: auto
+    height: 0
     width: 100%
   .is-side-active &
     height: 100%
@@ -153,6 +157,9 @@
 
 .coll-modal-slider
   flex: 1
+  +xs-block
+    flex: none
+    width: 100%
   &__item
     width: 40%
     height: 100%
