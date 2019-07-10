@@ -192,6 +192,7 @@
   flex: 1
   height: 540px
   overflow: hidden
+  padding-right: var(--fields)
   +lg-block
     height: 340px
   +xs-block
@@ -199,7 +200,7 @@
     margin-left: var(--fields)
     height: 210px
 
-  .tns-slide-active + .tns-slide-active
+  .swiper-slide-next
     &::before
       opacity: 0.8
   &__item
@@ -225,37 +226,44 @@
       height: 100%
       width: 100%
       object-fit: cover
-  .tns-nav
-    display: none
-    +lg-block
-      +tns-nav-block
-      display: flex
-      position: absolute
-      top: 0
-    +xs-block
-      bottom: 0
-      right: var(--button-default-height)
-      top: auto
-  .tns-controls
+  .slider-controls
     position: absolute
     left: 0
     top: 0
-    +lg-block
-      display: none
-  .slider-sett
-    position: absolute
-    left: 136px
-    top: 0
-    +lg-block
-      left: 94px
+    z-index: 1
+    display: flex
     +xs-block
       left: auto
       right: 0
       top: auto
       bottom: 0
-  .slider-counter
+  .swiper-pagination
+    position: static
+    flex: none
+    width: var(--button-default-height)
+    height: var(--button-default-height)
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
+    +lg-block
+      +tns-nav-block
+      width: auto
+    +xs-block
+      bottom: 0
+      right: var(--button-default-height)
+      top: auto
+  .slider-navigation
     +lg-block
       display: none
+  .linkfull
+    flex: none
+    width: var(--button-default-height)
+    height: var(--button-default-height)
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
 
 .store-map
   width: 100%

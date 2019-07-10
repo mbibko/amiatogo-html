@@ -1,9 +1,9 @@
 <div class="title m-b-6 m-b-xl-5 m-b-xs-4">Где купить</div>
 <div class="slider">
-  <div class="slider__slidesWrapper" data-aos="fade-up">
-    <div class="slider__slides">
+  <div class="slider__slidesWrapper swiper-container" data-aos="fade-up">
+    <div class="slider__slides swiper-wrapper">
     {% for i in range(6) %}
-      <div class="slider__item storeBlock">
+      <div class="slider__item storeBlock swiper-slide">
         <a href="#" class="storeBlock__img">
           <img src="../media/temp/item/{{loop.index}}.jpg" alt="">
         </a>
@@ -20,6 +20,11 @@
         </div>
       </div>
     {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="slider-navigation">
+      <div class="slider-button slider-button-prev"></div>
+      <div class="slider-button slider-button-next"></div>
     </div>
   </div>
   <a href="#" class="block-animate link-all link-all_mobile_dark">Все магазины <svg width="12" height="12"> <use xlink:href="#arr"></use> </svg></a>

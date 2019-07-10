@@ -26,6 +26,7 @@ const sectionSlidersFunc = () => {
     slidesPerGroup: 1,
     loopedSlides: 3,
     slidesPerView: 'auto',
+    longSwipesRatio: '3'
   }));
   swipers.push(new Swiper('.slider3', {
     speed: 1000,
@@ -50,6 +51,7 @@ const sectionSlidersFunc = () => {
       1024: {
         loopedSlides: 3,
         slidesPerView: 'auto',
+        longSwipesRatio: '3'
       }
     }
   }));

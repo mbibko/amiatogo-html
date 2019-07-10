@@ -1,16 +1,19 @@
-<div class="sliderCollection">
-  <div class="sliderCollection__slides">
-  {% set slidesCount = 4 %}
-  {% for i in range(slidesCount) %}
-  <div class="sliderCollection__item">
-    <img src="../media/temp/collections-slider/{{loop.index}}.jpg" alt="">
-  </div>
-  {% endfor %}
-  </div>
-  <div class="slider-sett">
-    <div class="slider-counter">
-      <div class="slider-counter__1">1</div>/
-      <div class="slider-counter__2">{{slidesCount}}</div>
+<div class="sliderCollectionContainer">
+  <div class="sliderCollection swiper-container">
+    <div class="sliderCollection__slides swiper-wrapper">
+    {% set slidesCount = 4 %}
+    {% for i in range(slidesCount) %}
+    <div class="sliderCollection__item swiper-slide">
+      <img src="../media/temp/collections-slider/{{loop.index}}.jpg" alt="">
+    </div>
+    {% endfor %}
+    </div>
+    <div class="slider-controls">
+      <div class="slider-navigation">
+        <div class="slider-button slider-button-prev"></div>
+        <div class="slider-button slider-button-next"></div>
+      </div>
+      <div class="swiper-paginationWrapper"><div class="swiper-pagination"></div></div>
     </div>
   </div>
   <a href="#" class="hot-link">

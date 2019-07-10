@@ -76,6 +76,8 @@
           margin-bottom: 14px
           &::before
             display: none
+      .link-all
+        margin-top: -30px
 
     img
       display: block
@@ -90,14 +92,12 @@
     padding-left: var(--fields)
     margin-right: calc(var(--fields) * -1)
     margin-left: calc(var(--fields) * -1)
-    .tns-outer
-      display: flex
-      flex-direction: column
-      .tns-nav
-        align-self: flex-end
-        margin-right: var(--fields)
-        position: relative
-        top: 30px
+    padding-bottom: 50px
+    .swiper-pagination
+      text-align: right
+      right: var(--fields)
+      bottom: 0px
+      left: auto
   &__title
     display: none
     justify-content: space-between
@@ -211,6 +211,7 @@
   overflow: hidden
   display: flex
   +xs-block
+    overflow: initial
     height: 190px
     &.tns-slider
       overflow: initial
@@ -224,6 +225,7 @@
     flex: none
     text-decoration: none
     cursor: default
+    height: auto
     .aos-me-wrap
       +zoom
       cursor: pointer

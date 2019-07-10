@@ -180,8 +180,16 @@
   +lg-block
     padding: 0 30px
     height: 48px
+  span
+    background-color: #fff
+    margin-left: 8px
+    +xs-block
+      margin-left: 6px
+    &:first-child
+      margin-left: 0
+=tns-nav-block-animate
   &::before, &::after
-    z-index: 1
+    z-index: 10
     pointer-events: none
     content: ''
     display: block
@@ -199,17 +207,9 @@
     position: relative
     transition: $transition
     transform: translateX(calc(50% - 3px))
-    // transform: translateX(calc(50%))
-  button
-    background-color: #fff
-    margin-left: 8px
-    +xs-block
-      margin-left: 6px
-    &:first-child
-      margin-left: 0
 
 =tns-control-white
-  button
+  .slider-button
     background: #fff
     border: 1px solid #16181c
     margin-right: -1px

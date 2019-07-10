@@ -17,8 +17,7 @@
     +xs-block
       padding-left: var(--fields)
       margin-bottom: 70px
-  &__slides
-  &__item
+  .swiper-slide
     display: block
     width: calc(100% / 3)
     text-decoration: none
@@ -28,20 +27,19 @@
       width: calc((100% - var(--fields) * 2) / var(--columns) * 8)
     +xs-block
       width: calc((100% - var(--fields) * 2) / var(--columns) * 6)
-  .tns-nav
+  .swiper-pagination
     display: none
     +lg-block
       display: block
+      position: static
       margin-top: 50px
-      margin-left: calc((100% - var(--fields) * 2) / var(--columns) * 2 + var(--fields))
+      text-align: left
     +xs-block
       display: none
-  .tns-controls
-    margin-left: calc((100% - var(--fields) * 2) / var(--columns) * 2 + var(--fields))
-    
+  .slider-navigation
     margin-top: 86px
     +tns-control-white
-    button
+    .slider-button
       background-color: transparent
     +lg-block
       display: none

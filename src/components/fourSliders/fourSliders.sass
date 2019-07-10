@@ -39,10 +39,16 @@
 .slider1
   width: calc(var(--columnJs) * 2 + var(--fields))
   flex: none
+  height: 600px
+  +xl-block
+    height: 490px
   +lg-block
     display: none
   .swiper-slide
     +slide-img-translate
+    height: 600px
+    +xl-block
+      height: 490px
     img
       width: 100%
 
@@ -127,8 +133,12 @@
     margin-left: 0
     line-height: 18px
   .swiper-slide
+    opacity: 1
+    transition: $transition
     p
       margin-bottom: 24px
+  .swiper-slide-next
+    opacity: 0
 
 .slider4
   position: relative
@@ -172,21 +182,3 @@
     top: 0
     +lg-block
       display: none
-
-  // .tns-nav
-  //   align-self: flex-end
-  //   margin-right: var(--fields)
-  //   position: relative
-  //   margin-top: 30px
-  //   display: none
-  //   +lg-block
-  //     display: block
-  //   +xs-block
-  //     display: none
-  // .tns-controls
-  //   position: absolute
-  //   left: 0
-  //   top: 0
-  //   z-index: 5
-  //   +lg-block
-  //     display: none

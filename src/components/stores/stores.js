@@ -1,5 +1,7 @@
+import { break_xl } from "../../js/constants";
 import iconMarkerMap from '../../media/marker-map.svg'
-import { tns } from "tiny-slider/src/tiny-slider"
+import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
+Swiper.use([Navigation, Pagination]);
 
 const storeFunc = () => {
   [].forEach.call(document.querySelectorAll('.store-list__item:not(.inited)'), item => {
@@ -7,30 +9,29 @@ const storeFunc = () => {
     link.addEventListener('click', () => {
       item.classList.toggle('is-active')
     });
-    const slidesContainer = item.querySelector('.store-slider-slides')
-    const itemsWidth = slidesContainer.children[0].offsetWidth
-    // [].forEach.call(container.children, item => {
-    //   item.style.width = item.offsetWidth + 'px'
-    // })
-    const slider = tns({
-      container: slidesContainer,
-      // startIndex: 1,
-      mouseDrag: true,
+    const sliderContainer = item.querySelector('.store-slider')
+    new Swiper(sliderContainer, {
       speed: 1000,
-      swipeAngle: 30,
-      autoplay: false,
-      autoplayButtonOutput: false,
-      preventActionWhenRunning: true,
-      controls: true,
-      controlsPosition: 'bottom',
-      fixedWidth: itemsWidth,
-      center: false,
+      slidesPerView: 1,
       loop: true,
-      nav: true,
-      navPosition: 'bottom'
-    });
-    slider.events.on('indexChanged', info => {
-      item.querySelector('.slider-counter__1').textContent = info.displayIndex
+      loopedSlides: 3,
+
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'fraction',
+      },
+      navigation: {
+        nextEl: '.slider-button-next',
+        prevEl: '.slider-button-prev',
+      },
+      breakpoints: {
+        1024: {
+          pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+          },
+        }
+      }
     });
     const mapContainer = item.querySelector('.store-map__inner')
     const position = {lat: +mapContainer.dataset.lat, lng: +mapContainer.dataset.lng}

@@ -1,5 +1,6 @@
 import tingle from 'tingle.js'
-import { tns } from "tiny-slider/src/tiny-slider"
+import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
+Swiper.use([Navigation, Pagination]);
 import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
 
 ;(function () {
@@ -54,7 +55,7 @@ import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
       const data = JSON.parse(link.parentNode.dataset.modal)
 
       data.imgs.forEach((item, i) => {
-        slidesStr += `<div class="coll-modal-slider__item"><img src="${item}" alt=""></div>`
+        slidesStr += `<div class="coll-modal-slider__item swiper-slide"><img src="${item}" alt=""></div>`
       });
       const content = `
         <div class="coll-modal-wrapper theme_${data.theme}">
@@ -66,14 +67,15 @@ import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
               </div>
             </div>
           </div>
-        <div class="coll-modal-slider">
-          <div class="slider-sett">
-            <div class="slider-counter">
-              <div class="slider-counter__1">1</div>/
-              <div class="slider-counter__2">3</div>
+        <div class="coll-modal-slider swiper-container">
+          <div class="coll-modal-slider__slides swiper-wrapper">${slidesStr}</div>
+          <div class="slider-controls">
+            <div class="slider-navigation">
+              <div class="slider-button slider-button-prev"></div>
+              <div class="slider-button slider-button-next"></div>
             </div>
+            <div class="swiper-pagination"></div>
           </div>
-          <div class="coll-modal-slider__slides">${slidesStr}</div>
         </div>
         </div>
       `;
@@ -84,30 +86,29 @@ import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
           onOpen: () => {
             const modalContent = modal.getContent()
             const sliderContainer = modalContent.querySelector('.coll-modal-slider')
-            const slidesContainer = sliderContainer.querySelector('.coll-modal-slider__slides')
-            slidesContainer.style.height = window.innerHeight + 'px'
-            // console.log(modal.getContent().querySelector('.stores-modal-slider__slides'));
-            console.log(slidesContainer);
-            const itemsWidth = slidesContainer.children[0].offsetWidth
-            const slider = tns({
-              container: slidesContainer,
-              // startIndex: sliderStartIndex,
-              mouseDrag: true,
+            const multipleItems = sliderContainer.querySelector('.swiper-wrapper').children.length > 1 ? true : false
+            new Swiper(sliderContainer, {
               speed: 1000,
-              swipeAngle: 30,
-              autoplay: false,
-              autoplayButtonOutput: false,
-              preventActionWhenRunning: true,
-              controls: true,
-              controlsPosition: 'bottom',
-              fixedWidth: itemsWidth,
-              center: false,
-              loop: true,
-              nav: true,
-              navPosition: 'bottom'
-            });
-            slider.events.on('indexChanged', info => {
-              sliderContainer.querySelector('.slider-counter__1').textContent = info.displayIndex
+              slidesPerView: multipleItems ? 'auto' : 1,
+              loop: multipleItems ? true : false,
+              loopedSlides: 3,
+
+              pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+              },
+              navigation: {
+                nextEl: '.slider-button-next',
+                prevEl: '.slider-button-prev',
+              },
+              breakpoints: {
+                1024: {
+                  pagination: {
+                    el: '.swiper-pagination',
+                    type: 'bullets',
+                  },
+                }
+              }
             });
             const side = modalContent.querySelector('.coll-modal-side')
             const sideLink = side.querySelector('.coll-modal-side__link')
