@@ -1,3 +1,5 @@
+import { scrollToTop } from '../../js/helpers'
+
 const toTopFunc = () => {
   const toTop = document.querySelector('.to-top');
   if (!toTop) return;

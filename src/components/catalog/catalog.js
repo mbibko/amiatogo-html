@@ -22,7 +22,7 @@ import './slider.js'
 
   let menuMiddleMaxWidth = 0;
   [].forEach.call(menuElsMiddle.querySelectorAll('[data-letters]'), function(el, i) {
-    console.log(el.offsetWidth, menuMiddleMaxWidth);
+    // console.log(el.offsetWidth, menuMiddleMaxWidth);
     if(el.offsetWidth > menuMiddleMaxWidth) menuMiddleMaxWidth = el.offsetWidth
   });
   menuElsMiddle.parentNode.style.width = menuMiddleMaxWidth + 100 + 'px';
@@ -43,7 +43,7 @@ import './slider.js'
 
   const addActiveClass = () => {
     let isClassAdded = false;
-    if(!checkVisible(wrapper, 240)) return; 
+    if(!checkVisible(wrapper, 240)) return;
     [].forEach.call(elements, function(el, i) {
       if(!isClassAdded && checkVisible(el, 240)) {
         menuElsTop.style.transform = 'translateY(calc(100%/'+elsLength+'*'+(elsLength-i)+'))';

@@ -1,29 +1,28 @@
 import tingle from 'tingle.js'
 import { tns } from "tiny-slider/src/tiny-slider"
 
-;[].forEach.call(document.querySelectorAll('.store-list__item'), item => {
-  const link = item.querySelector('.linkfull');
-  link.addEventListener('click', () => {
-    console.log(item)
-    let slidesStr = ''
-    const data = JSON.parse(item.dataset.modalImgs)
-    data.urls.forEach((url, i) => {
-      slidesStr += `<div class="modalStore__item"><img src="${url}" alt=""></div>`
-    });
-    const content = `
+const modalStore = () => {
+  [].forEach.call(document.querySelectorAll('.store-list__item'), item => {
+    const link = item.querySelector('.linkfull:not(.inited)');
+    const listener = () => {
+      let slidesStr = '';
+      const data = JSON.parse(item.dataset.modalImgs);
+      data.urls.forEach((url, i) => {
+        slidesStr += `<div class="modalStore__item"><img src="${url}" alt=""></div>`
+      });
+      const content = `
       <div class="modalStore">
         <div class="slider-sett">
           <div class="slider-counter">
             <div class="slider-counter__1">1</div>/
-            <div class="slider-counter__2">3</div>
+            <div class="slider-counter__2">${data.urls.length}</div>
           </div>
         </div>
         <div class="modalStore__slides">${slidesStr}</div>
       </div>
-    `
-    console.log(content);
+    `;
 
-    const modal = new tingle.modal({
+      const modal = new tingle.modal({
         closeMethods: ['button', 'escape'],
         cssClass: ['modal-full'],
         onOpen: () => {
@@ -54,8 +53,12 @@ import { tns } from "tiny-slider/src/tiny-slider"
           });
 
         }
-    });
-    modal.setContent(content);
-    modal.open();
-  })
-});
+      });
+      modal.setContent(content);
+      modal.open();
+    };
+    link.addEventListener('click', listener, false);
+    link.classList.add('inited');
+  });
+};
+export default modalStore
