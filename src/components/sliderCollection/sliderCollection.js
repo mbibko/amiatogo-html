@@ -1,28 +1,37 @@
-import { tns } from "tiny-slider/src/tiny-slider"
+import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
+Swiper.use([Navigation, Pagination]);
 
 const collectionSliderFunc = () => {
-  const container = document.querySelector('.sliderCollection')
-  if(!container) return;
-  const slider = tns({
-    container: container.querySelector('.sliderCollection__slides'),
-    // startIndex: 1,
-    mouseDrag: true,
-    items: 2,
+  const sliderContainer = document.querySelector('.sliderCollection')
+  if(!sliderContainer) return;
+  const slider = new Swiper(sliderContainer, {
     speed: 1000,
-    swipeAngle: 30,
-    autoplay: false,
-    autoplayButtonOutput: false,
-    preventActionWhenRunning: true,
-    controls: true,
-    controlsPosition: 'bottom',
-    autoWidth: true,
-    center: false,
+    slidesPerView: 'auto',
     loop: true,
-    nav: true,
-    navPosition: 'top'
+    loopedSlides: 3,
+
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'fraction',
+    },
+    navigation: {
+      nextEl: '.slider-button-next',
+      prevEl: '.slider-button-prev',
+    },
+    breakpoints: {
+      1024: {
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+        },
+      }
+    }
   });
-  slider.events.on('indexChanged', info => {
-    container.querySelector('.slider-counter__1').textContent = info.displayIndex
+  slider.on('slideChange', () => {
+    const pagination = sliderContainer.querySelector('.swiper-pagination-bullets')
+    if (!pagination) return;
+    const activeEl = pagination.querySelector('.swiper-pagination-bullet-active')
+    pagination.style.transform = `translateX(calc(50% - ${activeEl.offsetLeft}px - 3px))`
   });
 }
 collectionSliderFunc()

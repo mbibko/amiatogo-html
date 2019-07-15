@@ -4,7 +4,7 @@
 .b-text
   color: #60656b
   line-height: 24px
-  +xl-block
+  +lg-block
     line-height: 18px
 
 .subtext
@@ -16,7 +16,7 @@
   .muted
     color: $gray-color
   b
-  +xl-block
+  +lg-block
     font-size: 12px
     line-height: 18px
     b
@@ -40,12 +40,15 @@
   margin-bottom: 0
   max-width: 560px
   flex: none
-  +xl-block
+  +lg-block
     max-width: 400px
   &+.link-all
     margin-left: calc(var(--column) * 14)
     margin-top: -50px
-    +xl-block
+    +lg-block
       margin-left: calc(var(--column) * 9)
     +xs-block
       margin: 0
+
+.link-hover-border
+  +link-hover-border

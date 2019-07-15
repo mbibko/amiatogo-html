@@ -24,7 +24,7 @@
     @extend .m-b-7
     display: flex
     justify-content: space-between
-    +xl-block
+    +lg-block
       margin-left: 0
       margin-right: 0
       @extend .m-b-xl-6
@@ -36,7 +36,7 @@
   &__content
     flex: none
     width: calc(100% / 20 * 8)
-    +xl-block
+    +lg-block
       width: calc(100% / 13 * 5)
       @extend .p-t-xl-4
     +xs-block
@@ -56,18 +56,18 @@
     @extend .p-b-3
     @extend .p-b-xl-3
     @extend .p-b-xs-2
-    +xl-block
+    +lg-block
       width: calc(100% / 13 * 7)
     +xs-block
       width: 100%
 
 .join-content
-  +xl-block
+  +lg-block
     font-size: 12px
   @extend .p-t-4
   h2
     margin-bottom: 40px
-    +xl-block
+    +lg-block
       font-size: 22px
       margin-bottom: 30px
     +xs-block
@@ -78,7 +78,7 @@
     +h2
     display: block
     margin-bottom: 14px
-    +xl-block
+    +lg-block
       font-size: 22px
       margin-bottom: 11px
     +xs-block
@@ -88,9 +88,13 @@
   &__inner
     margin-left: 12.5%
     margin-right: 12.5%
-    +xl-block
+    +lg-block
       margin-left: 14.2857%
       margin-right: 14.2857%
     +xs-block
       margin-left: 20px
       margin-right: 20px
+  .form-group
+    padding-bottom: 23px
+    .help-text
+      margin-bottom: -(23px - 1px)

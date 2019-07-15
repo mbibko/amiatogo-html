@@ -22,7 +22,7 @@
     .p-b-#{$i}
       padding-bottom: $size
     
-  +xl-block
+  +lg-block
     @each $i, $size in $margins-xl
       .m-b-xl-#{$i}
         margin-bottom: $size
@@ -45,8 +45,6 @@
       .p-b-xs-#{$i}
         padding-bottom: $size
       
-
-
 =placeholder
   &::-webkit-input-placeholder
     @content
@@ -58,37 +56,58 @@
   &:-ms-input-placeholder
     @content
 
-=hover-letters
+=link-hover-bg
   position: relative
-  &::before, &::after
+  &::before
     width: 0%
     position: absolute
     transition: width 0.5s
     transition-timing-function: cubic-bezier(0.7,0,0.3,1)
-  &::before
     content: attr(data-letters)
     color: #636167
     left: 0
     overflow: hidden
     white-space: nowrap
+  &:hover
+    &::before
+      width: 100%
+
+=link-border
   &::after
+    width: 100%
     position: absolute
     content: ''
     display: block
-    height: 1px
     left: 0
-    top: 100%
-    background-color: #000
+    top: calc(0.5em + 50%)
+    border-bottom: 1px solid currentColor
+    opacity: 0.6
+
+=link-hover-border
+  text-decoration: none
+  position: relative
+  &::after
+    width: 0%
+    position: absolute
+    transition: width 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    content: ''
+    display: block
+    left: 0
+    top: calc(0.5em + 50%)
+    border-bottom: 1px solid currentColor
+    opacity: 0.6
   &:hover
-    &::before, &::after
+    &::after
       width: 100%
+
 
 =h1-h6
   font-family: $angelicia-display
   line-height: 1.1666666666666667em
   margin-bottom: 30px
   font-weight: 400
-  +xl-block
+  +lg-block
     line-height: normal
 =h1
   +h1-h6
@@ -98,6 +117,8 @@
   letter-spacing: -2.6px
   +xl-block
     letter-spacing: -1px
+    font-size: 60px
+  +lg-block
     font-size: 42px
   +xs-block
     font-size: 31px
@@ -107,7 +128,7 @@
   +xl-block
     line-height: normal
     font-size: 34px
-  +xl-block
+  +lg-block
     font-size: 26px
   +xs-block
     font-size: 18px
@@ -125,7 +146,7 @@
     height: .7em
     line-height: .85em
     float: left
-    +xl-block
+    +lg-block
       line-height: 90px
       margin-top: -14px
       font-size: 63px
@@ -143,7 +164,7 @@
     float: left
     margin-right: 10px
     margin-bottom: 10px
-    +xl-block
+    +lg-block
       font-size: 63px
       margin-right: 0
     +xs-block
@@ -155,19 +176,40 @@
   display: flex
   align-items: center
   justify-content: center
-  +xl-block
+  transition: $transition
+  +lg-block
     padding: 0 30px
     height: 48px
-  button
+  span
     background-color: #fff
     margin-left: 8px
     +xs-block
       margin-left: 6px
     &:first-child
       margin-left: 0
+=tns-nav-block-animate
+  &::before, &::after
+    z-index: 10
+    pointer-events: none
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 50%
+    background-image: linear-gradient(to right, $base-color 0%, $base-color 25%, rgba(22, 24, 28, 0) 100%)
+  &::after
+    left: auto
+    right: 0
+    background-image: linear-gradient(to right, rgba(22, 24, 28, 0) 0%, $base-color 75%, $base-color 100%)
+  & > div
+    position: relative
+    transition: $transition
+    transform: translateX(calc(50% - 3px))
 
 =tns-control-white
-  button
+  .slider-button
     background: #fff
     border: 1px solid #16181c
     margin-right: -1px
@@ -179,7 +221,7 @@
     &:first-child
       background-image: url("~images/arr-left.svg?fill=%2316181c")
 
-=button-animate-bg($bg: inherit)
+=block-animate-bg($bg: inherit)
   position: relative
   &::after
     content: ''
@@ -197,6 +239,53 @@
     background-repeat: no-repeat
     background-position: inherit
   &:hover::after
+    width: 100%
+
+=button-invert($bg: currentColor)
+  position: relative
+  &::after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 0
+    overflow: hidden
+    background-color: $bg
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    mix-blend-mode: exclusion
+  &:hover::after
+    width: 100%
+
+=button-invert-black-or-white($bg)
+  position: relative
+  & > *
+    position: relative
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 0
+    background-color: $bg
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+  &::after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 0
+    overflow: hidden
+    background-color: invert($bg)
+    transition: 0.5s
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    mix-blend-mode: exclusion
+  &:hover::after, &:hover::before
     width: 100%
 
 =button
@@ -223,7 +312,7 @@
   text-decoration: none !important
   white-space: nowrap
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
-  +xl-block
+  +lg-block
     padding-left: 19px
     padding-right: 19px
     font-size: 1.167rem
@@ -236,8 +325,10 @@
   //   vertical-align: middle
   svg
     flex: none
-  // &:hover
-    // color: rgba($base-color, 0.6)
+  &.block-animate .hover-wrapper
+    left: -1px
+    top: -1px
+    bottom: -1px
 =button-icon
   padding-left: 0
   padding-right: 0
@@ -253,13 +344,13 @@
 =button-white
   background-color: #fff
   border-color: #fff
-  &:not(.button-animate):hover
+  &:not(.block-animate):hover
     background-color: $base-color
     border-color: $base-color
     color: #fff
     svg
       fill: #fff
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: $base-color
       color: #fff
@@ -271,14 +362,14 @@
   color: #fff
   svg
     fill: #fff
-  &:not(.button-animate):hover
+  &:not(.block-animate):hover
     background-color: rgba($base-color, 0.8)
     // background-color: #fff
     // border-color: #fff
     // color: $base-color
     svg
       fill: $base-color
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: #fff
       color: $base-color
@@ -288,7 +379,7 @@
   border-color: #d8d9db
   &:hover
     border-color: rgba(#d8d9db, 0.8)
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: $base-color
       color: #fff
@@ -299,7 +390,7 @@
   &:hover
     border-color: rgba($base-color, 0.8)
 =button-link
-  &.button-animate
+  &.block-animate
     .hover-wrapper
       background-color: $base-color
       color: #fff
@@ -308,3 +399,28 @@
 =button-block
   display: flex
   width: 100%
+
+=first-slide-visibility
+  &.is-active-slide
+    opacity: 0
+    // +lg-block
+      // opacity: 1
+    .is-slide-changed &
+      opacity: 1
+=zoom
+  overflow: hidden
+  img
+    transition: $transition-imgs-zoom
+  &:hover img
+    transform: $zoom
+
+=slide-img-translate
+  overflow: hidden
+  img
+    transition: 1s ease
+  &.swiper-slide-prev img
+    transform: translateX(25%)
+  &.swiper-slide-active img
+      transform: translateX(0)
+  &.swiper-slide-next img
+    transform: translateX(-25%)

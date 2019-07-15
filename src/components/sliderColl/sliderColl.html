@@ -1,8 +1,8 @@
 <div class="slider sliderColl m-b-6 m-b-xl-6 m-b-xs-6" data-aos="fade-up">
-  <div class="slider__slidesWrapper">
-    <div class="slider__slides">
+  <div class="slider__slidesWrapper swiper-container">
+    <div class="slider__slides swiper-wrapper">
     {% for i in ["Age-free 2019", "Classic 2019", "Concept 2019/20", "Age-free 2019", "Classic 2019", "Concept 2019/20"] %}
-    <a href="#" class="slider__item sliderColl__item">
+    <a href="#" class="slider__item sliderColl__item swiper-slide">
       <div class="sliderColl__img">
         <img src="../media/temp/sliderColl/{{loop.index}}.jpg" alt="">
       </div>
@@ -11,6 +11,11 @@
     </a>
     {% endfor %}
     </div>
+    <div class="swiper-pagination"></div>
+    <div class="slider-navigation">
+      <div class="slider-button slider-button-prev"></div>
+      <div class="slider-button slider-button-next"></div>
+    </div>
   </div>
-  <a href="#" class="button-animate link-all link-all_mobile_dark">Все коллекции <svg width="12" height="12"> <use xlink:href="#arr"></use> </svg></a>
+  <a href="#" class="block-animate link-all link-all_mobile_dark">Все коллекции <svg width="12" height="12"> <use xlink:href="#arr"></use> </svg></a>
 </div>

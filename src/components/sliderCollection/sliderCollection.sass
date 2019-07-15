@@ -2,49 +2,73 @@
 @import utilities/mixins
 @import utilities/variables
 
-.sliderCollection
+.sliderCollectionContainer
   position: relative
-  margin-left: calc(var(--column) * 2)
   margin-bottom: 239px
-  margin-right: calc(var(--fields) * -1)
-  margin-top: -21px
   +lg-block
     margin-bottom: 120px
   +xs-block
-    margin-left: 0
     margin-bottom: 106px
+  .hot-link
+    z-index: 1
+    position: absolute
+    left: calc(var(--column) * 2)
+    bottom: 0
+    +xs-block
+      left: 0  
+
+
+.sliderCollection
+  position: relative
+  margin-left: calc(var(--column) * 2)
+  margin-right: calc(var(--fields) * -1)
+  margin-top: -21px
+  +xs-block
+    margin-left: 0
   &__item
+    width: auto
+    cursor: pointer
     height: 720px
-    +xl-block
+    +lg-block
       height: 500px
     +lg-block
       height: 300px
     img
       display: block
       height: 100%
-  .tns-controls
-    outline: none
-    position: absolute
-    right: $slider-sett-width + 30px
-    bottom: 57px
-    z-index: 5
-    +lg-block
-      display: none
-  .tns-nav
-    display: none
-    position: absolute
-    right: 20px
-    bottom: 32px
-    +lg-block
-      display: block
-      +tns-nav-block
-    +xs-block
-      right: 0
-      top: 300px
-      transform: translateY(-100%)
-  .slider-sett
+  .slider-controls
     position: absolute
     right: 30px
     bottom: 57px
+    z-index: 1
+    display: flex
+    +lg-block
+      bottom: 32px
+    +xs-block
+      right: 0
+      bottom: 0
+      
+  .slider-navigation
     +lg-block
       display: none
+  .swiper-paginationWrapper
+    flex: none
+    width: 136px
+    height: var(--button-default-height)
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
+    +lg-block
+      +tns-nav-block
+      +tns-nav-block-animate
+      width: auto
+    +xs-block
+      bottom: 0
+      right: var(--button-default-height)
+      top: auto
+  .swiper-pagination
+    position: static
+    &.swiper-pagination-bullets
+      transition: $transition
+      transform: translateX(calc(50% - 3px))

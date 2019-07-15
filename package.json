@@ -4,7 +4,8 @@
   "main": "index.js",
   "privat": "true",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production SITE=true webpack --progress --hide-modules",
+    "build:layout": "cross-env NODE_ENV=production SITE=false webpack --progress --hide-modules"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +47,8 @@
     "aos": "^3.0.0-beta.6",
     "formbouncerjs": "^1.4.5",
     "lax.js": "^1.2.3",
+    "smoothscroll-for-websites": "^1.4.9",
+    "swiper": "^4.5.0",
     "tingle.js": "^0.15.1",
     "tiny-slider": "^2.9.2",
     "vanilla-js-dropdown": "^2.2.0",

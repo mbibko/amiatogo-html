@@ -12,20 +12,25 @@
     animation: scale .2s cubic-bezier(.68, -.55, .265, 1.55) forwards
     &__content
       padding: 0
+      height: 100%
 .tingle-modal
   &.modal-full &__close
+    +block-animate-bg(#000)
+    background: $base-color url("~images/close.svg?fill=white") 28px center no-repeat
+    background-size: 12px 12px
+    position: fixed
     width: var(--button-default-height)
     height: var(--button-default-height)
     top: 90px
     left: auto
     right: var(--fields)
-    background-color: $base-color
-    svg
-      width: 12px
-      height: 12px
-    +xl-block
+    span
+      display: none
+    +lg-block
+      background-position: 18px center
       top: 30px
     +xs-block
+      background-position: 20px center
       top: 0
       right: 0
   &.modal-full &__closeLabel

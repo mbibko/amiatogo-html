@@ -1,17 +1,17 @@
-import SmoothScroll from './smooth-scroll'
 import AOS from 'aos'
 import lax from 'lax.js'
+import './SmoothScroll.js'
 
 const initAnimationsFunc = () => {
   const initAnimations = () => {
-    // new SmoothScroll(document, 120, 12)
 
     AOS.init({
+      disable: window.pageYOffset > window.innerHeight ? true : false,
       duration: window.innerHeight > 500 ? 800 : 400,
       // offset: window.innerHeight > 500 ? 0 : 0,
       // delay: 50,
       // anchorPlacement: 'top-center',
-      // once: true,
+      once: true,
       // mirror: true,
       easing: 'ease-in-out'
     });
@@ -25,6 +25,13 @@ const initAnimationsFunc = () => {
       window.requestAnimationFrame(updateLax)
     }
     window.requestAnimationFrame(updateLax)
+    if(typeof SmoothScroll != 'undefined') {
+      SmoothScroll({
+          frameRate : 150, 
+          animationTime : 450,
+          stepSize : 80,
+      });
+    }
   }
 
 

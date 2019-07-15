@@ -11,7 +11,7 @@
     flex: none
     width: calc(100% / 25 * 11)
     margin-right: calc(100% / 25 * 2)
-    +xl-block
+    +lg-block
       width: calc(100% / var(--columns) * 5)
       margin-right: calc(100% / var(--columns))
     +xs-block
@@ -21,7 +21,7 @@
   &__sett
     display: flex
     flex: 1
-    justify-content: space-between
+    justify-content: flex-end
 
 .store-list
   margin-left: calc(var(--fields) * -1)
@@ -45,22 +45,6 @@
     &.is-active
       background-color: #fff
 
-
-.find-place
-  font-size: 15px
-  width: 273px
-  justify-content: flex-start
-  svg
-    margin-right: 30px
-  +xl-block
-    font-size: 12px
-    width: auto
-    svg
-      margin-right: 10px
-  +xs-block
-    svg
-      margin-left: 5px
-
 .switch-buttons
   display: flex
   &__item
@@ -82,7 +66,7 @@
   align-items: center
   font-size: 17px
   line-height: 29px
-  +xl-block
+  +lg-block
     width: calc(var(--fields) + (100% - var(--fields) * 2) / var(--columns) * 5)
     padding-right: 0
     font-size: 13px
@@ -115,7 +99,7 @@
   &__item
     span
       color: #60656b
-      +xl-block
+      +lg-block
         display: block
         font-size: 12px
     &_workdays span
@@ -123,12 +107,12 @@
       margin-right: 6px
       text-transform: uppercase
       font-size: 13px
-      +xl-block
+      +lg-block
         text-transform: none
   &__title
     margin-bottom: 45px
     line-height: 1.333em
-    +xl-block
+    +lg-block
       margin-bottom: 19px
       font-size: 18px
       line-height: 22px
@@ -139,7 +123,7 @@
     font-size: 13px
     text-transform: uppercase
     letter-spacing: 0.39px
-    +xl-block
+    +lg-block
       font-size: 12px
       text-transform: none
       letter-spacing: 0
@@ -160,7 +144,7 @@
     font-size: 13px
     color: $gray-color
     cursor: pointer
-    +xl-block
+    +lg-block
       margin-top: 40px
       font-size: 10px
     &::before
@@ -180,7 +164,7 @@
       position: relative
       top: 2px
       margin-left: 10px
-      +xl-block
+      +lg-block
         top: 2px
     .is-active &::after
       top: 0
@@ -192,21 +176,22 @@
   flex: 1
   height: 540px
   overflow: hidden
-  +xl-block
+  padding-right: var(--fields)
+  +lg-block
     height: 340px
   +xs-block
     width: calc(100vw - var(--fields))
     margin-left: var(--fields)
     height: 210px
 
-  .tns-slide-active + .tns-slide-active
+  .swiper-slide-next
     &::before
       opacity: 0.8
   &__item
     position: relative
     width: calc(100% / 13 * 11)
     height: 540px
-    +xl-block
+    +lg-block
       width: 100%
       height: 340px
     +xs-block
@@ -225,37 +210,44 @@
       height: 100%
       width: 100%
       object-fit: cover
-  .tns-nav
-    display: none
-    +xl-block
-      +tns-nav-block
-      display: flex
-      position: absolute
-      top: 0
-    +xs-block
-      bottom: 0
-      right: var(--button-default-height)
-      top: auto
-  .tns-controls
+  .slider-controls
     position: absolute
     left: 0
     top: 0
-    +xl-block
-      display: none
-  .slider-sett
-    position: absolute
-    left: 136px
-    top: 0
-    +xl-block
-      left: 94px
+    z-index: 1
+    display: flex
     +xs-block
       left: auto
       right: 0
       top: auto
       bottom: 0
-  .slider-counter
-    +xl-block
+  .swiper-pagination
+    position: static
+    flex: none
+    width: var(--button-default-height)
+    height: var(--button-default-height)
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
+    +lg-block
+      +tns-nav-block
+      width: auto
+    +xs-block
+      bottom: 0
+      right: var(--button-default-height)
+      top: auto
+  .slider-navigation
+    +lg-block
       display: none
+  .linkfull
+    flex: none
+    width: var(--button-default-height)
+    height: var(--button-default-height)
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #fff
 
 .store-map
   width: 100%
@@ -266,13 +258,13 @@
     order: 2
   &__inner
     height: 600px
-    +xl-block
+    +lg-block
       height: 340px
     +xs-block
       height: 300px
   .is-active &
     height: 600px
-    +xl-block
+    +lg-block
       height: 340px
     +xs-block
       height: 300px

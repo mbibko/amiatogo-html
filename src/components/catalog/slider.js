@@ -1,30 +1,21 @@
-import { tns } from "tiny-slider/src/tiny-slider"
+import { Swiper, Navigation, Pagination, Controller } from 'swiper/dist/js/swiper.esm.js';
+Swiper.use([Pagination]);
 
 let slidersImgs = [];
 let slidersInitiated = false;
 
 const initSliders = () => {
-  [].forEach.call(document.querySelectorAll('.catalog-slider > div'), container => {
-    const startIndex = container.getAttribute('data-start')
-    slidersImgs.push(tns({
-      container: container,
-      // startIndex: 1,
-      mouseDrag: true,
-      items: 2,
+  [].forEach.call(document.querySelectorAll('.catalog-slider'), sliderContainer => {
+    const slider = new Swiper(sliderContainer, {
       speed: 1000,
-      swipeAngle: 30,
-      autoplay: false,
-      autoplayButtonOutput: false,
-      nav: false,
-      preventActionWhenRunning: true,
-      controls: false,
-      autoWidth: true,
-      // center: true,
-      loop: true,
-      nav: true,
-      navPosition: 'bottom'
+      slidesPerView: 'auto',
+
+      pagination: {
+        el: '.swiper-pagination',
+      },
     })
-    )
+
+    slidersImgs.push(slider)
   });
   slidersInitiated = true
 }

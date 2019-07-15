@@ -3,11 +3,13 @@
 import 'aos/dist/aos.css'
 import 'tingle.js/src/tingle.css'
 import "tiny-slider/dist/tiny-slider.css"
+import "swiper/dist/css/swiper.min.css"
 import './sass/main.sass'
 
-// import helpers
+// import grid
 //=====================================
-import { scrollToTop, setContainerHeight, move } from './js/helpers'
+import './js/grid'
+
 
 // import components
 //=====================================
@@ -39,9 +41,13 @@ import './components/fourSliders'
 //=====================================
 import './js/initAnimations'
 import './js/videoInit'
-import './js/dinamic-links.js'
 import './js/forms.js'
 import './js/load-imgs.js'
+
+import collectionItemSlider from './components/modalCollection/slider.js'
+if(document.querySelector('.coll-modal-wrapper')) {
+	collectionItemSlider(document.querySelector('.coll-modal-slider'))
+}
 
 // import icons
 //=====================================

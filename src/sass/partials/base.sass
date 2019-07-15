@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500')
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500&display=swap&subset=cyrillic')
 @font-face
   font-family: 'Anglecia Pro Display'
   src: url('../fonts/AngleciaProDisplay.woff') format('woff')
@@ -20,7 +20,7 @@
   --button-default-height: 68px
   --control-height: 36px
   --link-all-fields: 30px
-  +xl-block
+  +lg-block
     --columns: 13
     --fields: 53px
     --border-size-base: 2px
@@ -35,9 +35,10 @@
   
 html
   position: relative
+  height: 100%
   // overflow: auto
   font-size: 14px
-  +xl-block
+  +lg-block
     font-size: 12px
   &.css-simple-grid::before
     pointer-events: none
@@ -48,16 +49,23 @@ html
     right: var(--fields)
     top: 0
     bottom: 0
+    border-right: 1px solid rgba(orange, 0.3)
     background-size: calc(100% / var(--columns))
-    background-image: linear-gradient(to right, gray 0px, transparent 1px )
+    background-image: linear-gradient(to right, rgba(orange, 0.3) 0px, transparent 1px )
 
 body
   font-size: 1rem
   font-family: $base-font
   background-color: #fafbfc
   line-height: 1.714
+  height: 100%
+  &.index
+    overflow: hidden
+    &.page-ready
+      overflow: initial
   &.page-404
     &::before
+      position: fixed
       content: ''
       display: block
       left: 0
@@ -65,17 +73,19 @@ body
       width: 100%
       height: 100%
       z-index: -1
-      position: absolute
-      background: #fafbfc url("../media/404-crop.jpg") center -157px no-repeat
+      background: url("../media/404-crop.jpg") center -157px no-repeat
       pointer-events: none
-      +xl-block
-        height: 1013px
+      +lg-block
         background-position: center top
         background-size: contain
-      +xs-block
-        height: 570px
+      +to(414px)
+        background-size: 120% auto
+      +to(400px)
+        background-size: 130% auto
+      +to(340px)
         opacity: 0.7
-        background-size: cover
+        background-size: 150% auto
+
 a
   color: $base-color
   &.tdn
@@ -104,11 +114,6 @@ b
 .container
   +wrapper
 
-.no-right-field
-  +from($break_xl + 1px)
-    padding-right: 0
-
-
 h1, .h1,
   +h1
 h2, .h2
@@ -128,7 +133,9 @@ h3, .h3
 
 +make-grid-columns
 +xl-block
-  +make-grid-columns($columns: 13, $size: '-xl')
+  +make-grid-columns($columns: 27, $size: '-xl')
++lg-block
+  +make-grid-columns($columns: 13, $size: '-lg')
 +xs-block
   +make-grid-columns($columns: 7, $size: '-xs')
 
@@ -137,7 +144,7 @@ h3, .h3
   width: auto
 .col-full-none
   flex: none
-+xl-block
++lg-block
   .col-xl-full
     flex: 1
     width: auto
@@ -156,7 +163,7 @@ h3, .h3
   margin-right: calc(var(--fields) * -1)
 .coll-negative-offset-right-no
   margin-right: 0
-+xl-block
++lg-block
   .coll-negative-xl-offset-left
     margin-left: calc(var(--fields) * -1)
   .coll-negative-xl-offset-right

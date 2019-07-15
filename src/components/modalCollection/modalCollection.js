@@ -1,21 +1,24 @@
 import tingle from 'tingle.js'
-import { tns } from "tiny-slider/src/tiny-slider"
+import slider from './slider.js';
 import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
+import modalShare from "./modalShare";
 
-;(function () {
-  const links = document.querySelectorAll('.js-cool-modal');
-  if(!links) return
+function modalCollection() {
+  const links = document.querySelectorAll('.js-cool-modal:not(.inited)');
+  if(!links) return;
+
+  const page_data = window.page_data || {};
   const generateSideHtml = item => {
     return `
           <div class="coll-modal-side__top">
               <div class="coll-modal-side__item">
                 <div class="coll-modal-side__title">Артикул</div>
-                <div class="coll-modal-side__subtitle">Арт. SP - ${item.art}</div>
+                <div class="coll-modal-side__subtitle">${item.art}</div>
               </div>
-              <div class="coll-modal-side__item">
+              <a href="${item.url}" class="coll-modal-side__item coll-modal-side__item_full">
                 <div class="coll-modal-side__title">Коллекция</div>
                 <div class="coll-modal-side__subtitle coll-modal-side__subtitle_underline">${item.collection}</div>
-              </div>
+              </a>
           </div>
           <div class="coll-modal-side__item">
             <div class="coll-modal-side__title">Состав</div>
@@ -31,17 +34,17 @@ import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
           </div>
           <div class="coll-modal-side__footer">
               <div class="coll-modal-side__title">Поделиться</div>
-              <div class="social social_colored">
-                <a class="button-animate button-animate_inverted_bg social__link social__link_facebook" href="${item.shares.facebook}"><svg fill="#39579f" width="9" height="16">
+              <div class="social social_block social_${item.theme == 'dark' ? 'colored' : ''} js-social" data-url="${item.share.url}" data-title="${item.share.title}" data-description="${item.share.description}" data-image="${item.share.image}">
+                <a class="block-animate ${item.theme == 'dark' ? 'block-animate_inverted_bg' : 'button-white'} social__link social__link_facebook" data-id="fb" href="#"><svg width="9" height="16">
                     <use xlink:href="#icon-facebook"></use>
                   </svg></a>
-                <a class="button-animate button-animate_inverted_bg social__link social__link_twitter" href="${item.shares.twitter}"><svg fill="#1da1f2" width="17" height="14">
+                <a class="button-animate button-animate_inverted_bg social__link social__link_twitter" href="#" data-id="tw"><svg fill="#1da1f2" width="17" height="14">
                     <use xlink:href="#icon-twitter"></use>
                   </svg></a>
-                <a class="button-animate button-animate_inverted_bg social__link social__link_vkontakte" href="${item.shares.vkontakte}"><svg fill="#5181b8" width="21" height="12">
+                <a class="block-animate ${item.theme == 'dark' ? 'block-animate_inverted_bg' : 'button-white'} social__link social__link_vkontakte" href="#" data-id="vk"><svg width="21" height="12">
                     <use xlink:href="#icon-vkontakte"></use>
                   </svg></a>
-                <a class="button-animate button-animate_inverted_bg social__link social__link_odnoklassniki" href="${item.shares.odnoklassniki}"><svg fill="#ef7d01" width="16" height="16">
+                <a class="block-animate ${item.theme == 'dark' ? 'block-animate_inverted_bg' : 'button-white'} social__link social__link_odnoklassniki" href="#" data-id="ok"><svg width="16" height="16">
                     <use xlink:href="#icon-odnoklassniki"></use>
                   </svg></a>
               </div>
@@ -49,29 +52,33 @@ import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
   `
   }
   [].forEach.call(links, link => {
+    link.classList.add('inited');
     link.addEventListener('click', () => {
-      let slidesStr = ''
+      let slidesStr = '';
       const data = JSON.parse(link.parentNode.dataset.modal)
 
       data.imgs.forEach((item, i) => {
-        slidesStr += `<div class="coll-modal-slider__item"><img src="${item}" alt=""></div>`
+        slidesStr += `<div class="coll-modal-slider__item swiper-slide"><img src="${item}" alt=""></div>`
       });
       const content = `
-        <div class="coll-modal-wrapper">
+        <div class="coll-modal-wrapper theme_${data.theme}">
           <div class="coll-modal-side">
             <div class="button button-dark coll-modal-side__link"><span></span></div>
             <div class="coll-modal-side__inner">
-              ${generateSideHtml(data)}
+              <div class="coll-modal-side__inner-inner">
+                ${generateSideHtml(data)}
+              </div>
             </div>
           </div>
-        <div class="coll-modal-slider">
-          <div class="slider-sett">
-            <div class="slider-counter">
-              <div class="slider-counter__1">1</div>/
-              <div class="slider-counter__2">3</div>
+        <div class="coll-modal-slider swiper-container">
+          <div class="coll-modal-slider__slides swiper-wrapper">${slidesStr}</div>
+          <div class="slider-controls">
+            <div class="slider-navigation">
+              <div class="slider-button slider-button-prev"></div>
+              <div class="slider-button slider-button-next"></div>
             </div>
+            <div class="swiper-pagination"></div>
           </div>
-          <div class="coll-modal-slider__slides">${slidesStr}</div>
         </div>
         </div>
       `;
@@ -80,43 +87,39 @@ import animatedHoverButton from '../animatedHoverButton/animatedHoverButton.js'
           closeMethods: ['button', 'escape'],
           cssClass: ['modal-full'],
           onOpen: () => {
-            const modalContent = modal.getContent()
-            const sliderContainer = modalContent.querySelector('.coll-modal-slider')
-            const slidesContainer = sliderContainer.querySelector('.coll-modal-slider__slides')
-            slidesContainer.style.height = window.innerHeight + 'px'
-            // console.log(modal.getContent().querySelector('.stores-modal-slider__slides'));
-            console.log(slidesContainer);
-            const itemsWidth = slidesContainer.children[0].offsetWidth
-            const slider = tns({
-              container: slidesContainer,
-              // startIndex: sliderStartIndex,
-              mouseDrag: true,
-              speed: 1000,
-              swipeAngle: 30,
-              autoplay: false,
-              autoplayButtonOutput: false,
-              preventActionWhenRunning: true,
-              controls: true,
-              controlsPosition: 'bottom',
-              fixedWidth: itemsWidth,
-              center: false,
-              loop: true,
-              nav: true,
-              navPosition: 'bottom'
-            });
-            slider.events.on('indexChanged', info => {
-              sliderContainer.querySelector('.slider-counter__1').textContent = info.displayIndex
-            });
+            const modalContent = modal.getContent();
+            const sliderContainer = modalContent.querySelector('.coll-modal-slider');
+
+            slider(sliderContainer);
+
             const side = modalContent.querySelector('.coll-modal-side')
             const sideLink = side.querySelector('.coll-modal-side__link')
             sideLink.addEventListener('click', () => {
               modal.modal.classList.toggle('is-side-active')
             });
+            if (isHistoryApiAvailable() && data.url !== undefined && data.url !== window.location) {
+                window.history.pushState(null, data.art, data.url);
+                document.title = data.art;
+            }
+          },
+          onClose: () => {
+            if (isHistoryApiAvailable() && page_data.url !== undefined && page_data.url !== window.location) {
+              window.history.pushState(null, page_data.title, page_data.url);
+              document.title = page_data.title;
+            }
           }
       });
       modal.setContent(content);
       modal.open();
-      animatedHoverButton()
+      animatedHoverButton();
+      modalShare();
+    })
   })
-  })
-}());
+}
+modalCollection();
+
+function isHistoryApiAvailable() {
+  return !!(window.history && history.pushState);
+}
+
+export default modalCollection;

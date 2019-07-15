@@ -1,3 +1,22 @@
+select
+  min-height: 28px
+  line-height: 28px
+  display: inline-block
+  background-color: transparent
+  border-radius: 0px
+  box-shadow: none
+  border: 0
+  border-bottom: 1px solid $base-color
+  padding: 0 20px 0 0
+  appearance: none
+  background-position: 100% center
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%2316181c' d='M5.006 0L2.5 4.008-.006-.001z'/%3E%3C/svg%3E")
+  background-repeat: no-repeat
+  background-size: 5px 4px
+  outline: none
+  +xs-block
+    width: 100%
+
 .form
   &__top
     margin-bottom: 38px
@@ -6,17 +25,17 @@
   &__title
     font-size: 17px
     font-weight: 500
-    +xl-block
+    +lg-block
       font-size: 14px
       line-height: 18px
       margin-bottom: 10px
     +xs-block
       font-size: 13px
       line-height: 17px
-     
+
   .button-submit
     margin-top: 90px
-    +xl-block
+    +lg-block
       margin-top: 40px
 
 
@@ -33,7 +52,7 @@
     +xs-block
       font-size: 10px
 
-  
+
 .help-text
   font-size: 13px
   color: $gray-color
@@ -68,25 +87,25 @@
   .is-focused &
     border-bottom-color: $base-color
   .has-error &
-    border-bottom-color: $red-color 
+    border-bottom-color: $red-color
     color: $red-color
 
 .form-group
   margin-bottom: 49px
-  +xl-block
+  +lg-block
     margin-bottom: 32px
   +xs-block
     margin-bottom: 26px
 
 .subscribe-us
   max-width: 426px
-  +xl-block
+  +lg-block
     max-width: none
     order: 2
   &__text
     min-width: 360px
     margin-bottom: 45px
-    +xl-block
+    +lg-block
       margin-bottom: 27px
     +xs-block
       min-width: 0
@@ -117,14 +136,16 @@
   padding-right: var(--fields)
   text-align: center
   font-size: 17px
-  +xl-block
+  +lg-block
     font-size: 14px
   +xs-block
     font-size: 12px
+  &_hidden
+      display: none
   &__icon
     width: var(--button-default-height)
     height: var(--button-default-height)
-    margin-left: auto 
+    margin-left: auto
     margin-right: auto
     @extend .m-b-4
     @extend .m-b-xl-3
@@ -139,7 +160,7 @@
     svg
       width: 22px
       height: 16px
-    +xl-block
+    +lg-block
       font-size: 28px
       svg
         width: 16px
@@ -154,7 +175,7 @@
     font-family: $angelicia-display
     font-size: 24px
     margin-bottom: 40px
-    +xl-block
+    +lg-block
       font-size: 18px
     +xs-block
       font-size: 16px

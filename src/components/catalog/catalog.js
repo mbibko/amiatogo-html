@@ -19,10 +19,12 @@ import './slider.js'
   const menuElsBottom = menuWrapper.querySelector('.catalog-menu-bottom .inner');
   const elsLength = elements.length
 
+  menuElsBottom.style.transform = 'translateY(calc(-100%/'+elsLength+'*1))';
+
 
   let menuMiddleMaxWidth = 0;
   [].forEach.call(menuElsMiddle.querySelectorAll('[data-letters]'), function(el, i) {
-    console.log(el.offsetWidth, menuMiddleMaxWidth);
+    // console.log(el.offsetWidth, menuMiddleMaxWidth);
     if(el.offsetWidth > menuMiddleMaxWidth) menuMiddleMaxWidth = el.offsetWidth
   });
   menuElsMiddle.parentNode.style.width = menuMiddleMaxWidth + 100 + 'px';
@@ -43,9 +45,9 @@ import './slider.js'
 
   const addActiveClass = () => {
     let isClassAdded = false;
-    if(!checkVisible(wrapper, 240)) return; 
+    if(!checkVisible(wrapper)) return; 
     [].forEach.call(elements, function(el, i) {
-      if(!isClassAdded && checkVisible(el, 240)) {
+      if(!isClassAdded && checkVisible(el, window.innerHeight / 2)) {
         menuElsTop.style.transform = 'translateY(calc(100%/'+elsLength+'*'+(elsLength-i)+'))';
         menuElsMiddle.style.transform = 'translateY(calc(-100%/'+elsLength+'*'+i+'))';
         menuElsBottom.style.transform = 'translateY(calc(-100%/'+elsLength+'*'+(i + 1)+'))';

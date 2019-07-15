@@ -6,33 +6,22 @@
     display: none
   li
     margin-left: 50px
-    +xl-block
+    +lg-block
       margin-left: 24px
     &.active a
       color: #818285
   a
     display: block
     text-decoration: none
-    font-size: 17px
+    font-size: 15px
     position: relative
-    +xl-block
+    transition: $transition
+    +lg-block
       font-size: 14px
   &_top
     top: -4px
     a
-      &::before, &::after
-        width: 0%
-        position: absolute
-        transition: width 0.5s
-        transition-timing-function: cubic-bezier(0.7,0,0.3,1)
-        content: ''
-        display: block
-        left: 0
-        bottom: 0px
-        border-bottom: 1px solid rgba(255,255,255,.6)
-      &:hover
-        &::after
-          width: 100%
+      +link-hover-border
   &_line
     height: 100%
     a
@@ -46,30 +35,46 @@
       overflow: hidden
       &::before
         content: ''
+        display: block
         position: absolute
         left: 0
         width: 100%
         bottom: 0
-        background-color: #16181c
-        height: 3px
-        transform: translateY(3px)
-        transition: .4s
+        height: var(--border-size-base)
+        background-color: $base-color
+        transition: $transition
+        transform: translateY(100%)
     li
-      &.active a
+      &.active a, &:hover a
         color: #16181c
         &::before
           transform: translateY(0)
   &_line_page
-    li.active a
-      color: $gray-color
-    a
-      font-size: 17px
-      color: $base-color
-      height: 50px
-      overflow: initial
-      +xl-block
-        font-size: 14px
+    li
+      display: flex
+      align-items: center
+      position: relative
       &::before
-        bottom: -68px
+        content: ''
+        display: block
+        position: absolute
+        left: 0
+        width: 100%
+        bottom: 0
+        height: var(--border-size-base)
+        background-color: $base-color
+        transition: $transition
+        transform: translateY(100%)
+      &:hover
+      &.active
+        &::before
+          transform: translateY(0)
+    a
+      height: 50px
+      color: $base-color
       &:hover
         color: $gray-color
+      +lg-block
+        font-size: 14px
+    li.active a
+      color: $gray-color

@@ -1,17 +1,22 @@
-<div class="sliderCollection">
-  <div class="sliderCollection__slides">
-  {% set slidesCount = 4 %}
-  {% for i in range(slidesCount) %}
-  <div class="sliderCollection__item">
-    <img src="../media/temp/collections-slider/{{loop.index}}.jpg" alt="">
-  </div>
-  {% endfor %}
-  </div>
-  <div class="slider-sett">
-    <div class="slider-counter">
-      <div class="slider-counter__1">1</div>/
-      <div class="slider-counter__2">{{slidesCount}}</div>
+<div class="sliderCollectionContainer">
+  <div class="sliderCollection swiper-container">
+    <div class="sliderCollection__slides swiper-wrapper">
+    {% set slidesCount = 4 %}
+    {% for i in range(slidesCount) %}
+  <div class="sliderCollection__item swiper-slide" data-modal='{"url": "#", "imgs" : ["media/temp/item-plus/1/1.jpg"], "art": "SP-342-76", "collection": "Хиты уходящего сезона", "includes": "Хлопок 72%, полиэстер 20%, эластан 8%", "about": "Эффектный спортивный костюм в стиле Sport Chic из трикотажного полотна. Отделочные полосы на переде джемпера выполнены в постельной цветовой гамме и соответствуют цвету лампас на брюках.", "sizes": "48, 50, 52, 54, 56, 58", "share": {"url": "#", "title": "", "description": ""}}'>
+    <img class="js-cool-modal" src="../media/temp/collections-slider/{{loop.index}}.jpg" alt="">
+    </div>
+    {% endfor %}
+    </div>
+    <div class="slider-controls">
+      <div class="slider-navigation">
+        <div class="slider-button slider-button-prev"></div>
+        <div class="slider-button slider-button-next"></div>
+      </div>
+      <div class="swiper-paginationWrapper"><div class="swiper-pagination"></div></div>
     </div>
   </div>
-  <a href="#" class="button-animate hot-link button button-white"><div class="hot-link__inner">Хиты уходящего <br> сезона</div></a>
+  <a href="#" class="hot-link">
+    <div class="block-animate button button-block button-white"><div class="hot-link__inner">Хиты уходящего <br> сезона</div></div>
+  </a>
 </div>

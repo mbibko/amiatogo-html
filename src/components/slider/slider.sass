@@ -9,50 +9,44 @@
   @extend .m-b-xl-6
   @extend .m-b-xs-5
   &__slidesWrapper
-    padding-left: calc(var(--fields) + var(--column) * 2)
     margin-right: calc(var(--fields) * -1)
     margin-left: calc(var(--fields) * -1)
-    +xl-block
+    padding-left: calc(var(--fields) + var(--columnJs) * 2)
+    +lg-block
       margin-bottom: 17px
     +xs-block
       padding-left: var(--fields)
       margin-bottom: 70px
-  &__slides
-  &__item
+  .swiper-slide
     display: block
     width: calc(100% / 3)
     text-decoration: none
-    +xl-block
+    +lg-block
       width: calc(100% / 12 * 5)
     +md-block
       width: calc((100% - var(--fields) * 2) / var(--columns) * 8)
     +xs-block
       width: calc((100% - var(--fields) * 2) / var(--columns) * 6)
-    &.is-active-slide
-      opacity: 0
-      .is-slide-changed &
-        opacity: 1
-  .tns-nav
+  .swiper-pagination
     display: none
-    +xl-block
+    +lg-block
       display: block
+      position: static
       margin-top: 50px
-      margin-left: calc((100% - var(--fields) * 2) / var(--columns) * 2 + var(--fields))
+      text-align: left
     +xs-block
       display: none
-  .tns-controls
-    margin-left: calc((100% - var(--fields) * 2) / var(--columns) * 2 + var(--fields))
-    
+  .slider-navigation
     margin-top: 86px
     +tns-control-white
-    button
+    .slider-button
       background-color: transparent
-    +xl-block
+    +lg-block
       display: none
   .link-all
     +shift-left(16)
     margin-top: -50px
-    +xl-block
+    +lg-block
       margin-left: auto
     +xs-block
       margin: 0
