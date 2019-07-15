@@ -5,7 +5,7 @@ Swiper.use([Navigation, Pagination]);
 import ajaxLoad from '../../js/ajaxLoad'
 import modalStore from '../modalStore/modalStore'
 
-const scrollToStore = id => {
+global.scrollToStore = id => {
   setTimeout(() => {
     window.scrollTo({
         top: document.querySelector(`.store-list__item[data-id="${id}"]`).getBoundingClientRect().top + pageYOffset,
@@ -14,7 +14,7 @@ const scrollToStore = id => {
   }, 1000)
 };
 
-const scrollToStoreMap = id => {
+global.scrollToStoreMap = id => {
   const item = document.querySelector(`.store-list__item[data-id="${id}"]`);
   item.classList.toggle('is-active');
   setTimeout(() => {
