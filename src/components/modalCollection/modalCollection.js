@@ -15,7 +15,7 @@ function modalCollection() {
                 <div class="coll-modal-side__title">Артикул</div>
                 <div class="coll-modal-side__subtitle">${item.art}</div>
               </div>
-              <a href="${item.url}" class="coll-modal-side__item coll-modal-side__item_full">
+              <a href="${item.section_url}" class="coll-modal-side__item coll-modal-side__item_full">
                 <div class="coll-modal-side__title">Коллекция</div>
                 <div class="coll-modal-side__subtitle coll-modal-side__subtitle_underline">${item.collection}</div>
               </a>
@@ -50,7 +50,7 @@ function modalCollection() {
               </div>
           </div>
   `
-  }
+  };
   [].forEach.call(links, link => {
     link.classList.add('inited');
     link.addEventListener('click', () => {
@@ -92,8 +92,8 @@ function modalCollection() {
 
             slider(sliderContainer);
 
-            const side = modalContent.querySelector('.coll-modal-side')
-            const sideLink = side.querySelector('.coll-modal-side__link')
+            const side = modalContent.querySelector('.coll-modal-side');
+            const sideLink = side.querySelector('.coll-modal-side__link');
             sideLink.addEventListener('click', () => {
               modal.modal.classList.toggle('is-side-active')
             });
