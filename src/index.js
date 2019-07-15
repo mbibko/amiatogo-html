@@ -41,7 +41,6 @@ import './components/fourSliders'
 //=====================================
 import './js/initAnimations'
 import './js/videoInit'
-import './js/dinamic-links.js'
 import './js/forms.js'
 import './js/load-imgs.js'
 

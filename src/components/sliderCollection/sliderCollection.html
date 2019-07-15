@@ -3,8 +3,8 @@
     <div class="sliderCollection__slides swiper-wrapper">
     {% set slidesCount = 4 %}
     {% for i in range(slidesCount) %}
-    <div class="sliderCollection__item swiper-slide">
-      <img src="../media/temp/collections-slider/{{loop.index}}.jpg" alt="">
+  <div class="sliderCollection__item swiper-slide" data-modal='{"url": "#", "imgs" : ["media/temp/item-plus/1/1.jpg"], "art": "SP-342-76", "collection": "Хиты уходящего сезона", "includes": "Хлопок 72%, полиэстер 20%, эластан 8%", "about": "Эффектный спортивный костюм в стиле Sport Chic из трикотажного полотна. Отделочные полосы на переде джемпера выполнены в постельной цветовой гамме и соответствуют цвету лампас на брюках.", "sizes": "48, 50, 52, 54, 56, 58", "share": {"url": "#", "title": "", "description": ""}}'>
+    <img class="js-cool-modal" src="../media/temp/collections-slider/{{loop.index}}.jpg" alt="">
     </div>
     {% endfor %}
     </div>

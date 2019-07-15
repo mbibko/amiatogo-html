@@ -2,6 +2,8 @@ import { break_xl } from "../../js/constants";
 import iconMarkerMap from '../../media/marker-map.svg'
 import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
 Swiper.use([Navigation, Pagination]);
+import ajaxLoad from '../../js/ajaxLoad'
+import modalStore from '../modalStore/modalStore'
 
 const storeFunc = () => {
   [].forEach.call(document.querySelectorAll('.store-list__item:not(.inited)'), item => {
@@ -47,28 +49,48 @@ const storeFunc = () => {
     });
     item.classList.add('inited')
   });
-}
-storeFunc();
+};
 
-const loadMoreStoreItems = () => {
-  const container = document.querySelector('.stores-wrapper')
-  if(!container) return;
-  const link = container.querySelector('.js-store-items-more')
-  const itemsContainer = container.querySelector('.store-list')
-  if (!link) return;
-  link.addEventListener('click', () => {
-    fetch('data-store-items.html')
-      .then(function (response) {
-        // console.log(response)
-        return response.text()
-      })
-      .then(function (text) {
-        // console.log(text)
-        itemsContainer.insertAdjacentHTML('beforeend', text);
-        storeFunc()
-        aosGenerate()
-      })
-    // .catch( alert );
-  })
+document.addEventListener('DOMContentLoaded', () => {
+  storeFunc();
+  modalStore();
+
+  ajaxLoad('.ajax-list',() => {
+    storeFunc();
+    modalStore();
+  });
+}, false);
+
+let city_filter = document.querySelector('.js-map-city-filter');
+
+if (city_filter !== null) {
+  city_filter.addEventListener('change', e => {
+    const container = document.querySelector('.ajax-list');
+    if (!container) return;
+    const params = {'AJAX_PAGE': 'Y', 'CONTAINER': 'ajax'};
+    const ajaxLoaderClass = 'loading';
+
+    let name = e.target.name,
+        value = e.target.value,
+        url = new URL( window.location.href),
+        data = {};
+
+    Object.defineProperty(data, name, {value: value, enumerable: true, configurable: true, writable: true});
+    Object.assign(data, params);
+
+    Object.keys(data).forEach(key => url.searchParams.append(key, data[key]));
+
+    container.classList.add(ajaxLoaderClass);
+
+    fetch(url.pathname + url.search, {
+      headers: {'X-Requested-With': 'XMLHttpRequest'}
+    }).then(response => response.text())
+    .then(function (text) {
+      container.innerHTML = text;
+      container.classList.remove(ajaxLoaderClass);
+
+      storeFunc();
+      modalStore();
+    });
+  });
 }
-loadMoreStoreItems()

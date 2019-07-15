@@ -32,7 +32,7 @@ select
     +xs-block
       font-size: 13px
       line-height: 17px
-     
+
   .button-submit
     margin-top: 90px
     +lg-block
@@ -52,7 +52,7 @@ select
     +xs-block
       font-size: 10px
 
-  
+
 .help-text
   font-size: 13px
   color: $gray-color
@@ -87,7 +87,7 @@ select
   .is-focused &
     border-bottom-color: $base-color
   .has-error &
-    border-bottom-color: $red-color 
+    border-bottom-color: $red-color
     color: $red-color
 
 .form-group
@@ -140,10 +140,12 @@ select
     font-size: 14px
   +xs-block
     font-size: 12px
+  &_hidden
+      display: none
   &__icon
     width: var(--button-default-height)
     height: var(--button-default-height)
-    margin-left: auto 
+    margin-left: auto
     margin-right: auto
     @extend .m-b-4
     @extend .m-b-xl-3
