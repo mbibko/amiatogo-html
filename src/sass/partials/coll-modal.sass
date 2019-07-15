@@ -3,6 +3,14 @@
   display: flex
   +xs-block
     display: block
+  &__back
+    position: absolute !important
+    z-index: 10
+    top: 90px
+    right: var(--fields)
+    svg
+      transform: scale(-1)
+      margin-right: 12px
 
 .coll-modal-side
   flex: none
@@ -157,7 +165,6 @@
       margin-bottom: 0
 
 .coll-modal-slider
-  height: 100%
   flex: 1
   +xs-block
     flex: none

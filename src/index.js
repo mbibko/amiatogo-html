@@ -44,6 +44,11 @@ import './js/videoInit'
 import './js/forms.js'
 import './js/load-imgs.js'
 
+import collectionItemSlider from './components/modalCollection/slider.js'
+if(document.querySelector('.coll-modal-wrapper')) {
+	collectionItemSlider(document.querySelector('.coll-modal-slider'))
+}
+
 // import icons
 //=====================================
 import './js/svg-sprite'

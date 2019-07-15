@@ -1,0 +1,72 @@
+{% extends 'clear.html' %}
+
+
+{% set theme = 'dark' %}
+
+{% block content %}
+
+<div class="coll-modal-wrapper theme_{{theme}}">
+  <div class="coll-modal-wrapper__back button button-dark block-animate"><svg width="9" height="16"><use xlink:href="#arr"></use></svg> В коллекцию</div>
+  <div class="coll-modal-side">
+    <div class="button button-dark coll-modal-side__link"><span></span></div>
+    <div class="coll-modal-side__inner">
+      <div class="coll-modal-side__inner-inner">
+        <div class="coll-modal-side__top">
+            <div class="coll-modal-side__item">
+              <div class="coll-modal-side__title">Артикул</div>
+              <div class="coll-modal-side__subtitle">SP-342-76</div>
+            </div>
+            <a href="#" class="coll-modal-side__item coll-modal-side__item_full">
+              <div class="coll-modal-side__title">Коллекция</div>
+              <div class="coll-modal-side__subtitle coll-modal-side__subtitle_underline">Хиты уходящего сезона</div>
+            </a>
+        </div>
+        <div class="coll-modal-side__item">
+          <div class="coll-modal-side__title">Состав</div>
+          <div class="coll-modal-side__text">Хлопок 72%, полиэстер 20%, эластан 8%</div>
+        </div>
+        <div class="coll-modal-side__item">
+          <div class="coll-modal-side__title">О модели</div>
+          <div class="coll-modal-side__text">Эффектный спортивный костюм в стиле Sport Chic из трикотажного полотна. Отделочные полосы на переде джемпера выполнены в постельной цветовой гамме и соответствуют цвету лампас на брюках.</div>
+        </div>
+        <div class="coll-modal-side__item">
+          <div class="coll-modal-side__title">Размеры</div>
+          <div class="coll-modal-side__text">48, 50, 52, 54, 56, 58</div>
+        </div>
+        <div class="coll-modal-side__footer">
+            <div class="coll-modal-side__title">Поделиться</div>
+            <div class="social social_block social_{% if theme == 'dark' %}colored{% endif %} js-social" data-url="#" data-title="" data-description="" data-image="">
+              <a class="block-animate {% if theme == 'dark' %}block-animate_inverted_bg{% else %}button-white{% endif %} social__link social__link_facebook" data-id="fb" href="#"><svg width="9" height="16">
+                  <use xlink:href="#icon-facebook"></use>
+                </svg></a>
+              <a class="button-animate button-animate_inverted_bg social__link social__link_twitter" href="#" data-id="tw"><svg fill="#1da1f2" width="17" height="14">
+                  <use xlink:href="#icon-twitter"></use>
+                </svg></a>
+              <a class="block-animate {% if theme == 'dark' %}block-animate_inverted_bg{% else %}button-white{% endif %} social__link social__link_vkontakte" href="#" data-id="vk"><svg width="21" height="12">
+                  <use xlink:href="#icon-vkontakte"></use>
+                </svg></a>
+              <a class="block-animate {% if theme == 'dark' %}block-animate_inverted_bg{% else %}button-white{% endif %} social__link social__link_odnoklassniki" href="#" data-id="ok"><svg width="16" height="16">
+                  <use xlink:href="#icon-odnoklassniki"></use>
+                </svg></a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="coll-modal-slider swiper-container">
+    <div class="coll-modal-slider__slides swiper-wrapper">
+      <div class="coll-modal-slider__item swiper-slide"><img src="../media/temp/item-plus/1/1.jpg" alt=""></div>
+      <div class="coll-modal-slider__item swiper-slide"><img src="../media/temp/item-plus/1/1.jpg" alt=""></div>
+      <div class="coll-modal-slider__item swiper-slide"><img src="../media/temp/item-plus/1/1.jpg" alt=""></div>
+    </div>
+    <div class="slider-controls">
+      <div class="slider-navigation">
+        <div class="slider-button slider-button-prev"></div>
+        <div class="slider-button slider-button-next"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
