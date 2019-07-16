@@ -56,7 +56,7 @@ export const sxsw = {
     videoWidth = browserWidth;
     videoHeight = browserWidth * ratio;
 
-    // If the video is not the right height, then make it so...  
+    // If the video is not the right height, then make it so...
     if (videoHeight < browserHeight) {
       videoHeight = browserHeight;
       videoWidth = videoHeight / ratio;
@@ -85,7 +85,7 @@ export function scrollToTop(scrollDuration) {
       if ( window.scrollY != 0 ) {
           window.scrollBy( 0, scrollStep );
       }
-      else clearInterval(scrollInterval); 
+      else clearInterval(scrollInterval);
   },15);
 }
 
@@ -97,7 +97,7 @@ export function move(moreContainer, lessContainer, size) {
     if (!lessContainer.children[0]) return;
     moreContainer.appendChild(lessContainer.children[0])
   }
-  
+
 }
 
 export function invertColor(hexTripletColor) {
@@ -115,4 +115,8 @@ export function mobileDevice() {
   if (/iP(od|hone)/i.test(window.navigator.userAgent) || /IEMobile/i.test(window.navigator.userAgent) || /Windows Phone/i.test(window.navigator.userAgent) || /BlackBerry/i.test(window.navigator.userAgent) || /BB10/i.test(window.navigator.userAgent) || /Android.*Mobile/i.test(window.navigator.userAgent)) {
     return true;
   }
+}
+
+export function isHistoryApiAvailable() {
+  return !!(window.history && history.pushState);
 }
