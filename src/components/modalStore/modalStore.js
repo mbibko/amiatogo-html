@@ -57,8 +57,11 @@ const modalStore = () => {
       modal.setContent(content);
       modal.open();
     };
-    link.addEventListener('click', listener, false);
-    link.classList.add('inited');
+
+    if (link) {
+      link.addEventListener('click', listener, false);
+      link.classList.add('inited');
+    }
   });
 };
 export default modalStore

@@ -45,8 +45,10 @@ import './js/forms.js'
 import './js/load-imgs.js'
 
 import collectionItemSlider from './components/modalCollection/slider.js'
+import modalShare from './components/modalCollection/modalShare.js'
 if(document.querySelector('.coll-modal-wrapper')) {
-	collectionItemSlider(document.querySelector('.coll-modal-slider'))
+	collectionItemSlider(document.querySelector('.coll-modal-slider'));
+    modalShare();
 }
 
 // import icons

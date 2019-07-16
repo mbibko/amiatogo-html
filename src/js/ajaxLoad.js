@@ -5,8 +5,7 @@ const ajaxLoad = (selector, callback) => {
     const ajaxPagerLoaderClass = 'loading';
 
     container.forEach((item) => {
-        let ajaxPagerWrapClass = '.ajax-pager-wrap',
-            ajaxPagerLink = item.querySelector('.ajax-pager-link');
+        let ajaxPagerWrapClass = '.ajax-pager-wrap';
 
         if (!ajaxPagerWrapClass) return;
 
@@ -14,7 +13,8 @@ const ajaxLoad = (selector, callback) => {
             if (e.target && e.target.closest(ajaxPagerWrapClass)) {
                 e.preventDefault();
 
-                let url = new URL(window.location.origin + ajaxPagerLink.dataset.href);
+                let ajaxPagerLink = item.querySelector('.ajax-pager-link'),
+                    url = new URL(window.location.origin + ajaxPagerLink.dataset.href);
                 Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
                 item.classList.add(ajaxPagerLoaderClass);

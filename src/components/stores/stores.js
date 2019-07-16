@@ -5,16 +5,16 @@ Swiper.use([Navigation, Pagination]);
 import ajaxLoad from '../../js/ajaxLoad'
 import modalStore from '../modalStore/modalStore'
 
-const scrollToStore = id => {
+global.scrollToStore = id => {
   setTimeout(() => {
     window.scrollTo({
         top: document.querySelector(`.store-list__item[data-id="${id}"]`).getBoundingClientRect().top + pageYOffset,
         behavior: "smooth"
     });
   }, 1000)
-}
+};
 
-const scrollToStoreMap = id => {
+global.scrollToStoreMap = id => {
   const item = document.querySelector(`.store-list__item[data-id="${id}"]`);
   item.classList.toggle('is-active');
   setTimeout(() => {
@@ -23,7 +23,7 @@ const scrollToStoreMap = id => {
         behavior: "smooth"
     });
   }, 1500)
-}
+};
 
 const storeFunc = () => {
   [].forEach.call(document.querySelectorAll('.store-list__item:not(.inited)'), item => {
@@ -53,13 +53,7 @@ const storeFunc = () => {
             type: 'bullets',
           },
         }
-      },
-      on: {
-        init: () => {
-          scrollToStore(1);
-          // scrollToStoreMap(1);
-        },
-      },
+      }
     });
     const mapContainer = item.querySelector('.store-map__inner')
     const position = {lat: +mapContainer.dataset.lat, lng: +mapContainer.dataset.lng}

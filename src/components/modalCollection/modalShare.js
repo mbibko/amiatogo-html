@@ -18,7 +18,8 @@ const modalShare = () => {
             let id = item.dataset.id;
             if (!id) return;
 
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
                 switch (id) {
                     case 'fb':
                         popupCenter('https://www.facebook.com/sharer.php?s=100&p[url]=' + url + '&p[images][0]=' + image + '&p[title]=' + title + '&p[summary]=' + description, config.title, config.width, config.height);
@@ -31,7 +32,7 @@ const modalShare = () => {
                         if (title.length > 0 && description.length > 0) {
                             text = title + ' — ' + description;
                         }
-                        this.popupCenter('https://twitter.com/intent/tweet?url=' + url + '&text=' + text, config.title, config.width, config.height);
+                        popupCenter('https://twitter.com/intent/tweet?url=' + url + '&text=' + text, config.title, config.width, config.height);
                         break;
                     case 'ok':
                         popupCenter('https://connect.ok.ru/offer?url=' + url + '&title=' + title + '&imageUrl=' + image, config.title, config.width, config.height);
