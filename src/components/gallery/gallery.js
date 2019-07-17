@@ -1,5 +1,6 @@
 import showAnimate from '../showAnimate/showAnimate'
 import ajaxLoad from "../../js/ajaxLoad";
+import animatedHoverButton from "../animatedHoverButton/animatedHoverButton";
 
 if(SITE == 'false') {
     const loadMoreGalleryItems = () => {
@@ -34,5 +35,6 @@ if(SITE == 'false') {
 if(SITE == 'true') {
     ajaxLoad('.ajax-list-instagram',() => {
       showAnimate();
+      animatedHoverButton();
     });
 }

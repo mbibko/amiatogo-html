@@ -1,6 +1,7 @@
 import showAnimate from '../showAnimate/showAnimate'
 import ajaxLoad from '../../js/ajaxLoad'
 import modalCollection from "../modalCollection/modalCollection";
+import animatedHoverButton from "../animatedHoverButton/animatedHoverButton";
 
 if(SITE == 'false') {
   const loadMoreCollItems = () => {
@@ -30,6 +31,7 @@ if(SITE == 'true') {
       ajaxLoad('.ajax-list-collection', () => {
         showAnimate();
         modalCollection();
+        animatedHoverButton();
       });
     }, false);
 }
