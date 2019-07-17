@@ -1,8 +1,9 @@
 export default function() {
   if (window.innerWidth >= 1200) {
-    [].forEach.call(document.querySelectorAll('.block-animate'), item => {
+    [].forEach.call(document.querySelectorAll('.block-animate:not(.inited)'), item => {
       const hoverWrapper = document.createElement('div')
       const newItem = '<span class="block-animate__inner">'+ item.innerHTML +'</span>'
+      item.classList.add('inited')
       hoverWrapper.classList.add('hover-wrapper')
       item.innerHTML = newItem
       hoverWrapper.innerHTML = item.innerHTML;

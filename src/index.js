@@ -45,9 +45,12 @@ import './js/forms.js'
 import './js/load-imgs.js'
 
 import collectionItemSlider from './components/modalCollection/slider.js'
+import collectionSideToggle from './components/modalCollection/sideToggle.js'
 import modalShare from './components/modalCollection/modalShare.js'
-if(document.querySelector('.coll-modal-wrapper')) {
+const collModalWrapper = document.querySelector('.coll-modal-wrapper');
+if(collModalWrapper) {
 	collectionItemSlider(document.querySelector('.coll-modal-slider'));
+	collectionSideToggle(collModalWrapper);
     modalShare();
 }
 

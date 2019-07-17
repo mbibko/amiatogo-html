@@ -55,6 +55,7 @@ map.fitBounds(bounds);
 
 // Add a marker clusterer to manage the markers.
 const markerCluster = new MarkerClusterer(map, markers, mcOptions);
+let activeInfowindow = null;
 
 
 markers.forEach((marker, i) => {
@@ -68,6 +69,10 @@ markers.forEach((marker, i) => {
   });
   bounds.extend(marker.position);
   marker.addListener('click', function() {
+    if (activeInfowindow) {
+      activeInfowindow.close()
+    }
+    activeInfowindow = infowindow
     infowindow.open(map, marker);
   });
 });

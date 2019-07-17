@@ -1,5 +1,6 @@
 import tingle from "tingle.js";
 import slider from "./slider";
+import sideToggle from "./sideToggle";
 import animatedHoverButton from "../animatedHoverButton/animatedHoverButton";
 import modalShare from "./modalShare";
 import { isHistoryApiAvailable } from '../../js/helpers';
@@ -41,7 +42,7 @@ const fillModal = (data) => {
                 <a class="block-animate ${item.theme == 'dark' ? 'block-animate_inverted_bg' : 'button-white'} social__link social__link_facebook" data-id="fb" href="#"><svg width="9" height="16">
                     <use xlink:href="#icon-facebook"></use>
                   </svg></a>
-                <a class="button-animate button-animate_inverted_bg social__link social__link_twitter" href="#" data-id="tw"><svg fill="#1da1f2" width="17" height="14">
+                <a class="block-animate ${item.theme == 'dark' ? 'block-animate_inverted_bg' : 'button-white'} social__link social__link_twitter" href="#" data-id="tw"><svg fill="#1da1f2" width="17" height="14">
                     <use xlink:href="#icon-twitter"></use>
                   </svg></a>
                 <a class="block-animate ${item.theme == 'dark' ? 'block-animate_inverted_bg' : 'button-white'} social__link social__link_vkontakte" href="#" data-id="vk"><svg width="21" height="12">
@@ -85,12 +86,8 @@ const fillModal = (data) => {
             const sliderContainer = modalContent.querySelector('.coll-modal-slider');
 
             slider(sliderContainer);
+            sideToggle(modal.modal)
 
-            const side = modalContent.querySelector('.coll-modal-side');
-            const sideLink = side.querySelector('.coll-modal-side__link');
-            sideLink.addEventListener('click', () => {
-                modal.modal.classList.toggle('is-side-active')
-            });
             if (
                 isHistoryApiAvailable()
                 && data.url !== undefined
