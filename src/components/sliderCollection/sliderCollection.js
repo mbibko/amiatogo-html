@@ -7,8 +7,8 @@ const collectionSliderFunc = () => {
   const slider = new Swiper(sliderContainer, {
     speed: 1000,
     slidesPerView: 'auto',
-    loop: true,
-    loopedSlides: 3,
+    // loop: true,
+    // loopedSlides: 3,
 
     pagination: {
       el: '.swiper-pagination',
