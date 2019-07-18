@@ -3,8 +3,8 @@ import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
 Swiper.use([Navigation, Pagination]);
 
 const modalStore = () => {
-  [].forEach.call(document.querySelectorAll('.store-list__item'), item => {
-    const link = item.querySelector('.linkfull:not(.inited)');
+  [].forEach.call(document.querySelectorAll('.js-modal-store-item'), item => {
+    const link = item.querySelector('.js-modal-store-trigger:not(.inited)');
     const listener = () => {
       let slidesStr = '';
       const data = JSON.parse(item.dataset.modalImgs);
