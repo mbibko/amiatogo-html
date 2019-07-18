@@ -4,14 +4,14 @@ export function wrap(el, wrapper) {
 }
 
 export function setContainerHeight(container) {
-  const setHeight = (el) => {
-    if (!el) return;
-    el.style.height = window.innerHeight + 'px';
-
+  const setHeight = () => {
+    if (!container) return;
+    container.style.height = window.innerHeight + 'px';
   }
   setHeight(container);
 
   window.addEventListener("resize", function () {
+    if (!windowSidesResize.check()) return;
     setHeight(container);
   })
 }

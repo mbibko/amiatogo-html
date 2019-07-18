@@ -1,3 +1,7 @@
+import { setContainerHeight } from './js/helpers'
+
+setContainerHeight(document.querySelector('.top'))
+
 // import styles
 //=====================================
 import 'aos/dist/aos.css'

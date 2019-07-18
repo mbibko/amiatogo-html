@@ -20,6 +20,7 @@ export default function(sliderContainer) {
     },
     breakpoints: {
       1024: {
+        speed: 300,
         pagination: {
           el: '.swiper-pagination',
           type: 'bullets',

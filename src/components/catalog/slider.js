@@ -13,6 +13,11 @@ const initSliders = () => {
       pagination: {
         el: '.swiper-pagination',
       },
+      breakpoints: {
+        1024: {
+          speed: 300
+        }
+      }
     })
 
     slidersImgs.push(slider)

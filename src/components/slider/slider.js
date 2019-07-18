@@ -13,5 +13,10 @@ Swiper.use([Navigation, Pagination, Controller]);
       nextEl: '.slider-button-next',
       prevEl: '.slider-button-prev',
     },
+    breakpoints: {
+      1024: {
+        speed: 300
+      }
+    }
   })
 })

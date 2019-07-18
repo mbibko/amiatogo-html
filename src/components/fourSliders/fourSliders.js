@@ -51,6 +51,9 @@ const sectionSlidersFunc = () => {
         loopedSlides: 3,
         slidesPerView: 'auto',
         longSwipesRatio: '3'
+      },
+      600: {
+        longSwipesRatio: '0.5'
       }
     }
   }));
