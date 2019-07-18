@@ -1,7 +1,8 @@
-{% extends 'clear.html' %}
+{% extends 'default.html' %}
 
 
 {% set theme = 'dark' %}
+{% set bodyClass = 'page-clear' %}
 
 {% block content %}
 
@@ -39,7 +40,7 @@
               <a class="block-animate {% if theme == 'dark' %}block-animate_inverted_bg{% else %}button-white{% endif %} social__link social__link_facebook" data-id="fb" href="#"><svg width="9" height="16">
                   <use xlink:href="#icon-facebook"></use>
                 </svg></a>
-              <a class="button-animate button-animate_inverted_bg social__link social__link_twitter" href="#" data-id="tw"><svg fill="#1da1f2" width="17" height="14">
+              <a class="block-animate {% if theme == 'dark' %}block-animate_inverted_bg{% else %}button-white{% endif %} social__link social__link_twitter" href="#" data-id="tw"><svg fill="#1da1f2" width="17" height="14">
                   <use xlink:href="#icon-twitter"></use>
                 </svg></a>
               <a class="block-animate {% if theme == 'dark' %}block-animate_inverted_bg{% else %}button-white{% endif %} social__link social__link_vkontakte" href="#" data-id="vk"><svg width="21" height="12">
