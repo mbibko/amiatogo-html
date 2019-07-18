@@ -36,7 +36,6 @@
     .swiper-slide-next &__content
       opacity: 0.5
   &__title
-    +link-hover-bg
     display: block
     color: #16181c
     font-size: 17px
@@ -47,10 +46,7 @@
     margin-bottom: 7px
     text-decoration: none
     transition: $transition
-    .hover-wrapper
-      color: #636167
-    #{$_}:hover & .hover-wrapper
-      width: 100%
+    cursor: pointer
     +xs-block
       font-size: 14px
       line-height: normal

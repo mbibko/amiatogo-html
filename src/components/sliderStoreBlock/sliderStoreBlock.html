@@ -3,12 +3,12 @@
   <div class="slider__slidesWrapper swiper-container" data-aos="fade-up">
     <div class="slider__slides swiper-wrapper">
     {% for i in range(6) %}
-      <div class="slider__item storeBlock swiper-slide">
-        <a href="#" class="storeBlock__img">
+      <div class="slider__item storeBlock swiper-slide js-modal-store-item" data-modal-imgs='{"urls" : ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]}'>
+        <div class="storeBlock__img js-modal-store-trigger">
           <img src="../media/temp/item/{{loop.index}}.jpg" alt="">
-        </a>
+        </div>
         <div class="storeBlock__content">
-          <a href="#" class="storeBlock__title block-animate">Торгово-развлекательный центр «Великий камень»</a>
+          <div class="storeBlock__title">Торгово-развлекательный центр «Великий камень»</div>
           <div class="storeBlock__addr">г. Москва, ул. Набережная, 12</div>
           <div class="storeBlock__tel"><span class="storeBlock__tel-t">Тел.:</span> <a href="#" class="storeBlock__tel-tel">+7 (945) 900-23-21</a><span class="hidden-xs">, </span> <a href="#" class="storeBlock__tel-tel">+7 (945) 900-23-11</a></div>
           <div class="storeBlock__worktitle">Режим работы</div>

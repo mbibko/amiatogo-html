@@ -1,5 +1,5 @@
 {% macro storesItem(data, index) %}
-<div class="store-list__item" data-aos="fade-up" data-modal-imgs='{"urls" : ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]}' data-id="{{index}}">
+<div class="store-list__item js-modal-store-item" data-aos="fade-up" data-modal-imgs='{"urls" : ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]}' data-id="{{index}}">
   <div class="store-content">
     <div class="store-content__inner">
       <h3 class="store-content__title">{{data.title | safe}}</h3>
@@ -30,7 +30,7 @@
         <div class="slider-button slider-button-next"></div>
       </div>
       <div class="swiper-pagination"></div>
-      <div class="linkfull"></div>
+      <div class="linkfull js-modal-store-trigger"></div>
     </div>
   </div>
   <div class="store-map">
