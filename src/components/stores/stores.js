@@ -4,6 +4,7 @@ import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
 Swiper.use([Navigation, Pagination]);
 import ajaxLoad from '../../js/ajaxLoad'
 import modalStore from '../modalStore/modalStore'
+import animatedHoverButton from "../animatedHoverButton/animatedHoverButton";
 
 global.scrollToStore = id => {
   setTimeout(() => {
@@ -78,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ajaxLoad('.ajax-list',() => {
     storeFunc();
     modalStore();
+    animatedHoverButton();
   });
 }, false);
 
@@ -111,6 +113,7 @@ if (city_filter !== null) {
 
       storeFunc();
       modalStore();
+      animatedHoverButton();
     });
   });
 }
