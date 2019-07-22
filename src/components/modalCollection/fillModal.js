@@ -10,7 +10,13 @@ const fillModal = (data) => {
     let slidesStr = '';
 
     data.imgs.forEach((item, i) => {
-        slidesStr += `<div class="coll-modal-slider__item swiper-slide"><img src="${item}" alt=""></div>`
+        slidesStr += `
+          <div class="coll-modal-slider__item swiper-slide">
+            <img
+              srcset="${item.srcset}"
+              src="${item.src}"
+              alt="">
+          </div>`
     });
     const generateSideHtml = item => {
         return `

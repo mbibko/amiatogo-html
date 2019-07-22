@@ -9,7 +9,13 @@
     <h1 class="h1 m-b-5 m-b-xs-4">Франшиза</h1>
 
     <div class="m-b-6 m-b-xl-4 col-offset-left-2 col-xs-offset-left-0 coll-negative-offset-right">
-      <img class="img-full one-img" src="../media/temp/franchise.jpg" alt="img">
+      <img class="img-full one-img"
+        srcset="
+        ../media/temp/franchise_w_600.jpg 600w,
+        ../media/temp/franchise_w_1561.jpg 1561w,
+        ../media/temp/franchise_w_2150.jpg 2150w"
+        src="../media/temp/franchise_w_2150.jpg"
+        alt="img">
     </div>
 
     {% include 'columnsText/columnsText2.html' %}
