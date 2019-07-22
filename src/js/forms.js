@@ -104,16 +104,19 @@ document.addEventListener('bouncerFormValid', (event) => {
         && response.STATUS === 'SUCCESS'
     ) {
       let success = container.querySelector('.form-message_success');
+      if (success) {
+        success.classList.remove('form-message_hidden');
+        form.style.display = 'none';
+      }
 
-      success.classList.remove('form-message_hidden');
       form.reset();
       form.querySelector('input[name="key"]').value = '';
-      form.style.display = 'none';
     } else {
       let error = container.querySelector('.form-message_error');
-
-      error.classList.remove('form-message_hidden');
-      form.style.display = 'none';
+      if (error) {
+        error.classList.remove('form-message_hidden');
+        form.style.display = 'none';
+      }
     }
   });
 }, false);
