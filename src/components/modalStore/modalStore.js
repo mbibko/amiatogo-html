@@ -9,7 +9,11 @@ const modalStore = () => {
       let slidesStr = '';
       const data = JSON.parse(item.dataset.modalImgs);
       data.urls.forEach((url, i) => {
-      slidesStr += `<div class="modalStore__item swiper-slide"><img src="${url}" alt=""></div>`
+      slidesStr += `<div class="modalStore__item swiper-slide">
+          <img 
+            srcset="${url.srcset}"
+            src="${url.src}" alt="">
+        </div>`
       });
       const content = `
       <div class="modalStore swiper-container">
