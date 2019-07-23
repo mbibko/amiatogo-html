@@ -27,35 +27,39 @@ global.scrollToStoreMap = id => {
 };
 
 const storeFunc = () => {
-  [].forEach.call(document.querySelectorAll('.store-list__item:not(.inited)'), item => {
+  [].forEach.call(document.querySelectorAll('.store-list__item:not(.store-inited)'), item => {
     const link = item.querySelector('.store-content__link')
     link.addEventListener('click', () => {
       item.classList.toggle('is-active')
     });
-    const sliderContainer = item.querySelector('.store-slider')
-    new Swiper(sliderContainer, {
-      speed: 1000,
-      slidesPerView: 1,
-      loop: true,
-      loopedSlides: 3,
+    const sliderContainer = item.querySelector('.store-slider');
+    if(sliderContainer.querySelectorAll('.swiper-slide').length > 1) {
+      new Swiper(sliderContainer, {
+        speed: 1000,
+        slidesPerView: 1,
+        loop: true,
+        loopedSlides: 3,
 
-      pagination: {
-        el: '.swiper-pagination',
-        type: 'fraction',
-      },
-      navigation: {
-        nextEl: '.slider-button-next',
-        prevEl: '.slider-button-prev',
-      },
-      breakpoints: {
-        1024: {
-          pagination: {
-            el: '.swiper-pagination',
-            type: 'bullets',
-          },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'fraction',
+        },
+        navigation: {
+          nextEl: '.slider-button-next',
+          prevEl: '.slider-button-prev',
+        },
+        breakpoints: {
+          1024: {
+            pagination: {
+              el: '.swiper-pagination',
+              type: 'bullets',
+            },
+          }
         }
-      }
-    });
+      });
+    } else {
+      sliderContainer.classList.add('slider-disabled')
+    }
     const mapContainer = item.querySelector('.store-map__inner')
     const position = {lat: +mapContainer.dataset.lat, lng: +mapContainer.dataset.lng}
     const map = new google.maps.Map(mapContainer, {
@@ -68,7 +72,7 @@ const storeFunc = () => {
       icon: iconMarkerMap,
       map: map
     });
-    item.classList.add('inited')
+    item.classList.add('store-inited')
   });
 };
 

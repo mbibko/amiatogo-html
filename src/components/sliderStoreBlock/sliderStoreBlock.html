@@ -2,8 +2,27 @@
 <div class="slider">
   <div class="slider__slidesWrapper swiper-container" data-aos="fade-up">
     <div class="slider__slides swiper-wrapper">
-    {% for i in range(6) %}
-      <div class="slider__item storeBlock swiper-slide js-modal-store-item" data-modal-imgs='{"urls" : ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]}'>
+    {% for i in [
+        {
+          "urls": []
+        },
+        {
+          "urls": ["media/temp/store-slider/1.jpg"]
+        },
+        {
+          "urls": ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]
+        },
+        {
+          "urls": ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]
+        },
+        {
+          "urls": ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]
+        },
+        {
+          "urls": ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]
+        }
+      ] %}
+      <div class="slider__item storeBlock swiper-slide js-modal-store-item" data-modal-imgs='{"urls" : {{i.urls | dump |safe}}}'>
         <div class="storeBlock__img js-modal-store-trigger">
           <img src="../media/temp/item/{{loop.index}}.jpg" alt="">
         </div>
