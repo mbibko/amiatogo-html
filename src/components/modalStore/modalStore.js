@@ -3,11 +3,13 @@ import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
 Swiper.use([Navigation, Pagination]);
 
 const modalStore = () => {
-  [].forEach.call(document.querySelectorAll('.js-modal-store-item'), item => {
-    const link = item.querySelector('.js-modal-store-trigger:not(.inited)');
+  [].forEach.call(document.querySelectorAll('.js-modal-store-item:not(.modal-store-inited)'), item => {
+    const link = item.querySelector('.js-modal-store-trigger');
+    const data = JSON.parse(item.dataset.modalImgs);
+    if(!data.urls.length) return;
     const listener = () => {
       let slidesStr = '';
-      const data = JSON.parse(item.dataset.modalImgs);
+      let controls = '';
       data.urls.forEach((url, i) => {
       slidesStr += `<div class="modalStore__item swiper-slide">
           <img 
@@ -15,16 +17,20 @@ const modalStore = () => {
             src="${url.src}" alt="">
         </div>`
       });
-      const content = `
-      <div class="modalStore swiper-container">
-        <div class="modalStore__slides swiper-wrapper">${slidesStr}</div>
+      if(data.urls.length > 1) {
+        controls = `
         <div class="slider-controls">
           <div class="slider-navigation">
             <div class="slider-button slider-button-prev"></div>
             <div class="slider-button slider-button-next"></div>
           </div>
           <div class="swiper-pagination"></div>
-        </div>
+        </div>`
+      }
+      const content = `
+      <div class="modalStore swiper-container ${data.urls.length < 2 ? 'slider-disabled' : ''}">
+        <div class="modalStore__slides swiper-wrapper">${slidesStr}</div>
+        ${controls}
       </div>
     `;
 
@@ -33,6 +39,7 @@ const modalStore = () => {
         cssClass: ['modal-full'],
         onOpen: () => {
           const sliderContainer = modal.getContent().querySelector('.modalStore')
+          if(data.urls.length < 2) return;
           new Swiper(sliderContainer, {
             speed: 1000,
             slidesPerView: 1,
@@ -64,7 +71,7 @@ const modalStore = () => {
 
     if (link) {
       link.addEventListener('click', listener, false);
-      link.classList.add('inited');
+      item.classList.add('modal-store-inited');
     }
   });
 };

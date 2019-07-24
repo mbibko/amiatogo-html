@@ -91,6 +91,9 @@ const fillModal = (data) => {
             const modalContent = modal.getContent();
             const sliderContainer = modalContent.querySelector('.coll-modal-slider');
 
+            modal.modal.addEventListener('scroll', () => {
+              sliderContainer.style.transform = `translateY(${modal.modal.scrollTop}px)`
+            });
             slider(sliderContainer);
             sideToggle(modal.modal)
 

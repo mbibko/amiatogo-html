@@ -1,4 +1,4 @@
-import { break_xl } from "../../js/constants";
+import { break_lg } from "../../js/constants";
 
 // Import Swiper and modules
 import { Swiper, Navigation, Pagination, Controller } from 'swiper/dist/js/swiper.esm.js';
@@ -26,6 +26,7 @@ const sectionSlidersFunc = () => {
     slidesPerGroup: 1,
     loopedSlides: 3,
     slidesPerView: 'auto',
+    longSwipesRatio: 0.1
   }));
   swipers.push(new Swiper('.slider3', {
     speed: 1000,
@@ -47,7 +48,7 @@ const sectionSlidersFunc = () => {
       prevEl: '.slider-button-prev',
     },
     breakpoints: {
-      1024: {
+      [break_lg]: {
         loopedSlides: 3,
         slidesPerView: 'auto',
         longSwipesRatio: '3'

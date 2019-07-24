@@ -18,6 +18,7 @@ select
     width: 100%
 
 .form
+  position: relative
   &__top
     margin-bottom: 38px
     +xs-block
@@ -37,6 +38,12 @@ select
     margin-top: 90px
     +lg-block
       margin-top: 40px
+  .form-message
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    min-height: 100%
 
 
 .control-label
@@ -117,7 +124,7 @@ select
       color: #505255
       +xs-block
         font-size: 18px
-    .button
+    .button-submit
       position: absolute
       top: 0
       right: 0
@@ -126,6 +133,13 @@ select
       transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
       background: url("../media/arr.svg?fill=%2316181c") right center no-repeat
       background-size: 10px
+  .form-message
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 50px
+    min-height: 100%
 
 .form-message
   $_: &
@@ -136,13 +150,20 @@ select
   padding-right: var(--fields)
   text-align: center
   font-size: 17px
+  color: #000
   +lg-block
     font-size: 14px
   +xs-block
     font-size: 12px
+  &_inline
+    flex-direction: row
+    flex-wrap: wrap
+    padding: 0 20px
+    align-items: center
   &_hidden
       display: none
   &__icon
+    flex: none
     width: var(--button-default-height)
     height: var(--button-default-height)
     margin-left: auto
@@ -171,6 +192,14 @@ select
     #{$_}_error &
       color: #e00b24
       border-color: #e00b24
+    #{$_}_inline &
+      width: 50px
+      height: 50px
+      margin: 0 20px 0 0
+      +xs-block
+        width: 30px
+        height: 30px
+
   &__title
     font-family: $angelicia-display
     font-size: 24px
@@ -179,5 +208,11 @@ select
       font-size: 18px
     +xs-block
       font-size: 16px
+    #{$_}_inline &
+      margin: 0
   &__button
     margin-top: auto
+    #{$_}_inline &
+      margin-top: 14px
+      height: 40px
+

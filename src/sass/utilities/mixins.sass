@@ -255,6 +255,8 @@
     transition: 0.5s
     transition-timing-function: cubic-bezier(0.7,0,0.3,1)
     mix-blend-mode: exclusion
+    body.mobile-device &, body.tablet-device &
+      display: none
   &:hover::after
     width: 100%
 
@@ -273,6 +275,8 @@
     background-color: $bg
     transition: 0.5s
     transition-timing-function: cubic-bezier(0.7,0,0.3,1)
+    body.mobile-device &, body.tablet-device &
+      display: none
   &::after
     content: ''
     position: absolute
@@ -285,6 +289,8 @@
     transition: 0.5s
     transition-timing-function: cubic-bezier(0.7,0,0.3,1)
     mix-blend-mode: exclusion
+    body.mobile-device &, body.tablet-device &
+      display: none
   &:hover::after, &:hover::before
     width: 100%
 

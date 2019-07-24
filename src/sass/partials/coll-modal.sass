@@ -2,7 +2,7 @@
   height: 100%
   display: flex
   &__back
-    position: absolute !important
+    position: fixed !important
     z-index: 10
     top: 90px
     right: var(--fields)
@@ -87,11 +87,10 @@
             margin: 0
   &__inner
     position: relative
-    overflow: hidden
-    height: 100%
+    min-height: 100%
     display: flex
     flex-direction: column
-    padding-bottom: 90px
+    padding-bottom: 40px
     padding-top: 84px
     .theme_dark &
       background-color: $base-color
@@ -100,6 +99,8 @@
       background-color: #fff
       color: $base-color
     +lg-block
+      overflow: hidden
+      height: 100%
       padding-top: 140px
       transform: translateY(-100%)
       transition: $transition
@@ -107,15 +108,15 @@
         transform: translateY(0)
     +xs-block
       padding-top: 80px
-      padding-bottom: 40px
+      padding-bottom: 20px
   &__inner-inner
-    overflow-y: auto
-    overflow-x: hidden
-    height: 100%
-    width: calc(100% + 20px)
+    // width: calc(100% + 20px)
     padding-left: var(--fields)
     padding-right: var(--fields)
     +lg-block
+      overflow-y: auto
+      overflow-x: hidden
+      height: 100%
       transform: translateY(150%)
       transition: $transition
       .is-side-active &
@@ -170,8 +171,18 @@
       margin-bottom: 0
 
 .coll-modal-slider
-  flex: 1
+  height: 100%
+  position: absolute
+  top: 0
+  right: 0
+  left: calc(var(--fields) * 2 + var(--column) * 5)
+  +lg-block
+    position: relative
+    left: auto
   +xs-block
+    position: relative
+    left: 0
+    transform: none !important
     flex: none
     width: 100%
   &__item

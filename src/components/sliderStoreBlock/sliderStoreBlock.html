@@ -2,8 +2,27 @@
 <div class="slider">
   <div class="slider__slidesWrapper swiper-container" data-aos="fade-up">
     <div class="slider__slides swiper-wrapper">
-    {% for i in range(6) %}
-      <div class="slider__item storeBlock swiper-slide" data-modal-imgs='{"urls" : [{"srcset": "../media/temp/store-slider/1_w_640.jpg 640w, ../media/temp/store-slider/1_w_1606.jpg 1606w, ../media/temp/store-slider/1_w_2300.jpg 2300w", "src": "../media/temp/store-slider/1_w_2300.jpg"}, {"srcset": "../media/temp/store-slider/2_w_640.jpg 640w, ../media/temp/store-slider/2_w_1603.jpg 1603w, ../media/temp/store-slider/2_w_2300.jpg 2300w", "src": "../media/temp/store-slider/2_w_2300.jpg"}, {"srcset": "../media/temp/store-slider/3_w_640.jpg 640w, ../media/temp/store-slider/3_w_1603.jpg 1603w, ../media/temp/store-slider/3_w_2300.jpg 2300w", "src": "../media/temp/store-slider/3_w_2300.jpg"}]}'>
+    {% for i in [
+        {
+          "urls": []
+        },
+        {
+          "urls": [{"srcset": "../media/temp/store-slider/1_w_640.jpg 640w, ../media/temp/store-slider/1_w_1606.jpg 1606w, ../media/temp/store-slider/1_w_2300.jpg 2300w", "src": "../media/temp/store-slider/1_w_2300.jpg"}]
+        },
+        {
+          "urls": [{"srcset": "../media/temp/store-slider/1_w_640.jpg 640w, ../media/temp/store-slider/1_w_1606.jpg 1606w, ../media/temp/store-slider/1_w_2300.jpg 2300w", "src": "../media/temp/store-slider/1_w_2300.jpg"}, {"srcset": "../media/temp/store-slider/1_w_640.jpg 640w, ../media/temp/store-slider/1_w_1606.jpg 1606w, ../media/temp/store-slider/1_w_2300.jpg 2300w", "src": "../media/temp/store-slider/1_w_2300.jpg"}]
+        },
+        {
+          "urls": [{"srcset": "../media/temp/store-slider/1_w_640.jpg 640w, ../media/temp/store-slider/1_w_1606.jpg 1606w, ../media/temp/store-slider/1_w_2300.jpg 2300w", "src": "../media/temp/store-slider/1_w_2300.jpg"}]
+        },
+        {
+          "urls": [{"srcset": "../media/temp/store-slider/1_w_640.jpg 640w, ../media/temp/store-slider/1_w_1606.jpg 1606w, ../media/temp/store-slider/1_w_2300.jpg 2300w", "src": "../media/temp/store-slider/1_w_2300.jpg"}]
+        },
+        {
+          "urls": [{"srcset": "../media/temp/store-slider/1_w_640.jpg 640w, ../media/temp/store-slider/1_w_1606.jpg 1606w, ../media/temp/store-slider/1_w_2300.jpg 2300w", "src": "../media/temp/store-slider/1_w_2300.jpg"}]
+        }
+      ] %}
+      <div class="slider__item storeBlock swiper-slide js-modal-store-item" data-modal-imgs='{"urls" : {{i.urls | dump |safe}}}'>
         <div class="storeBlock__img js-modal-store-trigger">
           <img src="../media/temp/item/{{loop.index}}.jpg" alt="">
         </div>

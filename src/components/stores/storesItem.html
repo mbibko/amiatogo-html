@@ -1,5 +1,5 @@
 {% macro storesItem(data, index) %}
-<div class="store-list__item js-modal-store-item" data-aos="fade-up" data-modal-imgs='{"urls" : ["media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg", "media/temp/store-slider/1.jpg"]}' data-id="{{index}}">
+<div class="store-list__item js-modal-store-item" data-aos="fade-up" data-modal-imgs='{"urls" : {{data.imgsModal | dump | safe}}}' data-id="{{index}}">
   <div class="store-content">
     <div class="store-content__inner">
       <h3 class="store-content__title">{{data.title | safe}}</h3>
@@ -18,19 +18,23 @@
   </div>
   <div class="store-slider swiper-container">
     <div class="store-slider-slides swiper-wrapper">
-      {% for i in range(3) %}
+      {% for img in data.imgs %}
       <div class="store-slider__item swiper-slide">
-        <img src="../media/temp/store-slider/1.jpg" alt="">
+        <img src="{{img}}" alt="">
       </div>
       {% endfor %}
     </div>
     <div class="slider-controls">
+      {% if data.imgs.length > 1 %}
       <div class="slider-navigation">
         <div class="slider-button slider-button-prev"></div>
         <div class="slider-button slider-button-next"></div>
       </div>
       <div class="swiper-pagination"></div>
+      {% endif %}
+      {% if data.imgsModal.length %}
       <div class="linkfull js-modal-store-trigger"></div>
+      {% endif %}
     </div>
   </div>
   <div class="store-map">

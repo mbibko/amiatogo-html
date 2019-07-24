@@ -192,6 +192,8 @@
     width: calc(100vw - var(--fields))
     margin-left: var(--fields)
     height: 210px
+  &.slider-disabled
+    padding-right: 0
 
   .swiper-slide-next
     &::before
@@ -200,6 +202,8 @@
     position: relative
     width: calc(100% / 13 * 11)
     height: 540px
+    .slider-disabled &
+      width: 100%
     +lg-block
       width: 100%
       height: 340px
