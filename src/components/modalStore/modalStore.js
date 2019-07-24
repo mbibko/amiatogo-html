@@ -11,7 +11,11 @@ const modalStore = () => {
       let slidesStr = '';
       let controls = '';
       data.urls.forEach((url, i) => {
-      slidesStr += `<div class="modalStore__item swiper-slide"><img src="${url}" alt=""></div>`
+      slidesStr += `<div class="modalStore__item swiper-slide">
+          <img 
+            srcset="${url.srcset}"
+            src="${url.src}" alt="">
+        </div>`
       });
       if(data.urls.length > 1) {
         controls = `

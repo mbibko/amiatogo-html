@@ -8,7 +8,98 @@
     <div class="h1 m-b-5 m-b-xl-4 m-b-xs-3">Коллекции</div>
     {% include 'sliderCollection/sliderCollection.html' %}
     {% include 'columnsText/columnsText1.html' %}
-    {% include 'catalog/catalog1.html' %}
+    {% from 'catalog/catalog.html' import catalog %}
+    {{catalog({
+      class: "collection",
+      nav: [
+        {
+          title: "Age-free",
+          date: "2019"
+        },
+        {
+          title: "Sportschic",
+          date: "2019"
+        },
+        {
+          title: "Classic",
+          date: "2019"
+        },
+        {
+          title: "Concept",
+          date: "2019"
+        }
+      ],
+      imgs: [
+        {
+          items: [
+              {
+                description: "«Инновации, прогрессивные технологии в каждой детали коллекции. Эта одежда, которая в первую очередь направлена на твой максимальный комфорт и на достижение твоего лучшего результата.»",
+                size: "md",
+                alignBottom: true,
+                srcset: ["300", "720"]
+              },
+              {
+                size: "lg",
+                srcset: ["500", "1000"]
+              },
+              {
+                size: "sm"
+              }
+          ]
+        },
+        {
+          items: [
+              {
+                size: "lg",
+                srcset: ["500", "1000"]
+              },
+              {
+                size: "sm",
+                alignBottom: true
+              },
+              {
+                description: "«Спорт не заканчивается в спортзале. Он выходит далеко за его рамки, создавая образ жизни и возможности выражения твоей индивидуальности каждый день.»",
+                size: "md",
+                srcset: ["300", "720"]
+              }
+          ]
+        },
+        {
+          items: [
+              {
+                description: "«Актуальная морская тематика является главным трендом текущей коллекции. Легкие струящиеся ткани и обворожительные принты — это именно то, что необходимо летом.»",
+                size: "md",
+                alignBottom: true,
+                srcset: ["300", "720"]
+              },
+              {
+                size: "sm"
+              },
+              {
+                size: "lg",
+                srcset: ["500", "1000"]
+              }
+          ]
+        },
+        {
+          items: [
+              {
+                size: "sm",
+                alignBottom: true
+              },
+              {
+                size: "lg",
+                srcset: ["500", "1000"]
+              },
+              {
+                description: "«Блестящий люрекс, роскошный бархат, мягкий велюр помогут вам выглядеть незабываемо и ярко.»",
+                size: "md",
+                srcset: ["300", "720"]
+              }
+          ]
+        }
+      ]
+    })}}
   </div>
 </div>
 

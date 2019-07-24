@@ -146,10 +146,10 @@ let config = {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: "html-loader",
+                        loader: "html-loader-srcset",
                         options: {
                             minimize: false,
-                            attrs: ['img:src', ':data-src', 'source:src', 'video:src']
+                            attrs: ['img:src', ':srcset', ':data-src', 'source:src', 'video:src']
                         }
                     },
                     {

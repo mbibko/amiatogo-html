@@ -7,17 +7,13 @@ let slidersInitiated = false;
 const initSliders = () => {
   [].forEach.call(document.querySelectorAll('.catalog-slider'), sliderContainer => {
     const slider = new Swiper(sliderContainer, {
-      speed: 1000,
+      speed: 300,
       slidesPerView: 'auto',
+      freeMode: true,
 
       pagination: {
         el: '.swiper-pagination',
       },
-      breakpoints: {
-        1024: {
-          speed: 300
-        }
-      }
     })
 
     slidersImgs.push(slider)
