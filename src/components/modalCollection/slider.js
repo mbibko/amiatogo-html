@@ -1,3 +1,4 @@
+import { break_lg } from "../../js/constants";
 import { Swiper, Navigation, Pagination } from 'swiper/dist/js/swiper.esm.js';
 Swiper.use([Navigation, Pagination]);
 
@@ -19,7 +20,7 @@ export default function(sliderContainer) {
       prevEl: '.slider-button-prev',
     },
     breakpoints: {
-      1024: {
+      [break_lg]: {
         speed: 300,
         pagination: {
           el: '.swiper-pagination',

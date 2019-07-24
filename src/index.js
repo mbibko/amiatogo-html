@@ -1,4 +1,4 @@
-import { setContainerHeight } from './js/helpers'
+import { setContainerHeight, mobileDevice, tabletDevice } from './js/helpers'
 
 setContainerHeight(document.querySelector('.top'))
 
@@ -47,6 +47,13 @@ import './js/initAnimations'
 import './js/videoInit'
 import './js/forms.js'
 import './js/load-imgs.js'
+
+if (mobileDevice()) {
+	document.body.classList.add('mobile-device')
+}
+if (tabletDevice()) {
+	document.body.classList.add('tablet-device')
+}
 
 import collectionItemSlider from './components/modalCollection/slider.js'
 import collectionSideToggle from './components/modalCollection/sideToggle.js'
