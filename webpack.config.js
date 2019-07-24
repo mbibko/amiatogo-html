@@ -27,7 +27,7 @@ let config = {
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         overlay: true,
-        hot: true,
+        hot: isDevServer ? true : false,
         watchContentBase: true,
         host: "0.0.0.0",
         stats: {

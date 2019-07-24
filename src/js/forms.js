@@ -106,7 +106,6 @@ document.addEventListener('bouncerFormValid', (event) => {
       let success = container.querySelector('.form-message_success');
       if (success) {
         success.classList.remove('form-message_hidden');
-        form.style.display = 'none';
       }
 
       form.reset();
@@ -115,7 +114,6 @@ document.addEventListener('bouncerFormValid', (event) => {
       let error = container.querySelector('.form-message_error');
       if (error) {
         error.classList.remove('form-message_hidden');
-        form.style.display = 'none';
       }
     }
   });
@@ -136,13 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   [].forEach.call(document.querySelectorAll('.form-message__button'), button => {
     button.addEventListener('click', (e) => {
-      let button = e.target,
-          container = button.closest('.join__form'),
-          form = container.querySelector('form'),
-          message = button.closest('.form-message');
+      const message = button.closest('.form-message');
 
       message.classList.add('form-message_hidden');
-      form.style.display = 'unset';
     });
   });
 });
