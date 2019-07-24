@@ -53,9 +53,13 @@ import collectionSideToggle from './components/modalCollection/sideToggle.js'
 import modalShare from './components/modalCollection/modalShare.js'
 const collModalWrapper = document.querySelector('.coll-modal-wrapper');
 if(collModalWrapper) {
-	collectionItemSlider(document.querySelector('.coll-modal-slider'));
+	const sliderContainer = document.querySelector('.coll-modal-slider');
+	collectionItemSlider(sliderContainer);
 	collectionSideToggle(collModalWrapper);
     modalShare();
+    window.addEventListener('scroll', () => {
+      sliderContainer.style.transform = `translateY(${window.pageYOffset}px)`
+    });
 }
 
 // import icons
