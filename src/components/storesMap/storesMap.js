@@ -1,4 +1,4 @@
-import iconMarkerMap from '../../media/marker-map.svg'
+// import iconMarkerMap from '../../media/marker-map.svg'
 import iconCircleMap from '../../media/circle.png'
 
 ;
@@ -26,7 +26,7 @@ let styles = [{
     height: 48,
     textColor: 'white',
     textSize: '16',
-    url: iconCircleMap
+    // url: iconCircleMap
 }];
 
 for(let i=0; i < locations.length; i++) {
@@ -43,7 +43,7 @@ const bounds = new google.maps.LatLngBounds();
 const markers = locations.map(function(obj, i) {
   return new google.maps.Marker({
     position: obj.location,
-    icon: iconMarkerMap,
+    // icon: iconMarkerMap,
     city: obj.city,
     title: obj.title,
     address: obj.address,

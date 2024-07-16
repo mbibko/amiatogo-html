@@ -4,6 +4,7 @@
   "main": "index.js",
   "privat": "true",
   "scripts": {
+    "serve": "cross-env NODE_ENV=development SITE=false webpack serve",
     "build": "cross-env NODE_ENV=production SITE=true webpack --progress",
     "build:layout": "cross-env NODE_ENV=production SITE=false webpack --progress"
   },

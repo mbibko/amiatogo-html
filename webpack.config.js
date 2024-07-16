@@ -18,6 +18,7 @@ let config = {
         path: path.resolve(__dirname, "dist"),
         filename: "js/main.js",
         publicPath: SITE == "true" ? "../" : "",
+        assetModuleFilename: 'images/[path][name][ext]'
     },
     // externals: {
     //   tns: 'tns'
@@ -25,24 +26,12 @@ let config = {
     mode: NODE_ENV,
     devtool: NODE_ENV == "development" ? "source-map" : "source-map",
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        overlay: true,
         hot: isDevServer ? true : false,
-        watchContentBase: true,
         host: "0.0.0.0",
-        stats: {
-            all: false,
-            modules: true,
-            maxModules: 0,
-            errors: true,
-            warnings: true,
-            moduleTrace: true,
-            errorDetails: true
-        }
     },
     resolve: {
         alias: {
-            '@sass': path.resolve(__dirname, 'src/sass'),
+            'sass': path.resolve(__dirname, 'src/sass'),
             'images': path.resolve(__dirname, 'src/media')
         }
     },
@@ -52,6 +41,7 @@ let config = {
                 test: /\.svg$/,
                 loader: 'svg-sprite-loader',
                 include: path.resolve(__dirname, 'src/media/sprite-images'),
+                type: 'javascript/auto'
                 // options: {
                 //   esModule: false,
                 //   extract: false,
@@ -71,16 +61,7 @@ let config = {
             {
                 test: /\.svg(\?.*)?$/, // match img.svg and img.svg?param=value
                 exclude: path.resolve(__dirname, 'src/media/sprite-images'),
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            limit: 8192,
-                            name: "[path][name].[ext]"
-                        }
-                    },
-                    'svg-transform-loader'
-                ]
+                type: 'asset/resource'
             },
             {
                 test: /\.css$/,
@@ -107,39 +88,37 @@ let config = {
             },
             {
                 test: /\.(png|jpg|jpeg|woff|woff2|gif|mp4)$/,
-                use: [
-                    {
-                        loader: "url-loader",
-                        options: {
-                            fallback: 'file-loader',
-                            limit: 8192,
-                            context: "src",
-                            outputPath: (url) => {
-                                if (/components/.test(url)) {
-                                    return `media/${url}`;
-                                }
-
-                                return url;
-                            },
-                            name: "[path][name].[ext]"
-                        }
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            disable: NODE_ENV == 'development'
-                        },
-                    },
-                ]
+                type: "asset/resource"
             },
             {
                 test: /\.html$/,
                 use: [
                     {
-                        loader: "html-loader-srcset",
+                        loader: "html-loader",
                         options: {
-                            minimize: false,
-                            attrs: ['img:src', ':srcset', ':data-src', 'source:src', 'video:src']
+                            sources: {
+                                list: [
+                                  "...",
+                                    {
+                                        tag: "img",
+                                        attribute: "data-src",
+                                        type: "src",
+                                    },
+                                    {
+                                        tag: "link",
+                                        attribute: "href",
+                                        type: "src",
+                                        filter: () => false,
+                                    },
+                                    {
+                                        tag: "script",
+                                        attribute: "src",
+                                        type: "src",
+                                        filter: () => false,
+                                    },
+                                ]
+                                // 'img:src', ':srcset', ':data-src', 'source:src', 'video:src'
+                            }
                         }
                     },
                     {
@@ -188,6 +167,7 @@ function generateHtmlPlugins(templateDir) {
     return templateFiles.map(item => {
         const parts = item.split('.');
         return new HtmlWebpackPlugin({
+            path: path.resolve(__dirname, './dist'),
             filename: `${parts[0]}.html`,
             template: `./src/html/${parts[0]}.html`,
             inject: false,
