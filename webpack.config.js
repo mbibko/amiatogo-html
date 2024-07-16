@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlReplaceWebpackPlugin = require("html-replace-webpack-plugin");
 // const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
@@ -42,6 +42,7 @@ let config = {
     },
     resolve: {
         alias: {
+            '@sass': path.resolve(__dirname, 'src/sass'),
             'images': path.resolve(__dirname, 'src/media')
         }
     },
@@ -86,10 +87,6 @@ let config = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: NODE_ENV == 'development',
-                            reloadAll: true,
-                        },
                     },
                     {loader: 'css-loader', options: {importLoaders: 1}},
                 ]
@@ -99,19 +96,12 @@ let config = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: NODE_ENV == 'development',
-                            reloadAll: true,
-                        },
                     },
                     // "style-loader",
                     {loader: 'css-loader', options: {importLoaders: 1}},
                     "postcss-loader",
                     {
                         loader: "sass-loader",
-                        options: {
-                            includePaths: ["src/components", "src/sass"]
-                        }
                     }
                 ]
             },
@@ -182,10 +172,12 @@ let config = {
 module.exports = (env, argv) => {
     if (SITE == 'false') {
         config.plugins.push(
-            new CopyWebpackPlugin([
-                { from: './src/js/dinamic-links.js', to: './js' },
-                { from: './src/ajax.pages_list.php', to: '.' },
-            ]),
+            new CopyWebpackPlugin({
+                patterns: [
+                    { from: './src/js/dinamic-links.js', to: './js' },
+                    { from: './src/ajax.pages_list.php', to: '.' },
+                ]
+            }),
         )
     }
     return config;
