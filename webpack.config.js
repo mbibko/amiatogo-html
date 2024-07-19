@@ -60,7 +60,10 @@ let config = {
             {
                 test: /\.svg(\?.*)?$/, // match img.svg and img.svg?param=value
                 exclude: path.resolve(__dirname, 'src/media/sprite-images'),
-                type: 'asset/resource'
+                use: [
+                    'svg-transform-loader'
+                ],
+                type: 'asset/inline'
             },
             {
                 test: /\.css$/,
