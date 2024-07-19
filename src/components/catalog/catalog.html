@@ -37,9 +37,7 @@
           <a href="#" class="swiper-slide imgs-grid__item {% if item.description %}imgs-grid__item_text{% endif %} imgs-grid__item_{{item.size}} {% if item.alignBottom %}imgs-grid__item_bottom{% endif %}">
             <img class="imgs-grid__img aos-me" 
             {% if item.srcset  %}
-            srcset="
-            ../media/temp/catalog/{{data.class}}/{{loopIndex}}/{{loop.index}}-{{item.srcset[0]}}.jpg {{item.srcset[0]}}w,
-            ../media/temp/catalog/{{data.class}}/{{loopIndex}}/{{loop.index}}-{{item.srcset[1]}}.jpg {{item.srcset[1]}}w"
+            srcset=" ../media/temp/catalog/{{data.class}}/{{loopIndex}}/{{loop.index}}-{{item.srcset[0]}}.jpg {{item.srcset[0]}}w, ../media/temp/catalog/{{data.class}}/{{loopIndex}}/{{loop.index}}-{{item.srcset[1]}}.jpg {{item.srcset[1]}}w"
             src="../media/temp/catalog/{{data.class}}/{{loopIndex}}/{{loop.index}}-{{item.srcset[1]}}.jpg"
             {% else %}
             src="../media/temp/catalog/{{data.class}}/{{loopIndex}}/{{loop.index}}-350.jpg"
